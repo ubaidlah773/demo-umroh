@@ -22,27 +22,23 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Safara Umroh | Paket Umroh & Konsultasi Perjalanan",
-  description:
-    "Website demo travel Umroh untuk menampilkan paket, jadwal, fasilitas, informasi pendaftaran, dan konsultasi WhatsApp.",
+  title: "Demo Website Travel Umroh & Haji",
+  description: "Contoh website profesional untuk bisnis Travel Umroh & Haji.",
   keywords: [
-    "Safara Umroh",
+    "Demo Website Travel Umroh & Haji",
+    "Website Travel Umroh",
+    "Contoh Website Umroh",
     "Paket Umroh",
     "Jadwal Keberangkatan Umroh",
-    "Umroh Reguler",
-    "Umroh Premium",
-    "Umroh Ramadhan",
     "Konsultasi Umroh",
-    "Travel Umroh Terpercaya",
-    "Biro Perjalanan Haji dan Umroh",
+    "Travel Haji dan Umroh",
   ],
-  authors: [{ name: "Safara Umroh" }],
+  authors: [{ name: "DEMO UMROH" }],
   openGraph: {
-    title: "Safara Umroh | Paket Umroh & Konsultasi Perjalanan",
-    description:
-      "Website demo travel Umroh untuk menampilkan paket, jadwal, fasilitas, informasi pendaftaran, dan konsultasi WhatsApp.",
-    url: "https://safara-umroh.demo",
-    siteName: siteConfig.name,
+    title: "Demo Website Travel Umroh & Haji",
+    description: "Contoh website profesional untuk bisnis Travel Umroh & Haji.",
+    url: "https://demo-umroh.vercel.app",
+    siteName: "DEMO UMROH",
     locale: "id_ID",
     type: "website",
     images: [
@@ -50,7 +46,7 @@ export const metadata: Metadata = {
         url: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=1200&auto=format&fit=crop",
         width: 1200,
         height: 630,
-        alt: "Safara Umroh - Teman Perjalanan Menuju Tanah Suci",
+        alt: "Demo Website Travel Umroh & Haji",
       },
     ],
   },

@@ -5,11 +5,9 @@ import Image from "next/image";
 import { gallery } from "@/config/siteConfig";
 import { GalleryItem } from "@/types";
 import {
-  Sparkles,
   ZoomIn,
   X,
   Camera,
-  MapPin,
   ChevronLeft,
   ChevronRight,
   Info,
@@ -19,7 +17,7 @@ export const Gallery: React.FC = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
-  const categories = ["all", "Makkah", "Madinah", "Ibadah", "Transportasi"];
+  const categories = ["all", "Makkah", "Madinah", "Jamaah", "Perjalanan", "Briefing"];
 
   const filteredPhotos = gallery.filter((item) => {
     if (activeFilter === "all") return true;
@@ -51,7 +49,7 @@ export const Gallery: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-950 border border-emerald-200">
             <Camera className="w-3.5 h-3.5 text-gold-600" />
-            <span>Dokumentasi Visual</span>
+            <span>Contoh Galeri</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -59,8 +57,7 @@ export const Gallery: React.FC = () => {
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed text-balance">
-            Gambaran keagungan Tanah Suci, momen kekhusyukan jamaah, serta kesiapan
-            fasilitas yang menyertai setiap langkah perjalanan ibadah.
+            Dokumentasi visual generik suasana ibadah di Tanah Suci untuk memberikan gambaran pengalaman bagi calon jamaah.
           </p>
         </div>
 
@@ -98,22 +95,21 @@ export const Gallery: React.FC = () => {
                 className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
               />
 
-              {/* Gradient Dark Overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-950/30 to-transparent opacity-80 sm:opacity-60 group-hover:opacity-90 transition-opacity" />
 
-              {/* Category Pill Top Left */}
+              {/* Category Pill */}
               <div className="absolute top-3 left-3">
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-black/60 text-white backdrop-blur-sm border border-white/20">
                   {photo.category}
                 </span>
               </div>
 
-              {/* Zoom Icon Top Right */}
+              {/* Zoom Icon */}
               <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
                 <ZoomIn className="w-4 h-4" />
               </div>
 
-              {/* Caption Bottom Overlay */}
+              {/* Caption */}
               <div className="absolute bottom-0 inset-x-0 p-4 text-white transform sm:translate-y-2 group-hover:translate-y-0 transition-transform">
                 <h3 className="font-serif text-base font-bold leading-snug group-hover:text-gold-300 transition-colors">
                   {photo.title}
@@ -130,7 +126,7 @@ export const Gallery: React.FC = () => {
         <div className="mt-10 max-w-xl mx-auto p-3.5 rounded-xl bg-white border border-slate-200 text-center text-xs text-slate-500 flex items-center justify-center gap-2">
           <Info className="w-4 h-4 text-emerald-700 shrink-0" />
           <span>
-            Foto dokumentasi bersifat ilustratif untuk kebutuhan demo presentasi website.
+            Foto dokumentasi bersifat ilustratif untuk kebutuhan demo presentasi website travel.
           </span>
         </div>
       </div>
@@ -147,7 +143,6 @@ export const Gallery: React.FC = () => {
             className="relative max-w-4xl w-full bg-emerald-950 rounded-3xl overflow-hidden shadow-2xl border border-gold-500/20"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
             <button
               type="button"
               onClick={() => setSelectedPhoto(null)}
@@ -157,7 +152,6 @@ export const Gallery: React.FC = () => {
               <X className="w-5 h-5" />
             </button>
 
-            {/* Navigation buttons */}
             <button
               type="button"
               onClick={handlePrevPhoto}
@@ -176,7 +170,6 @@ export const Gallery: React.FC = () => {
               <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Large Image */}
             <div className="relative h-[400px] sm:h-[500px] w-full bg-black">
               <Image
                 src={selectedPhoto.image}
@@ -187,7 +180,6 @@ export const Gallery: React.FC = () => {
               />
             </div>
 
-            {/* Modal Caption */}
             <div className="p-6 bg-emerald-950 text-white border-t border-emerald-900">
               <span className="text-xs uppercase tracking-wider text-gold-400 font-bold block mb-1">
                 {selectedPhoto.category}

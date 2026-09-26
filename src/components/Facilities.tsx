@@ -30,20 +30,19 @@ export const Facilities: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-950 border border-emerald-200">
             <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-            <span>Kenyamanan Jamaah</span>
+            <span>Fasilitas Perjalanan</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Fasilitas Selama Perjalanan
+            Fasilitas Jamaah
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed text-balance">
-            Standar kelengkapan akomodasi dan pendampingan yang disiapkan untuk
-            menjaga kenyamanan serta kekhusyukan ibadah di Tanah Suci.
+            Gambaran standar fasilitas yang dapat ditampilkan biro travel untuk memberikan rasa aman dan kenyamanan ibadah.
           </p>
         </div>
 
-        {/* 6 Facilities Grid */}
+        {/* 6 Facilities Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {facilities.map((fac) => (
             <div
@@ -70,16 +69,16 @@ export const Facilities: React.FC = () => {
               </div>
 
               <div className="mt-5 pt-3 border-t border-slate-200/60 flex items-center text-[11px] text-slate-400">
-                <span>Terstandarisasi paket Safara</span>
+                <span>Disesuaikan program travel</span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Mandatory Disclaimer */}
+        {/* Note */}
         <div className="mt-12 max-w-xl mx-auto p-4 rounded-xl bg-slate-50 border border-slate-200 text-center text-xs text-slate-500 flex items-center justify-center gap-2">
           <Info className="w-4 h-4 text-emerald-700 shrink-0" />
-          <span>Contoh fasilitas demo. Disesuaikan dengan paket yang dipilih.</span>
+          <span>Fasilitas dapat disesuaikan berdasarkan paket.</span>
         </div>
       </div>
     </section>

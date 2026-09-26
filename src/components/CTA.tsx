@@ -13,10 +13,9 @@ export const CTA: React.FC = () => {
       <div className="absolute inset-0 pattern-dark-subtle opacity-30 pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-        {/* Subtle pill */}
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-800/90 text-gold-300 border border-gold-500/30">
           <Sparkles className="w-3.5 h-3.5 text-gold-400" />
-          <span>MULAI DENGAN KONSULTASI MUDAH</span>
+          <span>KONSULTASI MUDAH &amp; RESPONSIF</span>
         </div>
 
         {/* Headline */}
@@ -26,7 +25,7 @@ export const CTA: React.FC = () => {
 
         {/* Subheadline */}
         <p className="text-base sm:text-xl text-emerald-100/90 max-w-2xl mx-auto font-normal leading-relaxed">
-          Konsultasikan kebutuhan perjalanan Umroh Anda dengan admin.
+          Konsultasikan kebutuhan perjalanan Umroh Anda.
         </p>
 
         {/* Action Buttons */}
@@ -50,10 +49,10 @@ export const CTA: React.FC = () => {
           </a>
         </div>
 
-        {/* Trust Note */}
+        {/* Note */}
         <div className="pt-4 flex items-center justify-center gap-2 text-xs text-emerald-200/80">
           <ShieldCheck className="w-4 h-4 text-gold-400" />
-          <span>Respon Cepat • Pelayanan Ramah • Informasi Transparan</span>
+          <span>Informasi Transparan • Respon Cepat • Konsultasi Terpercaya</span>
         </div>
       </div>
     </section>

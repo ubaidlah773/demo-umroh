@@ -27,15 +27,15 @@ export const Packages: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-900 border border-emerald-200">
             <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-            <span>Pilihan Paket Umroh</span>
+            <span>Contoh Pilihan Paket</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Pilih Perjalanan yang Sesuai Kebutuhan
+            Pilihan Paket Umroh
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed text-balance">
-            Bandingkan pilihan paket dan konsultasikan kebutuhan perjalanan Anda dengan admin.
+            Bandingkan contoh pilihan paket ibadah dan konsultasikan kebutuhan perjalanan Anda dengan admin.
           </p>
         </div>
 
@@ -54,7 +54,7 @@ export const Packages: React.FC = () => {
         <div className="mt-12 max-w-2xl mx-auto p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex items-center justify-center gap-3 text-center text-xs sm:text-sm text-slate-600">
           <Info className="w-4 h-4 text-emerald-700 shrink-0" />
           <span>
-            <strong>Catatan:</strong> Informasi paket dapat disesuaikan dengan program travel.
+            <strong>Catatan:</strong> Contoh paket — dapat disesuaikan dengan program travel.
           </span>
         </div>
       </div>

@@ -8,10 +8,10 @@ export const WhatsAppFloatingButton: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(true);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
-      {/* Tooltip Chat Admin with close button */}
+    <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex items-center gap-3">
+      {/* Tooltip Chat Admin */}
       {showTooltip && (
-        <div className="hidden sm:flex items-center gap-2 bg-white text-slate-800 px-3.5 py-2 rounded-xl shadow-lg border border-slate-200 text-xs font-semibold animate-fade-in">
+        <div className="flex items-center gap-2 bg-white text-slate-800 px-3.5 py-2 rounded-xl shadow-lg border border-slate-200 text-xs font-semibold animate-fade-in">
           <span>Chat Admin</span>
           <button
             type="button"
@@ -29,10 +29,9 @@ export const WhatsAppFloatingButton: React.FC = () => {
         href={getWhatsAppUrl()}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat WhatsApp Admin Safara Umroh"
+        aria-label="Chat Admin WhatsApp"
         className="relative group w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center shadow-lg hover:shadow-emerald-glow transition-all duration-300 transform hover:scale-105 active:scale-95"
       >
-        {/* Subtle Pulse Ring */}
         <span className="absolute -inset-1 rounded-full bg-emerald-500/40 animate-ping pointer-events-none" />
         <span className="absolute -inset-2 rounded-full bg-emerald-400/20 animate-pulse pointer-events-none" />
 

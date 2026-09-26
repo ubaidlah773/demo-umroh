@@ -8,18 +8,12 @@ import {
   X,
   Calendar,
   Clock,
-  MapPin,
   CheckCircle2,
   XCircle,
   AlertCircle,
   MessageCircle,
-  ChevronRight,
-  Plane,
   Building,
-  Bus,
-  Utensils,
-  Users,
-  Luggage,
+  Plane,
 } from "lucide-react";
 
 interface PackageDetailModalProps {
@@ -37,7 +31,6 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
     "itinerary"
   );
 
-  // Close modal on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -76,9 +69,8 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
           className="relative w-full max-w-4xl transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all border border-emerald-900/10 flex flex-col max-h-[92vh]"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header with Background Visual & Badges */}
+          {/* Header */}
           <div className="relative bg-emerald-950 text-white p-5 sm:p-8 shrink-0 overflow-hidden">
-            {/* Background Image Accent */}
             <div className="absolute inset-0 opacity-20 pointer-events-none">
               <Image
                 src={packageItem.image}
@@ -124,30 +116,30 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
               {/* Quick Info Strip */}
               <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div className="bg-emerald-900/60 border border-emerald-700/50 rounded-xl p-2.5">
-                  <span className="text-[11px] text-emerald-300 block font-medium">Estimasi Biaya</span>
+                  <span className="text-[11px] text-emerald-300 block font-medium">Harga Paket</span>
                   <span className="text-base sm:text-lg font-bold text-gold-300 block">
                     {packageItem.price}
                   </span>
                 </div>
 
                 <div className="bg-emerald-900/60 border border-emerald-700/50 rounded-xl p-2.5">
-                  <span className="text-[11px] text-emerald-300 block font-medium">Durasi Ibadah</span>
+                  <span className="text-[11px] text-emerald-300 block font-medium">Durasi</span>
                   <span className="text-base sm:text-lg font-bold text-white block">
                     {packageItem.duration}
                   </span>
                 </div>
 
                 <div className="bg-emerald-900/60 border border-emerald-700/50 rounded-xl p-2.5">
-                  <span className="text-[11px] text-emerald-300 block font-medium">Keberangkatan</span>
+                  <span className="text-[11px] text-emerald-300 block font-medium">Tanggal Keberangkatan</span>
                   <span className="text-base sm:text-lg font-bold text-white block">
                     {packageItem.departure}
                   </span>
                 </div>
 
                 <div className="bg-emerald-900/60 border border-emerald-700/50 rounded-xl p-2.5">
-                  <span className="text-[11px] text-emerald-300 block font-medium">Akomodasi</span>
+                  <span className="text-[11px] text-emerald-300 block font-medium">Format</span>
                   <span className="text-xs sm:text-sm font-bold text-white block truncate">
-                    Bintang Terstandar
+                    Contoh Paket Demo
                   </span>
                 </div>
               </div>
@@ -166,7 +158,7 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
                     : "text-slate-600 hover:text-emerald-900 hover:bg-slate-200/60"
                 }`}
               >
-                Rencana Perjalanan (Itinerary)
+                Itinerary Perjalanan
               </button>
 
               <button
@@ -178,7 +170,7 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
                     : "text-slate-600 hover:text-emerald-900 hover:bg-slate-200/60"
                 }`}
               >
-                Fasilitas & Layanan
+                Fasilitas Paket
               </button>
 
               <button
@@ -190,22 +182,22 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
                     : "text-slate-600 hover:text-emerald-900 hover:bg-slate-200/60"
                 }`}
               >
-                Persyaratan Pendaftaran
+                Persyaratan
               </button>
             </div>
           </div>
 
-          {/* Modal Body Content (Scrollable) */}
+          {/* Modal Body Content */}
           <div className="p-5 sm:p-8 overflow-y-auto space-y-6">
             {/* TAB 1: ITINERARY */}
             {activeTab === "itinerary" && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                   <h3 className="font-bold text-slate-900 text-base">
-                    Itinerary Ringkas Perjalanan
+                    Rencana Perjalanan (Itinerary)
                   </h3>
                   <span className="text-xs text-slate-500">
-                    *Jadwal dapat disesuaikan dengan kondisi di lapangan
+                    *Contoh rencana — disesuaikan program travel
                   </span>
                 </div>
 
@@ -237,12 +229,11 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
             {/* TAB 2: FASILITAS */}
             {activeTab === "facilities" && (
               <div className="space-y-6">
-                {/* Fasilitas Hotel & Penerbangan Card */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-emerald-50/60 border border-emerald-200/70 rounded-2xl p-4">
                     <div className="flex items-center gap-2.5 text-emerald-900 font-bold text-sm mb-2">
                       <Building className="w-4 h-4 text-emerald-700" />
-                      <span>Estimasi Akomodasi Hotel</span>
+                      <span>Akomodasi Hotel</span>
                     </div>
                     <ul className="text-xs space-y-1.5 text-slate-700">
                       <li>• <strong>Makkah:</strong> {packageItem.hotelMakkah}</li>
@@ -256,18 +247,17 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
                       <span>Maskapai Penerbangan</span>
                     </div>
                     <p className="text-xs text-slate-700 leading-relaxed">
-                      {packageItem.airline} (Penerbangan berjadwal sesuai ketentuan paket).
+                      {packageItem.airline}
                     </p>
                   </div>
                 </div>
 
-                {/* Termasuk & Belum Termasuk */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Termasuk */}
                   <div className="space-y-3">
                     <h4 className="font-bold text-emerald-900 text-sm flex items-center gap-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                      <span>Fasilitas Termasuk (Included):</span>
+                      <span>Fasilitas Termasuk:</span>
                     </h4>
                     <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
                       {packageItem.facilitiesIncluded.map((fac, idx) => (
@@ -283,7 +273,7 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
                   <div className="space-y-3">
                     <h4 className="font-bold text-rose-900 text-sm flex items-center gap-2">
                       <XCircle className="w-4 h-4 text-rose-500" />
-                      <span>Belum Termasuk (Excluded):</span>
+                      <span>Belum Termasuk:</span>
                     </h4>
                     <ul className="space-y-2 text-xs sm:text-sm text-slate-600">
                       {packageItem.facilitiesExcluded.map((fac, idx) => (
@@ -304,14 +294,14 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
                 <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200/80 text-amber-900 text-xs sm:text-sm flex items-start gap-3">
                   <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block font-bold">Ketentuan Persyaratan:</strong>
-                    Seluruh persyaratan dapat disesuaikan dengan ketentuan regulasi visa dan biro travel bersangkutan.
+                    <strong className="block font-bold">Catatan Persyaratan:</strong>
+                    [Isi sesuai data travel] — Persyaratan pendaftaran dapat disesuaikan dengan ketentuan regulasi biro travel bersangkutan.
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <h4 className="font-bold text-slate-900 text-sm">
-                    Dokumen & Persyaratan Calon Jamaah:
+                    Dokumen &amp; Persyaratan Pendaftaran:
                   </h4>
                   <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
                     {packageItem.requirements.map((req, idx) => (
@@ -328,9 +318,8 @@ export const PackageDetailModal: React.FC<PackageDetailModalProps> = ({
               </div>
             )}
 
-            {/* Disclaimer Bar */}
             <div className="p-3 rounded-xl bg-slate-100 border border-slate-200 text-center text-xs text-slate-500">
-              *Informasi paket dapat disesuaikan dengan program travel. Jangan ragu berkonsultasi dengan admin mengenai penyesuaian fasilitas.
+              *Contoh paket — dapat disesuaikan dengan program travel.
             </div>
           </div>
 

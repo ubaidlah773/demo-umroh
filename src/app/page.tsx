@@ -5,13 +5,11 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { TrustStrip } from "@/components/TrustStrip";
 import { Packages } from "@/components/Packages";
-import { WhyUs } from "@/components/WhyUs";
 import { DepartureSchedule } from "@/components/DepartureSchedule";
-import { RegistrationSteps } from "@/components/RegistrationSteps";
 import { Facilities } from "@/components/Facilities";
+import { RegistrationSteps } from "@/components/RegistrationSteps";
 import { Gallery } from "@/components/Gallery";
 import { Testimonials } from "@/components/Testimonials";
-import { About } from "@/components/About";
 import { Legality } from "@/components/Legality";
 import { FAQ } from "@/components/FAQ";
 import { CTA } from "@/components/CTA";
@@ -38,49 +36,43 @@ export default function Home() {
       {/* 2. Hero Section */}
       <Hero onOpenInquiry={handleOpenInquiry} />
 
-      {/* 3. Trust Strip (4 Indicators) */}
+      {/* 3. Trust Section (4 Indikator) */}
       <TrustStrip />
 
-      {/* 4. Section: Paket Umroh (3 Package Cards + Detail Modal) */}
+      {/* 4. Section: Pilihan Paket Umroh (3 Package Cards + Detail Modal) */}
       <Packages />
 
-      {/* 5. Section: Kenapa Safara (Why Us - 4 Features) */}
-      <WhyUs />
-
-      {/* 6. Section: Jadwal Keberangkatan (Table / Card List + Filters) */}
+      {/* 5. Section: Jadwal Keberangkatan (Table / Card List + CTA Cek Jadwal) */}
       <DepartureSchedule />
 
-      {/* 7. Section: Alur Pendaftaran (5-Step Visual Timeline) */}
-      <RegistrationSteps />
-
-      {/* 8. Section: Fasilitas Selama Perjalanan (Grid 6 Amenities + Disclaimer) */}
+      {/* 6. Section: Fasilitas Jamaah (6 Cards Grid + Catatan) */}
       <Facilities />
 
-      {/* 9. Section: Galeri Dokumentasi (Photo Grid with Lightbox) */}
+      {/* 7. Section: Alur Pendaftaran (5-Step Modern Timeline) */}
+      <RegistrationSteps />
+
+      {/* 8. Section: Galeri Suasana Ibadah (Generik + Badge Contoh Galeri) */}
       <Gallery />
 
-      {/* 10. Section: Testimoni (3 Demo Cards) */}
+      {/* 9. Section: Contoh Testimoni (Peserta Demo 01, 02, 03) */}
       <Testimonials />
 
-      {/* 11. Section: Tentang Kami (Concept & Values) */}
-      <About />
-
-      {/* 12. Section: Informasi Legalitas / Trust (3 Placeholders + Verification Note) */}
+      {/* 10. Section: Legalitas Travel (3 Placeholders + Keterangan) */}
       <Legality />
 
-      {/* 13. Section: FAQ (7 Accordion Items) */}
+      {/* 11. Section: FAQ (7 Pertanyaan dengan Accordion) */}
       <FAQ />
 
-      {/* 14. Section: CTA Besar (Deep Emerald & Gold) */}
+      {/* 12. Section: CTA Besar (Siap Mempersiapkan Perjalanan Anda?) */}
       <CTA />
 
-      {/* 15. Footer (Links, Contact Placeholders, Socials & Disclaimer) */}
+      {/* 13. Footer (DEMO UMROH, Navigasi, Kontak, Disclaimer) */}
       <Footer />
 
-      {/* 16. Floating WhatsApp Button */}
+      {/* 14. Floating WhatsApp Button (Mobile & Desktop) */}
       <WhatsAppFloatingButton />
 
-      {/* 17. Quick Consultation / Inquiry Modal */}
+      {/* 15. Quick Consultation / Inquiry Modal */}
       <InquiryModal
         isOpen={isInquiryOpen}
         onClose={handleCloseInquiry}

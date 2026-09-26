@@ -7,9 +7,7 @@ import {
   MessageCircle,
   Send,
   User,
-  Calendar,
   Sparkles,
-  HelpCircle,
 } from "lucide-react";
 
 interface InquiryModalProps {
@@ -27,7 +25,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
   const [selectedPackage, setSelectedPackage] = useState(
     defaultPackageName || "Paket Umroh Reguler"
   );
-  const [month, setMonth] = useState("Okt - Des 2026");
+  const [month, setMonth] = useState("Menyesuaikan Jadwal");
   const [participants, setParticipants] = useState("2 Orang");
   const [message, setMessage] = useState("");
 
@@ -58,15 +56,15 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const formattedMessage = `Halo Admin ${siteConfig.name}, perkenalkan saya ${
+    const formattedMessage = `Halo Admin, perkenalkan saya ${
       name || "Calon Jamaah"
     }. Saya ingin berkonsultasi mengenai rencana perjalanan Umroh dengan rincian:
 - Pilihan Paket: ${selectedPackage}
-- Rencana Bulan: ${month}
+- Rencana Waktu: ${month}
 - Jumlah Peserta: ${participants}
-${message ? `- Pertanyaan Tambahan: ${message}` : ""}
+${message ? `- Catatan: ${message}` : ""}
 
-Mohon informasi ketersediaan jadwal dan estimasi biayanya. Terima kasih.`;
+Mohon informasi jadwal dan ketersediaannya. Terima kasih.`;
 
     const waUrl = getWhatsAppUrl(formattedMessage);
     window.open(waUrl, "_blank", "noopener,noreferrer");
@@ -104,13 +102,13 @@ Mohon informasi ketersediaan jadwal dan estimasi biayanya. Terima kasih.`;
           <div className="space-y-2 mb-6">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-950">
               <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-              <span>Konsultasi Cepat</span>
+              <span>Konsultasi Paket</span>
             </div>
             <h2 className="font-serif text-2xl font-bold text-slate-900">
               Konsultasi Perjalanan Umroh
             </h2>
             <p className="text-xs sm:text-sm text-slate-600">
-              Sampaikan rencana ibadah Anda, admin kami akan segera membantu menyiapkan informasi terbaik via WhatsApp.
+              Sampaikan rencana perjalanan Anda, admin akan segera membantu memberikan penjelasan terbaik melalui WhatsApp.
             </p>
           </div>
 
@@ -127,7 +125,7 @@ Mohon informasi ketersediaan jadwal dan estimasi biayanya. Terima kasih.`;
                 <input
                   type="text"
                   required
-                  placeholder="Contoh: H. Ahmad Subagio"
+                  placeholder="Contoh: Nama Calon Jamaah"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 text-slate-900 placeholder-slate-400"
@@ -150,7 +148,7 @@ Mohon informasi ketersediaan jadwal dan estimasi biayanya. Terima kasih.`;
                       {p.name}
                     </option>
                   ))}
-                  <option value="Konsultasi Paket Khusus / Keluarga">
+                  <option value="Paket Custom / Rombongan">
                     Paket Kustom / Lainnya
                   </option>
                 </select>
@@ -166,10 +164,9 @@ Mohon informasi ketersediaan jadwal dan estimasi biayanya. Terima kasih.`;
                   className="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 text-slate-900 bg-white"
                 >
                   <option value="Bulan Ini / Segera">Bulan Ini / Segera</option>
-                  <option value="Okt - Des 2026">Okt - Des 2026</option>
-                  <option value="Jan - Mar 2027">Jan - Mar 2027</option>
-                  <option value="Bulan Ramadhan 1448H">Spesial Ramadhan 1448H</option>
-                  <option value="Menyesuaikan Jadwal Libur">Menyesuaikan Jadwal</option>
+                  <option value="Menyesuaikan Jadwal">Menyesuaikan Jadwal</option>
+                  <option value="Paket Umroh Ramadhan">Paket Ramadhan</option>
+                  <option value="Musim Liburan">Musim Liburan</option>
                 </select>
               </div>
             </div>
@@ -185,18 +182,18 @@ Mohon informasi ketersediaan jadwal dan estimasi biayanya. Terima kasih.`;
               >
                 <option value="1 Orang (Sendiri)">1 Orang (Sendiri)</option>
                 <option value="2 Orang (Suami Istri)">2 Orang (Suami Istri)</option>
-                <option value="3 - 4 Orang (Keluarga Kecil)">3 - 4 Orang (Keluarga Kecil)</option>
+                <option value="3 - 4 Orang (Keluarga)">3 - 4 Orang (Keluarga)</option>
                 <option value="Rombongan / Grup (> 5 Orang)">Rombongan / Grup (&gt; 5 Orang)</option>
               </select>
             </div>
 
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                Catatan / Kebutuhan Khusus (Opsional)
+                Pertanyaan / Catatan (Opsional)
               </label>
               <textarea
                 rows={2}
-                placeholder="Contoh: Membutuhkan pendampingan lansia / kamar hotel terdekat..."
+                placeholder="Tulis pertanyaan seputar paket atau fasilitas..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 text-slate-900 placeholder-slate-400"
@@ -208,11 +205,11 @@ Mohon informasi ketersediaan jadwal dan estimasi biayanya. Terima kasih.`;
               className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-800 to-emerald-950 hover:from-emerald-900 hover:to-black text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md hover:shadow-emerald-glow transition-all"
             >
               <MessageCircle className="w-4 h-4 text-gold-400" />
-              <span>Hubungi Admin via WhatsApp</span>
+              <span>Kirim via WhatsApp</span>
             </button>
           </form>
 
-          {/* Quick Direct Link */}
+          {/* Direct Link */}
           <div className="mt-4 pt-3 border-t border-slate-100 text-center">
             <a
               href={getWhatsAppUrl()}
@@ -221,7 +218,7 @@ Mohon informasi ketersediaan jadwal dan estimasi biayanya. Terima kasih.`;
               onClick={onClose}
               className="text-xs text-emerald-800 hover:text-emerald-950 font-medium inline-flex items-center gap-1"
             >
-              <span>Atau langsung chat WhatsApp tanpa mengisi form</span>
+              <span>Atau langsung chat WhatsApp tanpa form</span>
               <Send className="w-3 h-3 text-gold-600" />
             </a>
           </div>

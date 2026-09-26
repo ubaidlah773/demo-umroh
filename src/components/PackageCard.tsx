@@ -11,7 +11,6 @@ import {
   ArrowRight,
   MessageCircle,
   Sparkles,
-  Building,
 } from "lucide-react";
 
 interface PackageCardProps {
@@ -30,11 +29,11 @@ export const PackageCard: React.FC<PackageCardProps> = ({ item, onSelect }) => {
           : "border border-slate-200/90 shadow-card hover:shadow-card-hover hover:border-emerald-300"
       }`}
     >
-      {/* Recommended Top Header Ribbon */}
+      {/* Recommended Ribbon */}
       {isRecommended && (
         <div className="bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 py-1.5 px-4 text-center text-xs font-extrabold uppercase tracking-wider text-emerald-950 flex items-center justify-center gap-1.5 shadow-sm">
           <Sparkles className="w-3.5 h-3.5 text-emerald-950" />
-          <span>{item.badge || "REKOMENDASI TERBAIK"}</span>
+          <span>REKOMENDASI</span>
         </div>
       )}
 
@@ -98,14 +97,14 @@ export const PackageCard: React.FC<PackageCardProps> = ({ item, onSelect }) => {
               <span className="text-xs text-slate-500">/ pax</span>
             </div>
             <span className="text-[11px] text-slate-500 block mt-1">
-              *Harga placeholder estimasi
+              *Contoh harga — disesuaikan program travel
             </span>
           </div>
 
           {/* Highlights List */}
           <div className="space-y-2.5">
             <span className="text-xs font-bold text-slate-900 uppercase tracking-wider block">
-              Fasilitas Utama:
+              Fasilitas Termasuk:
             </span>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
               {item.highlights.map((hl, idx) => (

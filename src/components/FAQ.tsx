@@ -6,11 +6,9 @@ import {
   ChevronDown,
   HelpCircle,
   MessageCircle,
-  Sparkles,
 } from "lucide-react";
 
 export const FAQ: React.FC = () => {
-  // First item open by default
   const [openId, setOpenId] = useState<string | null>("faq-1");
 
   const toggleFAQ = (id: string) => {
@@ -32,8 +30,7 @@ export const FAQ: React.FC = () => {
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed text-balance">
-            Jawaban atas pertanyaan seputar program perjalanan, fasilitas, tata cara
-            pendaftaran, dan konsultasi bersama Safara Umroh.
+            Contoh tanya jawab seputar paket, jadwal, fasilitas, dan konsultasi pendaftaran.
           </p>
         </div>
 
@@ -81,23 +78,23 @@ export const FAQ: React.FC = () => {
           })}
         </div>
 
-        {/* Quick Contact Prompt below FAQ */}
+        {/* Quick Contact Prompt */}
         <div className="mt-12 p-6 rounded-2xl bg-white border border-slate-200 shadow-sm text-center space-y-3">
           <h3 className="font-serif text-lg font-bold text-slate-900">
             Punya Pertanyaan Lain yang Belum Terjawab?
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
-            Admin Safara Umroh siap membantu memberikan penjelasan detail mengenai paket, persyaratan, dan ketersediaan kursi.
+            Hubungi admin untuk mendapatkan informasi terbaru mengenai paket, jadwal, dan ketersediaan kuota.
           </p>
           <div className="pt-2">
             <a
-              href={getWhatsAppUrl("Halo Admin Safara Umroh, saya ingin menanyakan hal lain seputar program Umroh.")}
+              href={getWhatsAppUrl("Halo Admin, saya ingin menanyakan hal lain seputar paket Umroh.")}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-emerald-900 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-md transition-colors"
             >
               <MessageCircle className="w-4 h-4 text-gold-400" />
-              <span>Tanya Admin Langsung</span>
+              <span>Konsultasi dengan Admin</span>
             </a>
           </div>
         </div>

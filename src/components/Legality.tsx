@@ -5,7 +5,7 @@ import { legalityData } from "@/config/siteConfig";
 import { ShieldCheck, FileCheck, Building2, AlertCircle } from "lucide-react";
 
 export const Legality: React.FC = () => {
-  const iconList = [ShieldCheck, FileCheck, Building2];
+  const iconList = [ShieldCheck, Building2, FileCheck];
 
   return (
     <section className="py-16 sm:py-20 bg-white border-y border-slate-200">
@@ -14,15 +14,15 @@ export const Legality: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-300">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-800" />
-            <span>Informasi Legalitas</span>
+            <span>Legalitas Travel</span>
           </div>
 
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
-            Transparansi Legalitas & Perizinan
+            Legalitas Travel
           </h2>
 
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Aspek legalitas merupakan prioritas utama dalam penyelenggaraan perjalanan ibadah Umroh yang aman dan terpercaya.
+            Format penyajian informasi perizinan resmi untuk membangun kepercayaan penuh calon jamaah.
           </p>
         </div>
 
@@ -60,12 +60,12 @@ export const Legality: React.FC = () => {
           })}
         </div>
 
-        {/* Mandatory Note Banner */}
+        {/* Note */}
         <div className="mt-8 max-w-2xl mx-auto p-4 rounded-2xl bg-emerald-50 border border-emerald-200/80 flex items-start gap-3">
           <AlertCircle className="w-5 h-5 text-emerald-800 shrink-0 mt-0.5" />
           <div className="text-xs sm:text-sm text-emerald-950 leading-relaxed">
-            <strong className="block font-bold mb-0.5">Catatan Perizinan:</strong>
-            Data legalitas dapat ditampilkan setelah disediakan oleh pemilik travel.
+            <strong className="block font-bold mb-0.5">Keterangan:</strong>
+            Data dapat diisi sesuai dokumen resmi travel.
           </div>
         </div>
       </div>
