@@ -122,7 +122,7 @@ export default function Footer({
           <div className="flex items-center gap-2">
             <span>&copy; 2026 {personalInfo.name}. All rights reserved.</span>
             <span>•</span>
-            <span className="text-accent-blue font-semibold">ahmubaid.my.id</span>
+            <span className="text-accent-blue font-semibold">ubaitech.my.id</span>
           </div>
 
           <button

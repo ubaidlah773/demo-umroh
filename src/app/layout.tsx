@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ahmubaid.my.id"),
+  metadataBase: new URL("https://ubaitech.my.id"),
   title: "Ahmad Ubai Dullah — Full Stack Developer",
   description:
     "Full Stack Developer based in Tuban, Indonesia. Experienced in building and maintaining web applications using Laravel, JavaScript, Node.js, and MySQL, with additional experience in data analysis and machine learning.",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Ahmad Ubai Dullah", url: "https://github.com/ubaidlah773" }],
   creator: "Ahmad Ubai Dullah",
   alternates: {
-    canonical: "https://ahmubaid.my.id",
+    canonical: "https://ubaitech.my.id",
   },
   icons: {
     icon: [
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: "Ahmad Ubai Dullah — Full Stack Developer",
     description:
       "Building practical web systems that solve real-world problems. Full Stack Developer based in Tuban, Indonesia.",
-    url: "https://ahmubaid.my.id",
+    url: "https://ubaitech.my.id",
     siteName: "Ahmad Ubai Dullah — UBAI Portfolio",
     locale: "en_US",
     type: "profile",
@@ -111,7 +111,7 @@ export default function RootLayout({
     },
     email: "ahm.idlah773@gmail.com",
     telephone: "+62 819-1200-1721",
-    url: "https://ahmubaid.my.id",
+    url: "https://ubaitech.my.id",
     sameAs: [
       "https://github.com/ubaidlah773",
       "https://linkedin.com/in/ahmadubai",

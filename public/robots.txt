@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://ahmubaid.my.id/sitemap.xml
+Sitemap: https://ubaitech.my.id/sitemap.xml
