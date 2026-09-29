@@ -153,7 +153,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
       role="region"
       aria-roledescription="carousel"
       aria-label="Selected Projects Showcase"
-      className="py-20 lg:py-28 bg-[#F7F8FC] relative border-t border-[#7D6B91]/15 tech-grid overflow-hidden focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#347FC4]/50"
+      className="py-20 lg:py-28 bg-[#272838] relative border-t border-[#7D6B91]/20 tech-grid overflow-hidden focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#347FC4]/50"
     >
       {/* Screen Reader Live Region */}
       <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
@@ -170,16 +170,16 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                 Selected Portfolio
               </span>
             </div>
-            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#272838] tracking-tight">
+            <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#F7F8FC] tracking-tight">
               Featured Work
             </h2>
-            <p className="text-sm sm:text-base text-[#5D536B] mt-2 max-w-xl">
+            <p className="text-sm sm:text-base text-[#989FCE] mt-2 max-w-xl">
               Production web applications, database-driven management platforms, and modern digital experiences.
             </p>
           </div>
 
           {/* Category Filter Tabs: [ ALL ] [ WEB ] [ DESIGN ] */}
-          <div className="flex items-center gap-1.5 bg-white p-1.5 rounded-xl border border-[#7D6B91]/20 shadow-card-subtle self-start md:self-auto">
+          <div className="flex items-center gap-1.5 bg-[#1E1F2D] p-1.5 rounded-xl border border-[#7D6B91]/25 shadow-card-subtle self-start md:self-auto">
             {(
               [
                 { id: "ALL", label: "ALL" },
@@ -194,7 +194,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                 className={`px-4 py-2 rounded-lg text-xs font-mono font-bold tracking-wider transition-all duration-200 cursor-pointer ${
                   filter === tab.id
                     ? "bg-[#347FC4] text-white shadow-sm"
-                    : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+                    : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#2D2E42]"
                 }`}
               >
                 [ {tab.label} ]
@@ -207,13 +207,13 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
       {/* Showcase Stage or Empty State */}
       {total === 0 ? (
         <div className="max-w-xl mx-auto px-4 py-16 text-center">
-          <div className="w-16 h-16 rounded-2xl bg-white border border-[#7D6B91]/20 text-[#347FC4] flex items-center justify-center mx-auto mb-4 shadow-card-subtle">
+          <div className="w-16 h-16 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 text-[#347FC4] flex items-center justify-center mx-auto mb-4 shadow-card-subtle">
             <Palette className="w-8 h-8" />
           </div>
-          <h3 className="font-display font-bold text-xl text-[#272838] mb-2">
+          <h3 className="font-display font-bold text-xl text-[#F7F8FC] mb-2">
             No Design Projects Published Yet
           </h3>
-          <p className="text-sm text-[#5D536B] leading-relaxed max-w-md mx-auto mb-6">
+          <p className="text-sm text-[#989FCE] leading-relaxed max-w-md mx-auto mb-6">
             Design case studies and UI prototypes can be created and published directly from the CMS Admin dashboard.
           </p>
           <button
@@ -236,8 +236,8 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
               aria-label="Previous project"
               className={`hidden md:flex absolute left-3 lg:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center transition-all duration-200 border backdrop-blur-md shadow-md focus-visible:ring-2 focus-visible:ring-[#347FC4] focus-visible:outline-none ${
                 currentIndex === 0
-                  ? "opacity-20 cursor-not-allowed border-[#7D6B91]/15 bg-white/60 text-[#5D536B]"
-                  : "text-[#272838] bg-white hover:bg-[#347FC4] hover:text-white hover:border-[#347FC4] border-[#7D6B91]/20 active:scale-95 cursor-pointer"
+                  ? "opacity-20 cursor-not-allowed border-[#7D6B91]/15 bg-[#272838]/60 text-[#989FCE]"
+                  : "text-[#F7F8FC] bg-[#2D2E42] hover:bg-[#347FC4] hover:text-white hover:border-[#347FC4] border-[#7D6B91]/30 active:scale-95 cursor-pointer"
               }`}
             >
               <ChevronLeft className="w-6 h-6" />
@@ -250,8 +250,8 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
               aria-label="Next project"
               className={`hidden md:flex absolute right-3 lg:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full items-center justify-center transition-all duration-200 border backdrop-blur-md shadow-md focus-visible:ring-2 focus-visible:ring-[#347FC4] focus-visible:outline-none ${
                 currentIndex === total - 1
-                  ? "opacity-20 cursor-not-allowed border-[#7D6B91]/15 bg-white/60 text-[#5D536B]"
-                  : "text-[#272838] bg-white hover:bg-[#347FC4] hover:text-white hover:border-[#347FC4] border-[#7D6B91]/20 active:scale-95 cursor-pointer"
+                  ? "opacity-20 cursor-not-allowed border-[#7D6B91]/15 bg-[#272838]/60 text-[#989FCE]"
+                  : "text-[#F7F8FC] bg-[#2D2E42] hover:bg-[#347FC4] hover:text-white hover:border-[#347FC4] border-[#7D6B91]/30 active:scale-95 cursor-pointer"
               }`}
             >
               <ChevronRight className="w-6 h-6" />
@@ -304,8 +304,8 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                       }}
                       className={`relative shrink-0 rounded-2xl md:rounded-3xl border transition-all duration-300 overflow-hidden flex flex-col group ${
                         isActive
-                          ? "bg-white border-[#7D6B91]/25 shadow-[0_20px_50px_-12px_rgba(39,40,56,0.12)] ring-1 ring-[#347FC4]/20"
-                          : "bg-white/80 border-[#7D6B91]/15 hover:border-[#7D6B91]/30 hover:opacity-75 cursor-pointer shadow-sm"
+                          ? "bg-[#1E1F2D] border-[#7D6B91]/30 shadow-2xl ring-1 ring-[#347FC4]/25"
+                          : "bg-[#1E1F2D]/70 border-[#7D6B91]/20 hover:border-[#7D6B91]/40 hover:opacity-75 cursor-pointer shadow-sm"
                       }`}
                       role="group"
                       aria-roledescription="slide"
@@ -315,20 +315,20 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                       {/* Left Visual + Right Info Grid */}
                       <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch h-full">
                         {/* Visual Side (Left) */}
-                        <div className="lg:col-span-7 xl:col-span-7 relative bg-[#F7F8FC] flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-[#7D6B91]/15">
+                        <div className="lg:col-span-7 xl:col-span-7 relative bg-[#161722] flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-[#7D6B91]/20">
                           {/* Browser / System Header */}
-                          <div className="px-4 py-2.5 border-b border-[#7D6B91]/15 bg-[#EEF0F8]/80 backdrop-blur-sm flex items-center justify-between text-xs font-mono text-[#5D536B]">
+                          <div className="px-4 py-2.5 border-b border-[#7D6B91]/20 bg-[#1A1B28]/90 backdrop-blur-sm flex items-center justify-between text-xs font-mono text-[#989FCE]">
                             <div className="flex items-center gap-1.5">
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#7D6B91]/40" />
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#989FCE]/50" />
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#347FC4]/70" />
-                              <span className="ml-2 text-[11px] text-[#5D536B] hidden sm:inline truncate max-w-[200px]">
+                              <div className="w-2.5 h-2.5 rounded-full bg-[#7D6B91]/60" />
+                              <div className="w-2.5 h-2.5 rounded-full bg-[#989FCE]/60" />
+                              <div className="w-2.5 h-2.5 rounded-full bg-[#347FC4]/80" />
+                              <span className="ml-2 text-[11px] text-[#989FCE] hidden sm:inline truncate max-w-[200px]">
                                 app.{projectSlug}.internal
                               </span>
                             </div>
 
                             <div className="flex items-center gap-2">
-                              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-[#347FC4]/10 text-[#347FC4] border border-[#347FC4]/25 font-semibold">
+                              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-[#347FC4]/15 text-[#347FC4] border border-[#347FC4]/30 font-semibold">
                                 {project.badgeText || (isDesignProject ? "Design Showcase" : "Production System")}
                               </span>
                             </div>
@@ -350,7 +350,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                           </div>
 
                           {/* Bottom Metadata Bar in Visual */}
-                          <div className="hidden sm:flex items-center justify-between px-6 py-3 border-t border-[#7D6B91]/15 bg-white/60 text-xs font-mono text-[#5D536B]">
+                          <div className="hidden sm:flex items-center justify-between px-6 py-3 border-t border-[#7D6B91]/20 bg-[#1A1B28]/80 text-xs font-mono text-[#989FCE]">
                             <span className="flex items-center gap-1.5">
                               <Calendar className="w-3.5 h-3.5 text-[#347FC4]" />
                               {project.period}
@@ -363,44 +363,44 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                         </div>
 
                         {/* Project Information Side (Right) */}
-                        <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between p-6 sm:p-8 lg:p-10 bg-white space-y-6">
+                        <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between p-6 sm:p-8 lg:p-10 bg-[#1E1F2D] space-y-6">
                           <div>
                             {/* Top Row: Number & Category */}
                             <div className="flex items-center justify-between gap-4 mb-4">
-                              <span className="text-xs sm:text-sm font-mono font-bold tracking-widest text-[#347FC4] bg-[#347FC4]/10 border border-[#347FC4]/25 px-3 py-1 rounded-md">
+                              <span className="text-xs sm:text-sm font-mono font-bold tracking-widest text-[#347FC4] bg-[#347FC4]/15 border border-[#347FC4]/30 px-3 py-1 rounded-md">
                                 {formattedNumber}
                               </span>
 
-                              <span className="text-xs font-mono uppercase tracking-wider text-[#5D536B] truncate font-semibold">
+                              <span className="text-xs font-mono uppercase tracking-wider text-[#989FCE] truncate font-semibold">
                                 {project.category || "Web Development"}
                               </span>
                             </div>
 
                             {/* Subtitle */}
-                            <span className="text-xs font-mono uppercase tracking-wider text-[#5D536B] block mb-1.5 font-semibold">
+                            <span className="text-xs font-mono uppercase tracking-wider text-[#989FCE] block mb-1.5 font-semibold">
                               {project.subtitle}
                             </span>
 
                             {/* Title */}
-                            <h3 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#272838] tracking-tight mb-4 group-hover:text-[#347FC4] transition-colors">
+                            <h3 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#F7F8FC] tracking-tight mb-4 group-hover:text-[#347FC4] transition-colors">
                               {project.title}
                             </h3>
 
                             {/* Short Description */}
-                            <p className="text-sm sm:text-base text-[#5D536B] leading-relaxed mb-6">
+                            <p className="text-sm sm:text-base text-[#989FCE] leading-relaxed mb-6">
                               {project.description}
                             </p>
 
                             {/* Technology / Tools Tags */}
                             <div className="space-y-2">
-                              <span className="text-[11px] font-mono uppercase tracking-wider text-[#5D536B] block font-semibold">
+                              <span className="text-[11px] font-mono uppercase tracking-wider text-[#989FCE] block font-semibold">
                                 {isDesignProject ? "Design Tools & Methods" : "Core Architecture"}
                               </span>
                               <div className="flex flex-wrap items-center gap-2">
                                 {project.tags.slice(0, 5).map((tag) => (
                                   <span
                                     key={tag}
-                                    className="px-3 py-1 rounded-lg text-xs font-mono bg-[#EEF0F8] text-[#5D536B] border border-[#7D6B91]/15 group-hover:border-[#347FC4]/30 group-hover:text-[#272838] transition-colors"
+                                    className="px-3 py-1 rounded-lg text-xs font-mono bg-[#272838] text-[#989FCE] border border-[#7D6B91]/25 group-hover:border-[#347FC4]/40 group-hover:text-[#F7F8FC] transition-colors"
                                   >
                                     {tag}
                                   </span>
@@ -410,7 +410,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                           </div>
 
                           {/* Bottom CTA Buttons */}
-                          <div className="pt-6 border-t border-[#7D6B91]/15 flex flex-wrap items-center justify-between gap-3">
+                          <div className="pt-6 border-t border-[#7D6B91]/20 flex flex-wrap items-center justify-between gap-3">
                             <div className="flex flex-wrap items-center gap-2.5">
                               {/* Primary Action: View Case Study */}
                               <Link
@@ -437,7 +437,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                                       e.preventDefault();
                                     }
                                   }}
-                                  className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-[#EEF0F8] hover:bg-[#347FC4]/10 text-[#347FC4] border border-[#347FC4]/30 font-semibold text-xs sm:text-sm transition-all shadow-2xs cursor-pointer"
+                                  className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-[#272838] hover:bg-[#347FC4]/20 text-[#347FC4] border border-[#347FC4]/40 font-semibold text-xs sm:text-sm transition-all shadow-2xs cursor-pointer"
                                 >
                                   <span>{isDesignProject ? "View Design" : "View Demo"}</span>
                                   <ExternalLink className="w-3.5 h-3.5" />
@@ -445,7 +445,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                               )}
                             </div>
 
-                            <span className="text-xs font-mono text-[#5D536B] hidden sm:inline">
+                            <span className="text-xs font-mono text-[#989FCE] hidden sm:inline">
                               Architecture Overview ›
                             </span>
                           </div>
@@ -460,18 +460,18 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
 
           {/* Navigation Controls & Dynamic Indicator Bar */}
           <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 mt-8 lg:mt-12">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-4 sm:p-5 rounded-2xl bg-white border border-[#7D6B91]/15 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-4 sm:p-5 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 shadow-md">
               {/* Left: Dynamic Project Counter */}
-              <div className="flex items-center gap-2.5 font-mono text-sm text-[#272838]">
+              <div className="flex items-center gap-2.5 font-mono text-sm text-[#F7F8FC]">
                 <span className="text-[#347FC4] font-bold">
                   {String(currentIndex + 1).padStart(2, "0")}
                 </span>
-                <span className="text-[#7D6B91]/30">/</span>
-                <span className="text-[#5D536B]">
+                <span className="text-[#7D6B91]/50">/</span>
+                <span className="text-[#989FCE]">
                   {String(total).padStart(2, "0")}
                 </span>
                 {currentProject && (
-                  <span className="text-xs text-[#5D536B] ml-2 hidden md:inline truncate max-w-xs">
+                  <span className="text-xs text-[#989FCE] ml-2 hidden md:inline truncate max-w-xs">
                     — {currentProject.title}
                   </span>
                 )}
@@ -501,14 +501,14 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                           className={`rounded-full transition-all duration-300 ${
                             isActive
                               ? "w-3.5 h-3.5 bg-[#347FC4] shadow-sm shadow-[#347FC4]/50 ring-4 ring-[#347FC4]/20"
-                              : "w-2.5 h-2.5 bg-[#EEF0F8] border border-[#7D6B91]/30 group-hover:border-[#347FC4] group-hover:scale-110"
+                              : "w-2.5 h-2.5 bg-[#272838] border border-[#7D6B91]/30 group-hover:border-[#347FC4] group-hover:scale-110"
                           }`}
                         />
                       </button>
 
                       {/* Connecting Line Segment between dots */}
                       {idx < total - 1 && (
-                        <div className="w-8 sm:w-12 md:w-16 h-[2px] bg-[#EEF0F8] overflow-hidden rounded-full">
+                        <div className="w-8 sm:w-12 md:w-16 h-[2px] bg-[#272838] overflow-hidden rounded-full">
                           <div
                             className={`h-full transition-all duration-500 ${
                               isPast || isActive
@@ -532,8 +532,8 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                   aria-label="Previous project"
                   className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#347FC4] focus-visible:outline-none border ${
                     currentIndex === 0
-                      ? "opacity-30 cursor-not-allowed border-[#7D6B91]/15 bg-[#EEF0F8] text-[#5D536B]"
-                      : "text-[#272838] bg-[#EEF0F8] hover:bg-[#347FC4] hover:text-white hover:border-[#347FC4] border-[#7D6B91]/20 active:scale-95 shadow-2xs cursor-pointer"
+                      ? "opacity-30 cursor-not-allowed border-[#7D6B91]/15 bg-[#272838] text-[#989FCE]"
+                      : "text-[#F7F8FC] bg-[#272838] hover:bg-[#347FC4] hover:text-white hover:border-[#347FC4] border-[#7D6B91]/25 active:scale-95 shadow-sm cursor-pointer"
                   }`}
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -546,8 +546,8 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                   aria-label="Next project"
                   className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#347FC4] focus-visible:outline-none border ${
                     currentIndex === total - 1
-                      ? "opacity-30 cursor-not-allowed border-[#7D6B91]/15 bg-[#EEF0F8] text-[#5D536B]"
-                      : "text-[#272838] bg-[#EEF0F8] hover:bg-[#347FC4] hover:text-white hover:border-[#347FC4] border-[#7D6B91]/20 active:scale-95 shadow-2xs cursor-pointer"
+                      ? "opacity-30 cursor-not-allowed border-[#7D6B91]/15 bg-[#272838] text-[#989FCE]"
+                      : "text-[#F7F8FC] bg-[#272838] hover:bg-[#347FC4] hover:text-white hover:border-[#347FC4] border-[#7D6B91]/25 active:scale-95 shadow-sm cursor-pointer"
                   }`}
                 >
                   <ChevronRight className="w-5 h-5" />

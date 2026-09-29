@@ -10,30 +10,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // EXACT BRIGHT/LIGHT BRAND COLOR SYSTEM SPECIFIED
+        // EXACT NAVY BRAND COLOR SYSTEM SPECIFIED
         palette: {
-          bg: "#F7F8FC",          // Primary website background
-          sectionBg: "#EEF0F8",   // Alternate sections background
-          surface: "#FFFFFF",     // Cards and content surfaces
-          textPrimary: "#272838", // Headings and main text
-          textSecondary: "#5D536B", // Secondary text
+          bg: "#272838",          // Primary website background (Navy)
+          sectionBg: "#1E1F2D",   // Alternate sections background
+          surface: "#2D2E42",     // Cards and content surfaces
+          textPrimary: "#F7F8FC", // Headings and main text
+          textSecondary: "#989FCE", // Secondary text
           purple: "#7D6B91",      // Secondary visual accent
           lavender: "#989FCE",    // Subtle decorative elements
           blue: "#347FC4",        // CTA, links, active states and interactions
           // Legacy mappings for backwards-safety
-          primary: "#F7F8FC",
-          secondary: "#EEF0F8",
+          primary: "#272838",
+          secondary: "#1E1F2D",
           darkSec: "#5D536B",
           secPurple: "#7D6B91",
         },
-        // Semantic surface mapping for the light theme
+        // Semantic surface mapping for the navy theme
         surface: {
-          primary: "#F7F8FC",     // Main background
-          section: "#EEF0F8",     // Alternating section background
-          card: "#FFFFFF",        // Card & modal background
-          cardHover: "#FAFAFD",
-          border: "rgba(125, 107, 145, 0.15)", // Subtle #7D6B91 border
-          borderStrong: "rgba(125, 107, 145, 0.3)",
+          primary: "#272838",     // Main background (Navy)
+          section: "#1E1F2D",     // Alternating section background
+          card: "#2D2E42",        // Card & modal background
+          cardHover: "#35364E",
+          border: "rgba(125, 107, 145, 0.25)", // Subtle #7D6B91 border
+          borderStrong: "rgba(125, 107, 145, 0.4)",
         },
         accent: {
           blue: "#347FC4",        // Primary Blue Accent

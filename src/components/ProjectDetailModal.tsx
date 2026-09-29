@@ -58,16 +58,16 @@ export default function ProjectDetailModal({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl max-h-[90vh] bg-white border border-palette-secPurple/20 rounded-2xl shadow-2xl overflow-hidden flex flex-col my-auto"
+        className="relative w-full max-w-4xl max-h-[90vh] bg-[#1E1F2D] border border-[#7D6B91]/30 rounded-2xl shadow-2xl overflow-hidden flex flex-col my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Sticky Header */}
-        <div className="px-6 py-4 bg-white/95 border-b border-palette-secPurple/15 flex items-center justify-between backdrop-blur-md sticky top-0 z-20">
+        <div className="px-6 py-4 bg-[#1E1F2D]/95 border-b border-[#7D6B91]/20 flex items-center justify-between backdrop-blur-md sticky top-0 z-20">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-xs text-accent-blue bg-accent-blue/10 px-2.5 py-1 rounded border border-accent-blue/20 font-bold">
+            <span className="font-mono text-xs text-accent-blue bg-accent-blue/15 px-2.5 py-1 rounded border border-accent-blue/30 font-bold">
               Project {project.number}
             </span>
-            <span className="font-mono text-xs text-palette-darkSec/70 hidden sm:inline">
+            <span className="font-mono text-xs text-[#989FCE] hidden sm:inline">
               {project.period}
             </span>
           </div>
@@ -75,7 +75,7 @@ export default function ProjectDetailModal({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-palette-darkSec hover:text-palette-primary bg-palette-altBg hover:bg-palette-secPurple/15 border border-palette-secPurple/20 transition-colors focus-visible:ring-2 focus-visible:ring-accent-blue cursor-pointer"
+            className="p-1.5 rounded-lg text-[#989FCE] hover:text-[#F7F8FC] bg-[#272838] hover:bg-[#2D2E42] border border-[#7D6B91]/30 transition-colors focus-visible:ring-2 focus-visible:ring-accent-blue cursor-pointer"
             aria-label="Close project details"
           >
             <X className="w-5 h-5" />
@@ -91,26 +91,26 @@ export default function ProjectDetailModal({
             </span>
             <h2
               id="modal-project-title"
-              className="font-display font-extrabold text-2xl sm:text-3xl text-palette-primary mb-3"
+              className="font-display font-extrabold text-2xl sm:text-3xl text-[#F7F8FC] mb-3"
             >
               {project.title}
             </h2>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-palette-darkSec/80">
+            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#989FCE]">
               <span className="flex items-center gap-1.5">
                 <UserCheck className="w-4 h-4 text-accent-blue" />
-                <strong>Role:</strong> {project.role}
+                <strong className="text-[#F7F8FC]">Role:</strong> {project.role}
               </span>
-              <span className="text-palette-secPurple/30">•</span>
+              <span className="text-[#7D6B91]/40">•</span>
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4 text-accent-blue" />
-                <strong>Timeline:</strong> {project.period}
+                <strong className="text-[#F7F8FC]">Timeline:</strong> {project.period}
               </span>
             </div>
           </div>
 
           {/* Interactive Abstract UI Mockup Display */}
-          <div className="rounded-xl overflow-hidden border border-palette-secPurple/15 shadow-sm aspect-[16/9] max-h-[380px] w-full flex items-center justify-center bg-palette-altBg">
+          <div className="rounded-xl overflow-hidden border border-[#7D6B91]/20 shadow-sm aspect-[16/9] max-h-[380px] w-full flex items-center justify-center bg-[#161722]">
             {project.coverImage ? (
               <img
                 src={project.coverImage}
@@ -124,25 +124,25 @@ export default function ProjectDetailModal({
 
           {/* Overview Section */}
           <div className="space-y-3">
-            <h3 className="font-display font-bold text-lg text-palette-primary flex items-center gap-2">
+            <h3 className="font-display font-bold text-lg text-[#F7F8FC] flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-accent-blue" />
               <span>Project Overview</span>
             </h3>
-            <p className="text-sm sm:text-base text-palette-darkSec leading-relaxed font-medium">
+            <p className="text-sm sm:text-base text-[#989FCE] leading-relaxed font-medium">
               {project.overview}
             </p>
           </div>
 
           {/* Categorized Technologies */}
           <div className="space-y-4">
-            <h3 className="font-display font-bold text-lg text-palette-primary flex items-center gap-2">
+            <h3 className="font-display font-bold text-lg text-[#F7F8FC] flex items-center gap-2">
               <Code2 className="w-4 h-4 text-accent-blue" />
               <span>Technology Architecture</span>
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              <div className="p-3.5 rounded-xl bg-palette-altBg border border-palette-secPurple/15">
-                <span className="text-xs font-mono text-palette-darkSec/70 flex items-center gap-1.5 mb-2 font-bold">
+              <div className="p-3.5 rounded-xl bg-[#272838] border border-[#7D6B91]/25">
+                <span className="text-xs font-mono text-[#989FCE] flex items-center gap-1.5 mb-2 font-bold">
                   <Layers className="w-3.5 h-3.5 text-accent-blue" />
                   Frontend
                 </span>
@@ -150,7 +150,7 @@ export default function ProjectDetailModal({
                   {project.technologies.frontend.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-white text-palette-primary border border-palette-secPurple/15"
+                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-[#1E1F2D] text-[#F7F8FC] border border-[#7D6B91]/30"
                     >
                       {t}
                     </span>
@@ -158,8 +158,8 @@ export default function ProjectDetailModal({
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-palette-altBg border border-palette-secPurple/15">
-                <span className="text-xs font-mono text-palette-darkSec/70 flex items-center gap-1.5 mb-2 font-bold">
+              <div className="p-3.5 rounded-xl bg-[#272838] border border-[#7D6B91]/25">
+                <span className="text-xs font-mono text-[#989FCE] flex items-center gap-1.5 mb-2 font-bold">
                   <Cpu className="w-3.5 h-3.5 text-accent-blue" />
                   Backend
                 </span>
@@ -167,7 +167,7 @@ export default function ProjectDetailModal({
                   {project.technologies.backend.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-white text-palette-primary border border-palette-secPurple/15"
+                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-[#1E1F2D] text-[#F7F8FC] border border-[#7D6B91]/30"
                     >
                       {t}
                     </span>
@@ -175,8 +175,8 @@ export default function ProjectDetailModal({
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-palette-altBg border border-palette-secPurple/15">
-                <span className="text-xs font-mono text-palette-darkSec/70 flex items-center gap-1.5 mb-2 font-bold">
+              <div className="p-3.5 rounded-xl bg-[#272838] border border-[#7D6B91]/25">
+                <span className="text-xs font-mono text-[#989FCE] flex items-center gap-1.5 mb-2 font-bold">
                   <Database className="w-3.5 h-3.5 text-accent-blue" />
                   Database
                 </span>
@@ -184,7 +184,7 @@ export default function ProjectDetailModal({
                   {project.technologies.database.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-white text-palette-primary border border-palette-secPurple/15"
+                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-[#1E1F2D] text-[#F7F8FC] border border-[#7D6B91]/30"
                     >
                       {t}
                     </span>
@@ -192,8 +192,8 @@ export default function ProjectDetailModal({
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-palette-altBg border border-palette-secPurple/15">
-                <span className="text-xs font-mono text-palette-darkSec/70 flex items-center gap-1.5 mb-2 font-bold">
+              <div className="p-3.5 rounded-xl bg-[#272838] border border-[#7D6B91]/25">
+                <span className="text-xs font-mono text-[#989FCE] flex items-center gap-1.5 mb-2 font-bold">
                   <Server className="w-3.5 h-3.5 text-accent-blue" />
                   Infrastructure
                 </span>
@@ -201,7 +201,7 @@ export default function ProjectDetailModal({
                   {project.technologies.infrastructure.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-white text-palette-primary border border-palette-secPurple/15"
+                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-[#1E1F2D] text-[#F7F8FC] border border-[#7D6B91]/30"
                     >
                       {t}
                     </span>
@@ -213,20 +213,20 @@ export default function ProjectDetailModal({
 
           {/* Key Features */}
           <div className="space-y-4">
-            <h3 className="font-display font-bold text-lg text-palette-primary">
+            <h3 className="font-display font-bold text-lg text-[#F7F8FC]">
               Key Functional Features
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {project.features.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-xl bg-palette-altBg border border-palette-secPurple/15 space-y-1.5"
+                  className="p-4 rounded-xl bg-[#272838] border border-[#7D6B91]/25 space-y-1.5"
                 >
-                  <h4 className="font-display font-bold text-sm text-palette-primary flex items-center gap-2">
+                  <h4 className="font-display font-bold text-sm text-[#F7F8FC] flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-accent-blue shrink-0" />
                     <span>{feat.title}</span>
                   </h4>
-                  <p className="text-xs text-palette-darkSec leading-relaxed">
+                  <p className="text-xs text-[#989FCE] leading-relaxed">
                     {feat.description}
                   </p>
                 </div>
@@ -235,11 +235,11 @@ export default function ProjectDetailModal({
           </div>
 
           {/* Development Highlights */}
-          <div className="space-y-3 p-5 rounded-xl bg-palette-altBg border border-palette-secPurple/15">
-            <h3 className="font-display font-bold text-sm sm:text-base text-palette-primary">
+          <div className="space-y-3 p-5 rounded-xl bg-[#272838] border border-[#7D6B91]/25">
+            <h3 className="font-display font-bold text-sm sm:text-base text-[#F7F8FC]">
               Development &amp; Architecture Highlights
             </h3>
-            <ul className="space-y-2 text-xs sm:text-sm text-palette-darkSec">
+            <ul className="space-y-2 text-xs sm:text-sm text-[#989FCE]">
               {project.developmentHighlights.map((hl, idx) => (
                 <li key={idx} className="flex items-start gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent-blue mt-2 shrink-0"></span>
@@ -251,24 +251,24 @@ export default function ProjectDetailModal({
         </div>
 
         {/* Modal Footer */}
-        <div className="px-6 py-4 bg-white border-t border-palette-secPurple/15 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="px-6 py-4 bg-[#1E1F2D] border-t border-[#7D6B91]/20 flex flex-col sm:flex-row items-center justify-between gap-3">
           <Link
             href={`/projects/${project.slug || project.id}`}
             onClick={onClose}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent-blue hover:bg-[#2C6EA8] text-white text-xs font-semibold transition-colors shadow-sm w-full sm:w-auto justify-center"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent-blue hover:bg-[#2C6EA8] text-white text-xs font-semibold transition-colors shadow-sm w-full sm:w-auto justify-center cursor-pointer"
           >
             <span>Open Dedicated Case Study &amp; Gallery</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
 
           <div className="flex items-center gap-3">
-            <span className="text-xs font-mono text-palette-darkSec/70 hidden md:inline">
+            <span className="text-xs font-mono text-[#989FCE] hidden md:inline">
               Verified CV Data
             </span>
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg bg-palette-altBg hover:bg-palette-secPurple/15 text-palette-primary text-xs font-semibold border border-palette-secPurple/20 transition-colors w-full sm:w-auto cursor-pointer"
+              className="px-4 py-2 rounded-lg bg-[#272838] hover:bg-[#2D2E42] text-[#F7F8FC] text-xs font-semibold border border-[#7D6B91]/30 transition-colors w-full sm:w-auto cursor-pointer"
             >
               Close Window
             </button>

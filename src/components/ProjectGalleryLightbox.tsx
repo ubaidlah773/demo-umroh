@@ -99,7 +99,7 @@ export default function ProjectGalleryLightbox({
 
   if (!images || images.length === 0) {
     return (
-      <div className="rounded-2xl border border-[#7D6B91]/15 bg-white p-12 text-center text-[#5D536B] shadow-card-subtle">
+      <div className="rounded-2xl border border-[#7D6B91]/25 bg-[#1E1F2D] p-12 text-center text-[#989FCE] shadow-card-subtle">
         <ImageIcon className="w-10 h-10 mx-auto mb-3 opacity-30 text-accent-blue" />
         <p className="text-sm font-medium">No documentation images uploaded for this project yet.</p>
       </div>
@@ -109,12 +109,12 @@ export default function ProjectGalleryLightbox({
   return (
     <div className="space-y-6">
       {/* Main Showcase Frame */}
-      <div className="relative rounded-2xl border border-[#7D6B91]/15 bg-white overflow-hidden shadow-card-subtle group">
+      <div className="relative rounded-2xl border border-[#7D6B91]/25 bg-[#1E1F2D] overflow-hidden shadow-card-subtle group">
         {/* Top Info Bar */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-[#7D6B91]/15 bg-[#F7F8FC] text-xs font-mono text-[#5D536B]">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-[#7D6B91]/20 bg-[#161722] text-xs font-mono text-[#989FCE]">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse" />
-            <span className="text-[#272838] font-bold">
+            <span className="text-[#F7F8FC] font-bold">
               {activeImage.title || activeImage.fileName}
             </span>
             {activeImage.isCover && (
@@ -125,12 +125,12 @@ export default function ProjectGalleryLightbox({
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="font-semibold">
+            <span className="font-semibold text-[#989FCE]">
               {activeIndex + 1} / {images.length}
             </span>
             <button
               onClick={() => setLightboxOpen(true)}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white hover:bg-[#EEF0F8] text-[#5D536B] hover:text-[#272838] border border-[#7D6B91]/20 shadow-card-subtle transition-colors cursor-pointer font-medium"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#272838] hover:bg-[#2D2E42] text-[#989FCE] hover:text-[#F7F8FC] border border-[#7D6B91]/30 transition-colors cursor-pointer font-medium"
               title="Expand fullscreen lightbox"
             >
               <Maximize2 className="w-3.5 h-3.5" />
@@ -142,7 +142,7 @@ export default function ProjectGalleryLightbox({
         {/* Featured Image Viewer */}
         <div
           onClick={() => setLightboxOpen(true)}
-          className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-[#EEF0F8]/50 cursor-pointer overflow-hidden flex items-center justify-center p-2 sm:p-4"
+          className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-[#161722]/80 cursor-pointer overflow-hidden flex items-center justify-center p-2 sm:p-4"
         >
           <img
             src={activeImage.fileUrl}
@@ -159,10 +159,10 @@ export default function ProjectGalleryLightbox({
                   e.stopPropagation();
                   handlePrev();
                 }}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white border border-[#7D6B91]/25 text-[#272838] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer shadow-card-elevated"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#1E1F2D]/90 hover:bg-[#1E1F2D] border border-[#7D6B91]/40 text-[#F7F8FC] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer shadow-card-elevated"
                 aria-label="Previous image"
               >
-                <ChevronLeft className="w-5 h-5 text-[#272838]" />
+                <ChevronLeft className="w-5 h-5 text-[#F7F8FC]" />
               </button>
               <button
                 type="button"
@@ -170,15 +170,15 @@ export default function ProjectGalleryLightbox({
                   e.stopPropagation();
                   handleNext();
                 }}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white border border-[#7D6B91]/25 text-[#272838] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer shadow-card-elevated"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#1E1F2D]/90 hover:bg-[#1E1F2D] border border-[#7D6B91]/40 text-[#F7F8FC] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer shadow-card-elevated"
                 aria-label="Next image"
               >
-                <ChevronRight className="w-5 h-5 text-[#272838]" />
+                <ChevronRight className="w-5 h-5 text-[#F7F8FC]" />
               </button>
             </>
           )}
 
-          <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#7D6B91]/20 text-xs font-mono text-accent-blue font-bold flex items-center gap-1.5 shadow-card-subtle">
+          <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1E1F2D]/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#7D6B91]/30 text-xs font-mono text-accent-blue font-bold flex items-center gap-1.5 shadow-card-subtle">
             <Maximize2 className="w-3.5 h-3.5" />
             <span>Click to Enlarge</span>
           </div>
@@ -186,8 +186,8 @@ export default function ProjectGalleryLightbox({
 
         {/* Caption Banner */}
         {activeImage.caption && (
-          <div className="p-4 bg-[#F7F8FC] border-t border-[#7D6B91]/15 text-sm text-[#5D536B]">
-            <p className="font-mono text-xs text-[#272838] mb-1 uppercase tracking-wider font-bold">
+          <div className="p-4 bg-[#161722] border-t border-[#7D6B91]/20 text-sm text-[#989FCE]">
+            <p className="font-mono text-xs text-[#F7F8FC] mb-1 uppercase tracking-wider font-bold">
               Architecture &amp; Documentation Note
             </p>
             <p>{activeImage.caption}</p>
@@ -198,8 +198,8 @@ export default function ProjectGalleryLightbox({
       {/* Thumbnails Navigation Row */}
       {images.length > 1 && (
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs font-mono text-[#5D536B]">
-            <span className="flex items-center gap-1.5 font-bold text-[#272838]">
+          <div className="flex items-center justify-between text-xs font-mono text-[#989FCE]">
+            <span className="flex items-center gap-1.5 font-bold text-[#F7F8FC]">
               <Layers className="w-3.5 h-3.5 text-accent-blue" />
               Documentation Gallery ({images.length} frames)
             </span>
@@ -212,10 +212,10 @@ export default function ProjectGalleryLightbox({
                 key={img.id}
                 type="button"
                 onClick={() => setActiveIndex(idx)}
-                className={`relative aspect-[16/10] rounded-xl overflow-hidden border transition-all duration-200 cursor-pointer bg-white shadow-card-subtle p-1 ${
+                className={`relative aspect-[16/10] rounded-xl overflow-hidden border transition-all duration-200 cursor-pointer bg-[#161722] p-1 ${
                   idx === activeIndex
                     ? "border-accent-blue ring-2 ring-accent-blue/30 scale-[1.02]"
-                    : "border-[#7D6B91]/20 opacity-80 hover:opacity-100 hover:border-accent-blue/50"
+                    : "border-[#7D6B91]/25 opacity-70 hover:opacity-100 hover:border-accent-blue/50"
                 }`}
               >
                 <img

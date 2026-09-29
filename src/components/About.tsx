@@ -76,7 +76,7 @@ export default function About({
   return (
     <section
       id="about"
-      className="py-20 lg:py-28 bg-[#EEF0F8] relative border-t border-[#7D6B91]/15 tech-dots"
+      className="py-20 lg:py-28 bg-[#1E1F2D] relative border-t border-[#7D6B91]/20 tech-dots"
       aria-label="About Ahmad Ubai Dullah"
     >
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,7 +93,7 @@ export default function About({
           {/* LEFT: Large Statement */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
-              <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#272838] tracking-tight leading-[1.25] mb-6">
+              <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#F7F8FC] tracking-tight leading-[1.25] mb-6">
                 Engineering reliable,{" "}
                 <span className="text-[#347FC4]">
                   database-driven
@@ -101,14 +101,14 @@ export default function About({
                 web systems where software solves real-world human problems.
               </h2>
 
-              <p className="text-base text-[#5D536B] leading-relaxed mb-8">
-                Based in <strong className="text-[#272838] font-semibold">Tuban, Indonesia</strong>, I build practical software solutions that eliminate administrative friction and digitize manual operations. From multi-role school academic platforms to real-time public queue systems, I prioritize structural stability, normalized relational databases, and clean usability.
+              <p className="text-base text-[#989FCE] leading-relaxed mb-8">
+                Based in <strong className="text-[#F7F8FC] font-semibold">Tuban, Indonesia</strong>, I build practical software solutions that eliminate administrative friction and digitize manual operations. From multi-role school academic platforms to real-time public queue systems, I prioritize structural stability, normalized relational databases, and clean usability.
               </p>
             </div>
 
             {/* Profile Snapshot Card */}
-            <div className="p-5 rounded-2xl bg-white border border-[#7D6B91]/15 shadow-sm flex items-center gap-4">
-              <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-[#7D6B91]/20 bg-[#F7F8FC]">
+            <div className="p-5 rounded-2xl bg-[#272838] border border-[#7D6B91]/25 shadow-md flex items-center gap-4">
+              <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-[#7D6B91]/30 bg-[#1E1F2D]">
                 <Image
                   src={personalInfo.profileImage}
                   alt="Ahmad Ubai Dullah portrait"
@@ -118,14 +118,14 @@ export default function About({
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-bold text-sm text-[#272838]">
+                <span className="font-display font-bold text-sm text-[#F7F8FC]">
                   {personalInfo.name}
                 </span>
-                <span className="text-xs text-[#5D536B] flex items-center gap-1.5 mt-0.5">
+                <span className="text-xs text-[#989FCE] flex items-center gap-1.5 mt-0.5">
                   <GraduationCap className="w-3.5 h-3.5 text-[#347FC4]" />
                   Universitas Negeri Semarang
                 </span>
-                <span className="text-[11px] font-mono text-[#5D536B] flex items-center gap-1 mt-1">
+                <span className="text-[11px] font-mono text-[#989FCE] flex items-center gap-1 mt-1">
                   <MapPin className="w-3 h-3 text-[#347FC4]" />
                   Tuban, East Java, Indonesia
                 </span>
@@ -135,13 +135,13 @@ export default function About({
 
           {/* RIGHT: Professional Description */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#7D6B91]/15 shadow-sm space-y-5">
-              <h3 className="font-display font-bold text-lg text-[#272838] flex items-center gap-2">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#272838] border border-[#7D6B91]/25 shadow-md space-y-5">
+              <h3 className="font-display font-bold text-lg text-[#F7F8FC] flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#347FC4]" />
                 <span>Professional Background & Philosophy</span>
               </h3>
 
-              <div className="space-y-4 text-sm sm:text-base text-[#5D536B] leading-relaxed">
+              <div className="space-y-4 text-sm sm:text-base text-[#989FCE] leading-relaxed">
                 <p>
                   As a Full Stack Developer, I specialize in architecting database-driven web platforms using Laravel, JavaScript, Node.js, and MySQL. My work centers on translating real operational workflows into intuitive digital systems that serve diverse stakeholders.
                 </p>
@@ -154,29 +154,29 @@ export default function About({
               </div>
 
               {/* Verified Key Highlights from CV */}
-              <div className="pt-6 border-t border-[#7D6B91]/15 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                <div className="p-3.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/15">
-                  <span className="text-xs font-mono text-[#5D536B] block">Academic GPA</span>
-                  <span className="font-display font-bold text-lg text-[#272838] mt-1 block">
+              <div className="pt-6 border-t border-[#7D6B91]/20 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div className="p-3.5 rounded-xl bg-[#1E1F2D] border border-[#7D6B91]/20">
+                  <span className="text-xs font-mono text-[#989FCE] block">Academic GPA</span>
+                  <span className="font-display font-bold text-lg text-[#F7F8FC] mt-1 block">
                     3.80 / 4.00
                   </span>
-                  <span className="text-[11px] text-[#5D536B]">UNNES Informatics</span>
+                  <span className="text-[11px] text-[#989FCE]">UNNES Informatics</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/15">
-                  <span className="text-xs font-mono text-[#5D536B] block">RevoU Score</span>
+                <div className="p-3.5 rounded-xl bg-[#1E1F2D] border border-[#7D6B91]/20">
+                  <span className="text-xs font-mono text-[#989FCE] block">RevoU Score</span>
                   <span className="font-display font-bold text-lg text-[#347FC4] mt-1 block">
                     92 / 100
                   </span>
-                  <span className="text-[11px] text-[#5D536B]">Tech Academy</span>
+                  <span className="text-[11px] text-[#989FCE]">Tech Academy</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/15 col-span-2 sm:col-span-1">
-                  <span className="text-xs font-mono text-[#5D536B] block">Research Work</span>
-                  <span className="font-display font-bold text-lg text-[#272838] mt-1 block">
+                <div className="p-3.5 rounded-xl bg-[#1E1F2D] border border-[#7D6B91]/20 col-span-2 sm:col-span-1">
+                  <span className="text-xs font-mono text-[#989FCE] block">Research Work</span>
+                  <span className="font-display font-bold text-lg text-[#F7F8FC] mt-1 block">
                     7 Publications
                   </span>
-                  <span className="text-[11px] text-[#5D536B]">Machine Learning</span>
+                  <span className="text-[11px] text-[#989FCE]">Machine Learning</span>
                 </div>
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function About({
             <span className="text-xs font-mono uppercase tracking-wider text-[#347FC4] font-semibold">
               Core Capabilities
             </span>
-            <h3 className="font-display font-bold text-xl sm:text-2xl text-[#272838] mt-1">
+            <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F7F8FC] mt-1">
               Systems I Specialize In Building
             </h3>
           </div>
@@ -200,15 +200,15 @@ export default function About({
               return (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-white border border-[#7D6B91]/15 hover:border-[#347FC4]/40 hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 group"
+                  className="p-6 rounded-2xl bg-[#272838] border border-[#7D6B91]/20 hover:border-[#347FC4]/40 hover:bg-[#2D2E42] hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[#347FC4]/10 border border-[#347FC4]/25 flex items-center justify-center text-[#347FC4] mb-4 group-hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-[#347FC4]/15 border border-[#347FC4]/30 flex items-center justify-center text-[#347FC4] mb-4 group-hover:scale-105 transition-transform">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h4 className="font-display font-bold text-base text-[#272838] mb-2 group-hover:text-[#347FC4] transition-colors">
+                  <h4 className="font-display font-bold text-base text-[#F7F8FC] mb-2 group-hover:text-[#347FC4] transition-colors">
                     {comp.title}
                   </h4>
-                  <p className="text-xs sm:text-sm text-[#5D536B] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#989FCE] leading-relaxed">
                     {comp.desc}
                   </p>
                 </div>

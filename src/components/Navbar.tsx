@@ -71,8 +71,8 @@ export default function Navbar({
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "py-2.5 bg-white/85 backdrop-blur-md border-b border-[#7D6B91]/15 shadow-[0_2px_12px_-2px_rgba(39,40,56,0.06)]"
-          : "py-5 bg-[#F7F8FC]/70 backdrop-blur-sm border-b border-transparent"
+          ? "py-2.5 bg-[#272838]/90 backdrop-blur-md border-b border-[#7D6B91]/25 shadow-lg"
+          : "py-5 bg-[#272838]/70 backdrop-blur-sm border-b border-transparent"
       }`}
     >
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,7 +85,7 @@ export default function Navbar({
           >
             <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
               <Image
-                src="/brand/ubai-logo-dark.png"
+                src="/brand/ubai-logo-white.png"
                 alt="UBAI Torii Logo"
                 fill
                 priority
@@ -93,10 +93,10 @@ export default function Navbar({
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-extrabold text-sm sm:text-base tracking-wider text-[#272838] leading-none group-hover:text-[#347FC4] transition-colors">
+              <span className="font-display font-extrabold text-sm sm:text-base tracking-wider text-[#F7F8FC] leading-none group-hover:text-[#347FC4] transition-colors">
                 UBAI
               </span>
-              <span className="text-[10px] sm:text-[11px] font-mono text-[#5D536B] tracking-tight mt-0.5">
+              <span className="text-[10px] sm:text-[11px] font-mono text-[#989FCE] tracking-tight mt-0.5">
                 Full Stack Developer
               </span>
             </div>
@@ -104,7 +104,7 @@ export default function Navbar({
 
           {/* Desktop Center Navigation Links */}
           <nav
-            className="hidden md:flex items-center gap-1 bg-[#EEF0F8]/80 p-1.5 rounded-full border border-[#7D6B91]/15 backdrop-blur-sm shadow-sm"
+            className="hidden md:flex items-center gap-1 bg-[#1F202F]/80 p-1.5 rounded-full border border-[#7D6B91]/25 backdrop-blur-sm shadow-sm"
             aria-label="Main Navigation"
           >
             {navLinks.map((link) => {
@@ -115,8 +115,8 @@ export default function Navbar({
                   href={link.href}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                     isActive
-                      ? "bg-white text-[#347FC4] font-semibold border border-[#7D6B91]/15 shadow-sm"
-                      : "text-[#5D536B] hover:text-[#272838] hover:bg-white/60"
+                      ? "bg-[#347FC4] text-white font-semibold shadow-sm"
+                      : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#7D6B91]/20"
                   }`}
                 >
                   {link.name}
@@ -131,8 +131,8 @@ export default function Navbar({
               href="#contact"
               className={`px-3.5 py-2 rounded-lg text-xs font-medium transition-colors ${
                 activeSection === "contact"
-                  ? "text-[#347FC4] font-semibold bg-[#347FC4]/10"
-                  : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+                  ? "text-[#347FC4] font-semibold bg-[#347FC4]/15"
+                  : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#7D6B91]/20"
               }`}
             >
               Contact
@@ -153,7 +153,7 @@ export default function Navbar({
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-white border border-[#7D6B91]/20 text-[#272838] hover:border-[#347FC4]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#347FC4] shadow-sm transition-colors"
+            className="md:hidden p-2 rounded-lg bg-[#2D2E42] border border-[#7D6B91]/30 text-[#F7F8FC] hover:border-[#347FC4]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#347FC4] shadow-sm transition-colors"
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileMenuOpen}
           >
@@ -165,7 +165,7 @@ export default function Navbar({
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 top-[60px] z-40 bg-[#F7F8FC]/98 backdrop-blur-xl md:hidden border-b border-[#7D6B91]/15 flex flex-col p-6 animate-fadeIn shadow-lg overflow-y-auto"
+          className="fixed inset-0 top-[60px] z-40 bg-[#272838]/98 backdrop-blur-xl md:hidden border-b border-[#7D6B91]/25 flex flex-col p-6 animate-fadeIn shadow-2xl overflow-y-auto"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation Menu"
@@ -180,8 +180,8 @@ export default function Navbar({
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors flex items-center justify-between ${
                     isActive
-                      ? "bg-white text-[#347FC4] border border-[#7D6B91]/20 shadow-sm font-semibold"
-                      : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+                      ? "bg-[#347FC4] text-white font-semibold shadow-sm"
+                      : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#7D6B91]/20"
                   }`}
                 >
                   <span>{link.name}</span>
@@ -194,8 +194,8 @@ export default function Navbar({
               onClick={() => setMobileMenuOpen(false)}
               className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors flex items-center justify-between ${
                 activeSection === "contact"
-                  ? "bg-white text-[#347FC4] border border-[#7D6B91]/20 shadow-sm font-semibold"
-                  : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+                  ? "bg-[#347FC4] text-white font-semibold shadow-sm"
+                  : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#7D6B91]/20"
               }`}
             >
               <span>Contact</span>
@@ -203,7 +203,7 @@ export default function Navbar({
             </Link>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-[#7D6B91]/15 flex flex-col gap-3">
+          <div className="mt-8 pt-6 border-t border-[#7D6B91]/25 flex flex-col gap-3">
             <a
               href={personalInfo.cvUrl}
               download="Ahmad_Ubai_Dullah_CV.pdf"
@@ -213,7 +213,7 @@ export default function Navbar({
               <Download className="w-4 h-4" />
               <span>Download CV</span>
             </a>
-            <div className="text-center text-xs font-mono text-[#5D536B] mt-1">
+            <div className="text-center text-xs font-mono text-[#989FCE] mt-1">
               Tuban, East Java, Indonesia
             </div>
           </div>

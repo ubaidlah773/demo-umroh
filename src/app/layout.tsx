@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#F7F8FC",
+  themeColor: "#272838",
   width: "device-width",
   initialScale: 1,
 };
@@ -143,7 +143,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#F7F8FC] text-[#272838] font-sans antialiased flex flex-col selection:bg-[#347FC4]/20 selection:text-[#272838]">
+      <body className="min-h-screen bg-[#272838] text-[#F7F8FC] font-sans antialiased flex flex-col selection:bg-[#347FC4]/30 selection:text-white">
         {children}
       </body>
     </html>
