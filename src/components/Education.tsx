@@ -59,36 +59,36 @@ export default function Education({
           {items.map((item, idx) => (
             <div
               key={item.id || idx}
-              className="p-7 sm:p-9 rounded-2xl bg-[#272838] border border-[#7D6B91]/25 hover:border-accent-blue/50 flex flex-col justify-between transition-all duration-300 group"
+              className="p-7 sm:p-9 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle hover:shadow-card-elevated hover:border-accent-blue/50 flex flex-col justify-between transition-all duration-300 group"
             >
               <div>
                 {/* Header Badge */}
                 <div className="flex items-center justify-between gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-accent-blue/15 border border-accent-blue/30 flex items-center justify-center text-accent-blue group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-accent-blue/10 border border-accent-blue/25 flex items-center justify-center text-accent-blue group-hover:scale-105 transition-transform">
                     {idx === 0 ? (
                       <GraduationCap className="w-6 h-6" />
                     ) : (
                       <Code2 className="w-6 h-6" />
                     )}
                   </div>
-                  <div className="px-3.5 py-1.5 rounded-full bg-[#1E1F2D] border border-[#7D6B91]/25 text-xs font-mono text-[#989FCE] flex items-center gap-1.5 font-medium">
+                  <div className="px-3.5 py-1.5 rounded-full bg-[#F7F8FC] border border-[#7D6B91]/15 text-xs font-mono text-[#5D536B] flex items-center gap-1.5 font-medium">
                     <Calendar className="w-3.5 h-3.5 text-accent-blue" />
                     <span>{item.period}</span>
                   </div>
                 </div>
 
                 {/* Institution & Degree */}
-                <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#F7F8FC] group-hover:text-accent-blue transition-colors">
+                <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#272838] group-hover:text-accent-blue transition-colors">
                   {item.institution}
                 </h3>
-                <span className="text-base text-[#989FCE] font-medium block mt-1">
+                <span className="text-base text-[#5D536B] font-medium block mt-1">
                   {item.degree}
                 </span>
 
                 {/* Grade / GPA Indicator */}
                 {item.gradeValue && (
-                  <div className="mt-5 p-4 rounded-xl bg-[#1E1F2D] border border-[#7D6B91]/25 flex items-center justify-between">
-                    <span className="text-xs font-mono text-[#989FCE] font-semibold uppercase tracking-wider">
+                  <div className="mt-5 p-4 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/15 flex items-center justify-between">
+                    <span className="text-xs font-mono text-[#5D536B] font-semibold uppercase tracking-wider">
                       {item.gradeLabel || "Grade"}
                     </span>
                     <div className="flex items-baseline gap-1">
@@ -102,7 +102,7 @@ export default function Education({
                 {/* Achievements List */}
                 {item.achievements && item.achievements.length > 0 && (
                   <div className="mt-6 space-y-3">
-                    <span className="text-xs font-mono uppercase tracking-wider text-[#F7F8FC] font-bold flex items-center gap-1.5">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#272838] font-bold flex items-center gap-1.5">
                       <Award className="w-3.5 h-3.5 text-accent-blue" />
                       Key Achievements
                     </span>
@@ -110,10 +110,10 @@ export default function Education({
                       {item.achievements.map((ach, i) => (
                         <div
                           key={i}
-                          className="p-3.5 rounded-xl bg-[#1E1F2D] border border-[#7D6B91]/25 flex items-start gap-2.5 text-xs sm:text-sm text-[#989FCE]"
+                          className="p-3.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/15 flex items-start gap-2.5 text-xs sm:text-sm text-[#5D536B]"
                         >
                           <CheckCircle2 className="w-4 h-4 text-accent-blue shrink-0 mt-0.5" />
-                          <span className="font-medium text-[#F7F8FC]">{ach}</span>
+                          <span className="font-medium text-[#272838]">{ach}</span>
                         </div>
                       ))}
                     </div>
@@ -123,7 +123,7 @@ export default function Education({
                 {/* Coursework */}
                 {item.coursework && item.coursework.length > 0 && (
                   <div className="mt-6 space-y-3">
-                    <span className="text-xs font-mono uppercase tracking-wider text-[#F7F8FC] font-bold flex items-center gap-1.5">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#272838] font-bold flex items-center gap-1.5">
                       <BookOpen className="w-3.5 h-3.5 text-accent-blue" />
                       Relevant Coursework
                     </span>
@@ -131,7 +131,7 @@ export default function Education({
                       {item.coursework.map((cw) => (
                         <span
                           key={cw}
-                          className="px-3 py-1.5 rounded-lg text-xs font-mono bg-[#1E1F2D] border border-[#7D6B91]/25 text-[#989FCE] font-medium"
+                          className="px-3 py-1.5 rounded-lg text-xs font-mono bg-[#F7F8FC] border border-[#7D6B91]/15 text-[#5D536B] font-medium"
                         >
                           {cw}
                         </span>
@@ -143,7 +143,7 @@ export default function Education({
                 {/* Competencies */}
                 {item.competencies && item.competencies.length > 0 && (
                   <div className="mt-6 space-y-3">
-                    <span className="text-xs font-mono uppercase tracking-wider text-[#F7F8FC] font-bold flex items-center gap-1.5">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#272838] font-bold flex items-center gap-1.5">
                       <FileCheck className="w-3.5 h-3.5 text-accent-blue" />
                       Core Competencies
                     </span>
@@ -151,7 +151,7 @@ export default function Education({
                       {item.competencies.map((comp) => (
                         <div
                           key={comp}
-                          className="p-2.5 rounded-lg bg-[#1E1F2D] border border-[#7D6B91]/25 text-xs text-[#989FCE] font-medium flex items-center gap-2"
+                          className="p-2.5 rounded-lg bg-[#F7F8FC] border border-[#7D6B91]/15 text-xs text-[#5D536B] font-medium flex items-center gap-2"
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-accent-blue shrink-0"></span>
                           <span className="truncate">{comp}</span>
@@ -162,7 +162,7 @@ export default function Education({
                 )}
               </div>
 
-              <div className="mt-8 pt-5 border-t border-[#7D6B91]/20 flex items-center justify-between text-xs font-mono text-[#989FCE]">
+              <div className="mt-8 pt-5 border-t border-[#7D6B91]/15 flex items-center justify-between text-xs font-mono text-[#5D536B]">
                 <span>Verified Academic Credential</span>
                 <span className="text-accent-blue font-semibold">Official Record</span>
               </div>

@@ -124,9 +124,9 @@ export default function Contact({
             {/* Left Column: Direct Contact Info Channels */}
             <div className="md:col-span-5 space-y-4">
               {/* Email Card with Copy Trigger */}
-              <div className="p-5 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 space-y-3">
+              <div className="p-5 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono text-[#989FCE] font-semibold flex items-center gap-1.5">
+                  <span className="text-xs font-mono text-[#5D536B] font-semibold flex items-center gap-1.5">
                     <Mail className="w-3.5 h-3.5 text-accent-blue" />
                     Direct Email
                   </span>
@@ -151,46 +151,46 @@ export default function Contact({
                 </div>
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="font-mono text-sm text-[#F7F8FC] hover:text-accent-blue font-bold block transition-colors break-all"
+                  className="font-mono text-sm text-[#272838] hover:text-accent-blue font-bold block transition-colors break-all"
                 >
                   {personalInfo.email}
                 </a>
               </div>
 
               {/* Phone Card */}
-              <div className="p-5 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 space-y-2">
-                <span className="text-xs font-mono text-[#989FCE] font-semibold flex items-center gap-1.5">
+              <div className="p-5 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle space-y-2">
+                <span className="text-xs font-mono text-[#5D536B] font-semibold flex items-center gap-1.5">
                   <Phone className="w-3.5 h-3.5 text-accent-blue" />
                   Phone / WhatsApp
                 </span>
                 <a
                   href={`tel:${personalInfo.phone.replace(/[^0-9+]/g, "")}`}
-                  className="font-mono text-sm text-[#F7F8FC] hover:text-accent-blue font-bold block transition-colors"
+                  className="font-mono text-sm text-[#272838] hover:text-accent-blue font-bold block transition-colors"
                 >
                   {personalInfo.phone}
                 </a>
               </div>
 
               {/* Location Card */}
-              <div className="p-5 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 space-y-2">
-                <span className="text-xs font-mono text-[#989FCE] font-semibold flex items-center gap-1.5">
+              <div className="p-5 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle space-y-2">
+                <span className="text-xs font-mono text-[#5D536B] font-semibold flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-accent-blue" />
                   Location
                 </span>
-                <span className="font-display font-bold text-sm text-[#F7F8FC] block">
+                <span className="font-display font-bold text-sm text-[#272838] block">
                   {personalInfo.location}
                 </span>
-                <span className="text-xs text-[#989FCE] block">
+                <span className="text-xs text-[#5D536B] block">
                   UTC+7 (WIB) • Available for Remote &amp; On-Site Collaborations
                 </span>
               </div>
             </div>
 
             {/* Right Column: Quick Message Form */}
-            <div className="md:col-span-7 p-6 sm:p-8 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25">
+            <div className="md:col-span-7 p-6 sm:p-8 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle">
               <div className="flex items-center gap-2 mb-5">
                 <MessageSquare className="w-4 h-4 text-accent-blue" />
-                <h3 className="font-display font-bold text-base text-[#F7F8FC]">
+                <h3 className="font-display font-bold text-base text-[#272838]">
                   Send a Direct Message
                 </h3>
               </div>
@@ -200,7 +200,7 @@ export default function Contact({
                   <div>
                     <label
                       htmlFor="contact-name"
-                      className="block text-xs font-mono text-[#989FCE] font-semibold mb-1"
+                      className="block text-xs font-mono text-[#5D536B] font-semibold mb-1"
                     >
                       Your Name
                     </label>
@@ -213,14 +213,14 @@ export default function Contact({
                         setFormState({ ...formState, name: e.target.value })
                       }
                       placeholder="e.g. Alex Morgan"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#272838] border border-[#7D6B91]/35 text-[#F7F8FC] placeholder-[#989FCE]/50 text-xs focus:border-accent-blue focus:bg-[#272838] focus:ring-1 focus:ring-accent-blue outline-none transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/25 text-[#272838] placeholder-[#5D536B]/50 text-xs focus:border-accent-blue focus:bg-white focus:ring-1 focus:ring-accent-blue outline-none transition-colors"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="contact-email"
-                      className="block text-xs font-mono text-[#989FCE] font-semibold mb-1"
+                      className="block text-xs font-mono text-[#5D536B] font-semibold mb-1"
                     >
                       Your Email
                     </label>
@@ -233,7 +233,7 @@ export default function Contact({
                         setFormState({ ...formState, email: e.target.value })
                       }
                       placeholder="alex@company.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#272838] border border-[#7D6B91]/35 text-[#F7F8FC] placeholder-[#989FCE]/50 text-xs focus:border-accent-blue focus:bg-[#272838] focus:ring-1 focus:ring-accent-blue outline-none transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/25 text-[#272838] placeholder-[#5D536B]/50 text-xs focus:border-accent-blue focus:bg-white focus:ring-1 focus:ring-accent-blue outline-none transition-colors"
                     />
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export default function Contact({
                 <div>
                   <label
                     htmlFor="contact-subject"
-                    className="block text-xs font-mono text-[#989FCE] font-semibold mb-1"
+                    className="block text-xs font-mono text-[#5D536B] font-semibold mb-1"
                   >
                     Subject
                   </label>
@@ -254,14 +254,14 @@ export default function Contact({
                       setFormState({ ...formState, subject: e.target.value })
                     }
                     placeholder="Project Inquiry: Web System Development"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#272838] border border-[#7D6B91]/35 text-[#F7F8FC] placeholder-[#989FCE]/50 text-xs focus:border-accent-blue focus:bg-[#272838] focus:ring-1 focus:ring-accent-blue outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/25 text-[#272838] placeholder-[#5D536B]/50 text-xs focus:border-accent-blue focus:bg-white focus:ring-1 focus:ring-accent-blue outline-none transition-colors"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="contact-message"
-                    className="block text-xs font-mono text-[#989FCE] font-semibold mb-1"
+                    className="block text-xs font-mono text-[#5D536B] font-semibold mb-1"
                   >
                     Project Details
                   </label>
@@ -274,7 +274,7 @@ export default function Contact({
                       setFormState({ ...formState, message: e.target.value })
                     }
                     placeholder="Briefly describe your system requirements, scope, or timeline..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#272838] border border-[#7D6B91]/35 text-[#F7F8FC] placeholder-[#989FCE]/50 text-xs focus:border-accent-blue focus:bg-[#272838] focus:ring-1 focus:ring-accent-blue outline-none transition-colors resize-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/25 text-[#272838] placeholder-[#5D536B]/50 text-xs focus:border-accent-blue focus:bg-white focus:ring-1 focus:ring-accent-blue outline-none transition-colors resize-none"
                   ></textarea>
                 </div>
 

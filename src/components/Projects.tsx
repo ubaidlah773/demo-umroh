@@ -293,7 +293,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                       style={{ width: `${cardWidth}px` }}
                       animate={{
                         scale: isActive ? 1 : 0.94,
-                        opacity: isActive ? 1 : 0.45,
+                        opacity: isActive ? 1 : 0.65,
                       }}
                       transition={{ duration: 0.5, ease: "easeOut" }}
                       onClick={() => {
@@ -304,8 +304,8 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                       }}
                       className={`relative shrink-0 rounded-2xl md:rounded-3xl border transition-all duration-300 overflow-hidden flex flex-col group ${
                         isActive
-                          ? "bg-[#1E1F2D] border-[#7D6B91]/30 shadow-2xl ring-1 ring-[#347FC4]/25"
-                          : "bg-[#1E1F2D]/70 border-[#7D6B91]/20 hover:border-[#7D6B91]/40 hover:opacity-75 cursor-pointer shadow-sm"
+                          ? "bg-white border-[#7D6B91]/25 shadow-2xl ring-1 ring-[#347FC4]/25"
+                          : "bg-white/90 border-[#7D6B91]/20 hover:border-[#7D6B91]/40 hover:opacity-100 cursor-pointer shadow-md"
                       }`}
                       role="group"
                       aria-roledescription="slide"
@@ -315,27 +315,27 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                       {/* Left Visual + Right Info Grid */}
                       <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch h-full">
                         {/* Visual Side (Left) */}
-                        <div className="lg:col-span-7 xl:col-span-7 relative bg-[#161722] flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-[#7D6B91]/20">
+                        <div className="lg:col-span-7 xl:col-span-7 relative bg-[#F7F8FC] flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-[#7D6B91]/15">
                           {/* Browser / System Header */}
-                          <div className="px-4 py-2.5 border-b border-[#7D6B91]/20 bg-[#1A1B28]/90 backdrop-blur-sm flex items-center justify-between text-xs font-mono text-[#989FCE]">
+                          <div className="px-4 py-2.5 border-b border-[#7D6B91]/15 bg-white/95 backdrop-blur-sm flex items-center justify-between text-xs font-mono text-[#5D536B]">
                             <div className="flex items-center gap-1.5">
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#7D6B91]/60" />
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#989FCE]/60" />
-                              <div className="w-2.5 h-2.5 rounded-full bg-[#347FC4]/80" />
-                              <span className="ml-2 text-[11px] text-[#989FCE] hidden sm:inline truncate max-w-[200px]">
+                              <div className="w-2.5 h-2.5 rounded-full bg-[#7D6B91]/40" />
+                              <div className="w-2.5 h-2.5 rounded-full bg-[#989FCE]/40" />
+                              <div className="w-2.5 h-2.5 rounded-full bg-[#347FC4]/70" />
+                              <span className="ml-2 text-[11px] text-[#5D536B] hidden sm:inline truncate max-w-[200px]">
                                 app.{projectSlug}.internal
                               </span>
                             </div>
 
                             <div className="flex items-center gap-2">
-                              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-[#347FC4]/15 text-[#347FC4] border border-[#347FC4]/30 font-semibold">
+                              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-[#347FC4]/10 text-[#347FC4] border border-[#347FC4]/20 font-bold">
                                 {project.badgeText || (isDesignProject ? "Design Showcase" : "Production System")}
                               </span>
                             </div>
                           </div>
 
                           {/* Image / Mockup Stage */}
-                          <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[460px] w-full p-4 sm:p-6 lg:p-8 flex items-center justify-center overflow-hidden">
+                          <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-[460px] w-full p-4 sm:p-6 lg:p-8 flex items-center justify-center overflow-hidden bg-[#EEF0F8]/50">
                             {project.coverImage ? (
                               <img
                                 src={project.coverImage}
@@ -350,7 +350,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                           </div>
 
                           {/* Bottom Metadata Bar in Visual */}
-                          <div className="hidden sm:flex items-center justify-between px-6 py-3 border-t border-[#7D6B91]/20 bg-[#1A1B28]/80 text-xs font-mono text-[#989FCE]">
+                          <div className="hidden sm:flex items-center justify-between px-6 py-3 border-t border-[#7D6B91]/15 bg-white/95 text-xs font-mono text-[#5D536B]">
                             <span className="flex items-center gap-1.5">
                               <Calendar className="w-3.5 h-3.5 text-[#347FC4]" />
                               {project.period}
@@ -363,44 +363,44 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                         </div>
 
                         {/* Project Information Side (Right) */}
-                        <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between p-6 sm:p-8 lg:p-10 bg-[#1E1F2D] space-y-6">
+                        <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between p-6 sm:p-8 lg:p-10 bg-white space-y-6">
                           <div>
                             {/* Top Row: Number & Category */}
                             <div className="flex items-center justify-between gap-4 mb-4">
-                              <span className="text-xs sm:text-sm font-mono font-bold tracking-widest text-[#347FC4] bg-[#347FC4]/15 border border-[#347FC4]/30 px-3 py-1 rounded-md">
+                              <span className="text-xs sm:text-sm font-mono font-bold tracking-widest text-[#347FC4] bg-[#347FC4]/10 border border-[#347FC4]/25 px-3 py-1 rounded-md">
                                 {formattedNumber}
                               </span>
 
-                              <span className="text-xs font-mono uppercase tracking-wider text-[#989FCE] truncate font-semibold">
+                              <span className="text-xs font-mono uppercase tracking-wider text-[#5D536B] truncate font-semibold">
                                 {project.category || "Web Development"}
                               </span>
                             </div>
 
                             {/* Subtitle */}
-                            <span className="text-xs font-mono uppercase tracking-wider text-[#989FCE] block mb-1.5 font-semibold">
+                            <span className="text-xs font-mono uppercase tracking-wider text-[#5D536B] block mb-1.5 font-semibold">
                               {project.subtitle}
                             </span>
 
                             {/* Title */}
-                            <h3 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#F7F8FC] tracking-tight mb-4 group-hover:text-[#347FC4] transition-colors">
+                            <h3 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#272838] tracking-tight mb-4 group-hover:text-[#347FC4] transition-colors">
                               {project.title}
                             </h3>
 
                             {/* Short Description */}
-                            <p className="text-sm sm:text-base text-[#989FCE] leading-relaxed mb-6">
+                            <p className="text-sm sm:text-base text-[#5D536B] leading-relaxed mb-6 font-medium">
                               {project.description}
                             </p>
 
                             {/* Technology / Tools Tags */}
                             <div className="space-y-2">
-                              <span className="text-[11px] font-mono uppercase tracking-wider text-[#989FCE] block font-semibold">
-                                {isDesignProject ? "Design Tools & Methods" : "Core Architecture"}
+                              <span className="text-[11px] font-mono uppercase tracking-wider text-[#272838] block font-bold">
+                                {isDesignProject ? "Design Tools &amp; Methods" : "Core Architecture"}
                               </span>
                               <div className="flex flex-wrap items-center gap-2">
                                 {project.tags.slice(0, 5).map((tag) => (
                                   <span
                                     key={tag}
-                                    className="px-3 py-1 rounded-lg text-xs font-mono bg-[#272838] text-[#989FCE] border border-[#7D6B91]/25 group-hover:border-[#347FC4]/40 group-hover:text-[#F7F8FC] transition-colors"
+                                    className="px-3 py-1 rounded-lg text-xs font-mono bg-[#F7F8FC] text-[#272838] border border-[#7D6B91]/15 group-hover:border-[#347FC4]/40 transition-colors font-medium"
                                   >
                                     {tag}
                                   </span>
@@ -410,7 +410,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                           </div>
 
                           {/* Bottom CTA Buttons */}
-                          <div className="pt-6 border-t border-[#7D6B91]/20 flex flex-wrap items-center justify-between gap-3">
+                          <div className="pt-6 border-t border-[#7D6B91]/15 flex flex-wrap items-center justify-between gap-3">
                             <div className="flex flex-wrap items-center gap-2.5">
                               {/* Primary Action: View Case Study */}
                               <Link
@@ -426,7 +426,7 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform duration-200" />
                               </Link>
 
-                              {/* Dynamic Secondary Action: View Demo for WEB / View Design for DESIGN. Hidden completely if URL is empty */}
+                              {/* Dynamic Secondary Action */}
                               {hasLiveUrl && (
                                 <a
                                   href={project.projectUrl!}
@@ -437,15 +437,15 @@ export default function Projects({ projects: propProjects }: ProjectsProps = {})
                                       e.preventDefault();
                                     }
                                   }}
-                                  className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-[#272838] hover:bg-[#347FC4]/20 text-[#347FC4] border border-[#347FC4]/40 font-semibold text-xs sm:text-sm transition-all shadow-2xs cursor-pointer"
+                                  className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-[#F7F8FC] hover:bg-[#EEF0F8] text-[#272838] border border-[#7D6B91]/25 hover:border-[#347FC4]/50 font-semibold text-xs sm:text-sm transition-all shadow-2xs cursor-pointer"
                                 >
                                   <span>{isDesignProject ? "View Design" : "View Demo"}</span>
-                                  <ExternalLink className="w-3.5 h-3.5" />
+                                  <ExternalLink className="w-3.5 h-3.5 text-[#347FC4]" />
                                 </a>
                               )}
                             </div>
 
-                            <span className="text-xs font-mono text-[#989FCE] hidden sm:inline">
+                            <span className="text-xs font-mono text-[#5D536B] hidden sm:inline font-medium">
                               Architecture Overview ›
                             </span>
                           </div>

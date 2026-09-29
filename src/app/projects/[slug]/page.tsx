@@ -212,33 +212,33 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             </p>
 
             {/* Project Meta Metrics & Links Bar */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle">
               <div className="space-y-1">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#989FCE] font-semibold flex items-center gap-1.5">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#5D536B] font-semibold flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5 text-accent-blue" />
                   Timeline
                 </span>
-                <p className="text-sm font-bold text-[#F7F8FC] font-mono">
+                <p className="text-sm font-bold text-[#272838] font-mono">
                   {project.period}
                 </p>
               </div>
 
               <div className="space-y-1">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#989FCE] font-semibold flex items-center gap-1.5">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#5D536B] font-semibold flex items-center gap-1.5">
                   <UserCheck className="w-3.5 h-3.5 text-accent-blue" />
                   Role
                 </span>
-                <p className="text-sm font-bold text-[#F7F8FC]">
+                <p className="text-sm font-bold text-[#272838]">
                   {project.role}
                 </p>
               </div>
 
               <div className="space-y-1">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#989FCE] font-semibold flex items-center gap-1.5">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#5D536B] font-semibold flex items-center gap-1.5">
                   <Tag className="w-3.5 h-3.5 text-accent-blue" />
                   Classification
                 </span>
-                <p className="text-sm font-bold text-[#F7F8FC]">
+                <p className="text-sm font-bold text-[#272838]">
                   {project.category}
                 </p>
               </div>
@@ -262,7 +262,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#272838] hover:bg-[#2D2E42] text-[#F7F8FC] border border-[#7D6B91]/30 hover:border-accent-blue/50 text-xs font-semibold transition-all shadow-card-subtle"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#F7F8FC] hover:bg-[#EEF0F8] text-[#272838] border border-[#7D6B91]/25 hover:border-accent-blue/50 text-xs font-semibold transition-all shadow-card-subtle"
                   >
                     <Github className="w-3.5 h-3.5 text-accent-blue" />
                     <span>Repository</span>
@@ -328,17 +328,17 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                     {features.map((feature, idx) => (
                       <div
                         key={idx}
-                        className="p-5 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 hover:border-accent-blue/40 transition-all space-y-2"
+                        className="p-5 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle hover:border-accent-blue/40 transition-all space-y-2"
                       >
                         <div className="flex items-center gap-2">
-                          <span className="w-6 h-6 rounded-md bg-accent-blue/15 text-accent-blue text-xs font-mono font-bold flex items-center justify-center">
+                          <span className="w-6 h-6 rounded-md bg-accent-blue/10 text-accent-blue text-xs font-mono font-bold flex items-center justify-center">
                             {idx + 1}
                           </span>
-                          <h4 className="font-bold text-[#F7F8FC] text-sm">
+                          <h4 className="font-bold text-[#272838] text-sm">
                             {feature.title}
                           </h4>
                         </div>
-                        <p className="text-xs text-[#989FCE] leading-relaxed pl-8">
+                        <p className="text-xs text-[#5D536B] leading-relaxed pl-8">
                           {feature.description}
                         </p>
                       </div>
@@ -358,10 +358,10 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                     {devHighlights.map((highlight, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3 p-4 rounded-xl bg-[#1E1F2D] border border-[#7D6B91]/25"
+                        className="flex items-start gap-3 p-4 rounded-xl bg-white border border-[#7D6B91]/20 shadow-card-subtle"
                       >
                         <CheckCircle2 className="w-4 h-4 text-accent-blue shrink-0 mt-0.5" />
-                        <span className="text-sm text-[#989FCE] leading-relaxed font-medium">
+                        <span className="text-sm text-[#272838] leading-relaxed font-medium">
                           {highlight}
                         </span>
                       </div>
@@ -374,10 +374,10 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             {/* Right 4 Cols: Sidebar Tech Specs */}
             <div className="lg:col-span-4 space-y-8">
               {/* Technology Stack Pill Card */}
-              <div className="p-6 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 space-y-5">
-                <div className="flex items-center gap-2 border-b border-[#7D6B91]/20 pb-4">
+              <div className="p-6 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle space-y-5">
+                <div className="flex items-center gap-2 border-b border-[#7D6B91]/15 pb-4">
                   <Code2 className="w-4 h-4 text-accent-blue" />
-                  <h4 className="font-display font-bold text-[#F7F8FC] text-sm uppercase tracking-wider">
+                  <h4 className="font-display font-bold text-[#272838] text-sm uppercase tracking-wider">
                     Technologies Deployed
                   </h4>
                 </div>
@@ -386,7 +386,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                   {techList.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 rounded-lg bg-[#272838] border border-[#7D6B91]/30 text-xs font-mono text-[#F7F8FC] font-medium hover:border-accent-blue/50 transition-colors"
+                      className="px-3 py-1.5 rounded-lg bg-[#F7F8FC] border border-[#7D6B91]/20 text-xs font-mono text-[#272838] font-medium hover:border-accent-blue/50 transition-colors"
                     >
                       {tech}
                     </span>
@@ -396,10 +396,10 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
 
               {/* Project Deliverables Check */}
               {highlights.length > 0 && (
-                <div className="p-6 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 space-y-4">
-                  <div className="flex items-center gap-2 border-b border-[#7D6B91]/20 pb-4">
+                <div className="p-6 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle space-y-4">
+                  <div className="flex items-center gap-2 border-b border-[#7D6B91]/15 pb-4">
                     <FolderKanban className="w-4 h-4 text-accent-blue" />
-                    <h4 className="font-display font-bold text-[#F7F8FC] text-sm uppercase tracking-wider">
+                    <h4 className="font-display font-bold text-[#272838] text-sm uppercase tracking-wider">
                       Key Deliverables
                     </h4>
                   </div>
@@ -408,7 +408,7 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
                     {highlights.map((item, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-2 text-xs text-[#989FCE]"
+                        className="flex items-start gap-2 text-xs text-[#5D536B]"
                       >
                         <span className="text-accent-blue font-bold font-mono">
                           ›
@@ -421,11 +421,11 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
               )}
 
               {/* Contact CTA Card */}
-              <div className="p-6 rounded-2xl bg-[#1E1F2D] border border-accent-blue/40 space-y-4">
-                <h4 className="font-display font-bold text-[#F7F8FC] text-base">
+              <div className="p-6 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle space-y-4">
+                <h4 className="font-display font-bold text-[#272838] text-base">
                   Have a similar platform requirement?
                 </h4>
-                <p className="text-xs text-[#989FCE] leading-relaxed">
+                <p className="text-xs text-[#5D536B] leading-relaxed">
                   Let&apos;s collaborate to design scalable database architectures, responsive interfaces, and production workflows.
                 </p>
                 <Link
@@ -444,13 +444,13 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             {prevProject ? (
               <Link
                 href={`/projects/${prevProject.slug}`}
-                className="group p-5 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 hover:border-accent-blue/40 transition-all flex flex-col justify-between"
+                className="group p-5 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle hover:border-accent-blue/40 transition-all flex flex-col justify-between"
               >
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#989FCE] flex items-center gap-1.5 mb-2 font-medium">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#5D536B] flex items-center gap-1.5 mb-2 font-medium">
                   <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
                   Previous Case Study
                 </span>
-                <span className="font-display font-bold text-[#F7F8FC] group-hover:text-accent-blue transition-colors">
+                <span className="font-display font-bold text-[#272838] group-hover:text-accent-blue transition-colors">
                   {prevProject.number} — {prevProject.title}
                 </span>
               </Link>
@@ -461,13 +461,13 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
             {nextProject && (
               <Link
                 href={`/projects/${nextProject.slug}`}
-                className="group p-5 rounded-2xl bg-[#1E1F2D] border border-[#7D6B91]/25 hover:border-accent-blue/40 transition-all flex flex-col justify-between sm:items-end sm:text-right"
+                className="group p-5 rounded-2xl bg-white border border-[#7D6B91]/20 shadow-card-subtle hover:border-accent-blue/40 transition-all flex flex-col justify-between sm:items-end sm:text-right"
               >
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#989FCE] flex items-center gap-1.5 mb-2 font-medium">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#5D536B] flex items-center gap-1.5 mb-2 font-medium">
                   Next Case Study
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <span className="font-display font-bold text-[#F7F8FC] group-hover:text-accent-blue transition-colors">
+                <span className="font-display font-bold text-[#272838] group-hover:text-accent-blue transition-colors">
                   {nextProject.number} — {nextProject.title}
                 </span>
               </Link>
