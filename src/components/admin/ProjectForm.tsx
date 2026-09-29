@@ -666,6 +666,8 @@ export default function ProjectForm({ initialData, isNew = false }: ProjectFormP
                 <option value="demo-lpk">Vocational Training Center</option>
                 <option value="demo-umroh">Travel &amp; Pilgrimage Portal</option>
                 <option value="coffee-shop">Modern Café &amp; Ordering Experience</option>
+                <option value="agent-properti">Property Agent Website</option>
+                <option value="undangan-online">Wedding Invitation Website</option>
                 <option value="custom">Clean Architecture Card</option>
               </select>
             </div>

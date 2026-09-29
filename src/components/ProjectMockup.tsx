@@ -19,10 +19,23 @@ import {
   ShoppingBag,
   Users,
   Compass,
+  Home,
+  Heart,
+  MapPin,
+  Sparkles,
 } from "lucide-react";
 
 interface ProjectMockupProps {
-  type: "belajar-cerdas" | "lapas-tuban" | "queue-system" | "demo-lpk" | "demo-umroh" | "coffee-shop" | string;
+  type:
+    | "belajar-cerdas"
+    | "lapas-tuban"
+    | "queue-system"
+    | "demo-lpk"
+    | "demo-umroh"
+    | "coffee-shop"
+    | "agent-properti"
+    | "undangan-online"
+    | string;
 }
 
 export default function ProjectMockup({ type }: ProjectMockupProps) {
@@ -31,6 +44,9 @@ export default function ProjectMockup({ type }: ProjectMockupProps) {
   const [activeCourse, setActiveCourse] = useState("Web Dev");
   const [activeUmrohTab, setActiveUmrohTab] = useState("Paket 9 Hari");
   const [activeCoffeeItem, setActiveCoffeeItem] = useState("Espresso");
+  const [activePropertyFilter, setActivePropertyFilter] = useState("Semua");
+  const [activeWeddingTab, setActiveWeddingTab] = useState("Acara");
+  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
 
   if (type === "belajar-cerdas") {
     return (
@@ -599,6 +615,237 @@ export default function ProjectMockup({ type }: ProjectMockupProps) {
               <div className="p-2 rounded-lg bg-[#347FC4] text-center text-white font-mono text-[10px] font-semibold shadow-xs">
                 Checkout Online
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "agent-properti") {
+    return (
+      <div className="w-full h-full rounded-2xl bg-white border border-[#7D6B91]/15 shadow-sm overflow-hidden flex flex-col font-sans select-none text-xs">
+        {/* Browser Top Navigation Bar */}
+        <div className="bg-[#EEF0F8] px-4 py-2.5 border-b border-[#7D6B91]/15 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#7D6B91]/40"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#989FCE]/50"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#347FC4]/70"></span>
+            <div className="ml-3 px-3 py-1 rounded-md bg-white border border-[#7D6B91]/15 text-[11px] font-mono text-[#5D536B] flex items-center gap-1.5 shadow-2xs">
+              <span className="text-[#347FC4]">https://</span>
+              <span className="text-[#272838]">agentproperti.id/listings</span>
+            </div>
+          </div>
+          <span className="font-mono text-[10px] text-[#347FC4] font-semibold px-2 py-0.5 rounded bg-[#347FC4]/10 border border-[#347FC4]/25">
+            Property Agent Website
+          </span>
+        </div>
+
+        {/* Body */}
+        <div className="p-4 sm:p-5 flex-1 flex flex-col gap-4 bg-[#F7F8FC]">
+          {/* Filter Categories Bar */}
+          <div className="flex items-center justify-between bg-white p-1.5 rounded-xl border border-[#7D6B91]/15 shadow-2xs">
+            <div className="flex items-center gap-1">
+              {["Semua", "Rumah", "Ruko", "Villa"].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActivePropertyFilter(cat);
+                  }}
+                  className={`px-3 py-1 rounded-lg text-[11px] font-medium transition-all ${
+                    activePropertyFilter === cat
+                      ? "bg-[#347FC4] text-white shadow-xs"
+                      : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <span className="text-[10px] font-mono text-[#5D536B] hidden sm:inline px-2">
+              Status: <strong className="text-[#347FC4]">Listing Terverifikasi</strong>
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 flex-1">
+            {/* Left Column: Property Listing Items */}
+            <div className="sm:col-span-8 p-3.5 rounded-xl bg-white border border-[#7D6B91]/15 shadow-2xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-semibold text-[#272838] text-xs flex items-center gap-1.5">
+                    <Home className="w-3.5 h-3.5 text-[#347FC4]" />
+                    Katalog Properti Unggulan
+                  </span>
+                  <span className="text-[10px] font-mono text-[#347FC4] bg-[#347FC4]/10 px-2 py-0.5 rounded font-bold">
+                    Filter: {activePropertyFilter}
+                  </span>
+                </div>
+                <div className="space-y-2 text-[11px] mt-3">
+                  <div className="p-2.5 rounded-lg bg-[#F7F8FC] border border-[#7D6B91]/10 flex items-center justify-between">
+                    <div>
+                      <span className="font-semibold text-[#272838] block">Cluster Harmoni Boulevard — Tipe 72</span>
+                      <span className="text-[10px] text-[#5D536B]">3 KT • 2 KM • Luas Tanah 120m² • Sertifikat SHM</span>
+                    </div>
+                    <span className="text-[#347FC4] font-mono font-bold text-xs">Tersedia</span>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-[#F7F8FC] border border-[#7D6B91]/10 flex items-center justify-between">
+                    <div>
+                      <span className="font-semibold text-[#272838] block">Ruko Sentra Bisnis — 2 Lantai</span>
+                      <span className="text-[10px] text-[#5D536B]">Akses Jalan Utama • Area Parkir Luas • Lokasi Pusat Kota</span>
+                    </div>
+                    <span className="text-[#347FC4] font-mono font-bold text-xs">Siap Huni</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-[#7D6B91]/10 flex items-center justify-between text-[10px] text-[#5D536B]">
+                <span>Fokus: Presentation Listing &amp; Pengalaman Pengguna</span>
+                <span className="text-[#347FC4] font-semibold">Responsive Web Design</span>
+              </div>
+            </div>
+
+            {/* Right Column: Contact & Quick Inquiry */}
+            <div className="sm:col-span-4 p-3.5 rounded-xl bg-white border border-[#7D6B91]/15 shadow-2xs flex flex-col justify-between">
+              <div>
+                <span className="font-semibold text-[#272838] text-xs block mb-2 flex items-center gap-1.5">
+                  <Building2 className="w-3.5 h-3.5 text-[#347FC4]" />
+                  Informasi Unit
+                </span>
+                <div className="space-y-2 text-[11px] py-1 font-mono">
+                  <div className="flex justify-between">
+                    <span className="text-[#5D536B]">Listing:</span>
+                    <span className="text-[#272838] font-bold">Terstruktur</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#5D536B]">Navigasi:</span>
+                    <span className="text-[#347FC4] font-semibold">User-Friendly</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#5D536B]">Tampilan:</span>
+                    <span className="text-[#272838]">Modern Clean</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-2 rounded-lg bg-[#347FC4] text-center text-white font-mono text-[10px] font-semibold shadow-xs">
+                Detail Properti
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "undangan-online") {
+    return (
+      <div className="w-full h-full rounded-2xl bg-white border border-[#7D6B91]/15 shadow-sm overflow-hidden flex flex-col font-sans select-none text-xs">
+        {/* Browser Top Navigation Bar */}
+        <div className="bg-[#EEF0F8] px-4 py-2.5 border-b border-[#7D6B91]/15 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#7D6B91]/40"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#989FCE]/50"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#347FC4]/70"></span>
+            <div className="ml-3 px-3 py-1 rounded-md bg-white border border-[#7D6B91]/15 text-[11px] font-mono text-[#5D536B] flex items-center gap-1.5 shadow-2xs">
+              <span className="text-[#347FC4]">https://</span>
+              <span className="text-[#272838]">undangan.me/the-wedding</span>
+            </div>
+          </div>
+          <span className="font-mono text-[10px] text-[#347FC4] font-semibold px-2 py-0.5 rounded bg-[#347FC4]/10 border border-[#347FC4]/25">
+            Wedding Invitation Website
+          </span>
+        </div>
+
+        {/* Body */}
+        <div className="p-4 sm:p-5 flex-1 flex flex-col gap-4 bg-[#F7F8FC]">
+          {/* Navigation Bar inside Undangan */}
+          <div className="flex items-center justify-between bg-white p-1.5 rounded-xl border border-[#7D6B91]/15 shadow-2xs">
+            <div className="flex items-center gap-1">
+              {["Sampul", "Mempelai", "Acara", "Galeri"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveWeddingTab(tab);
+                  }}
+                  className={`px-3 py-1 rounded-lg text-[11px] font-medium transition-all ${
+                    activeWeddingTab === tab
+                      ? "bg-[#347FC4] text-white shadow-xs"
+                      : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+            <span className="text-[10px] font-mono text-[#5D536B] hidden sm:inline px-2 flex items-center gap-1">
+              <Sparkles className="w-3 h-3 text-[#347FC4]" />
+              Visual Storytelling &amp; Animasi
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 flex-1">
+            {/* Left Column: Interactive Story & Event Schedule */}
+            <div className="sm:col-span-7 p-3.5 rounded-xl bg-white border border-[#7D6B91]/15 shadow-2xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-semibold text-[#272838] text-xs flex items-center gap-1.5">
+                    <Heart className="w-3.5 h-3.5 text-[#347FC4]" />
+                    Pernikahan &amp; Rangkaian Acara
+                  </span>
+                  <span className="text-[10px] font-mono text-[#347FC4] bg-[#347FC4]/10 px-2 py-0.5 rounded font-bold">
+                    Animasi Pembuka
+                  </span>
+                </div>
+                <div className="space-y-2 text-[11px] mt-2">
+                  <div className="p-2.5 rounded-lg bg-[#EEF0F8] border border-[#7D6B91]/15 flex items-center justify-between">
+                    <div>
+                      <span className="font-semibold text-[#272838] block">Akad Nikah</span>
+                      <span className="text-[10px] text-[#5D536B]">08:00 – 10:00 WIB • Khidmat &amp; Sakral</span>
+                    </div>
+                    <span className="text-[#347FC4] font-mono font-bold text-xs">Pagi</span>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-[#EEF0F8] border border-[#7D6B91]/15 flex items-center justify-between">
+                    <div>
+                      <span className="font-semibold text-[#272838] block">Resepsi Pernikahan</span>
+                      <span className="text-[10px] text-[#5D536B]">11:00 – 14:00 WIB • Grand Ballroom</span>
+                    </div>
+                    <span className="text-[#347FC4] font-mono font-bold text-xs">Siang</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-[#7D6B91]/10 flex items-center justify-between text-[10px] text-[#5D536B]">
+                <span>Desain Adaptif Sesuai Tema</span>
+                <span className="text-[#347FC4] font-semibold">HTML • CSS • JavaScript</span>
+              </div>
+            </div>
+
+            {/* Right Column: Interactive Envelope Reveal */}
+            <div className="sm:col-span-5 p-3.5 rounded-xl bg-white border border-[#7D6B91]/15 shadow-2xs flex flex-col justify-between">
+              <div>
+                <span className="font-semibold text-[#272838] text-xs block mb-2 flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#347FC4]" />
+                  Sampul Undangan
+                </span>
+                <div className="p-3 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/15 text-center my-1">
+                  <span className="text-[10px] font-serif italic text-[#7D6B91] block">The Wedding of</span>
+                  <span className="text-sm font-bold text-[#272838] font-serif block mt-0.5">Mempelai Pria &amp; Wanita</span>
+                  <span className="text-[10px] font-mono text-[#347FC4] block mt-1">Sabtu, 14 Februari 2026</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsEnvelopeOpen(!isEnvelopeOpen);
+                }}
+                className="p-2 rounded-lg bg-[#347FC4] text-center text-white font-mono text-[10px] font-semibold shadow-xs hover:bg-[#2C6EA8] transition-colors cursor-pointer"
+              >
+                {isEnvelopeOpen ? "Tutup Sampul" : "Buka Undangan"}
+              </button>
             </div>
           </div>
         </div>

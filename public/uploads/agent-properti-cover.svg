@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bg-Property" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#272838"/>
+      <stop offset="100%" stop-color="#1B1C27"/>
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#347FC4"/>
+      <stop offset="100%" stop-color="#989FCE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Background -->
+  <rect width="1200" height="800" fill="url(#bg-Property)"/>
+
+  <!-- Subtle Blueprint Tech Grid -->
+  <g stroke="rgba(152,159,206,0.06)" stroke-width="1">
+    <line x1="0" y1="80" x2="1200" y2="80"/>
+    <line x1="0" y1="160" x2="1200" y2="160"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="320" x2="1200" y2="320"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="480" x2="1200" y2="480"/>
+    <line x1="0" y1="560" x2="1200" y2="560"/>
+    <line x1="0" y1="640" x2="1200" y2="640"/>
+    <line x1="0" y1="720" x2="1200" y2="720"/>
+    <line x1="100" y1="0" x2="100" y2="800"/>
+    <line x1="200" y1="0" x2="200" y2="800"/>
+    <line x1="300" y1="0" x2="300" y2="800"/>
+    <line x1="400" y1="0" x2="400" y2="800"/>
+    <line x1="500" y1="0" x2="500" y2="800"/>
+    <line x1="600" y1="0" x2="600" y2="800"/>
+    <line x1="700" y1="0" x2="700" y2="800"/>
+    <line x1="800" y1="0" x2="800" y2="800"/>
+    <line x1="900" y1="0" x2="900" y2="800"/>
+    <line x1="1000" y1="0" x2="1000" y2="800"/>
+    <line x1="1100" y1="0" x2="1100" y2="800"/>
+  </g>
+
+  <!-- Browser Container Card -->
+  <rect x="70" y="60" width="1060" height="680" rx="16" fill="#1E1F2C" stroke="#7D6B91" stroke-opacity="0.3" stroke-width="1.5"/>
+
+  <!-- Top Browser Bar -->
+  <rect x="70" y="60" width="1060" height="54" rx="16" fill="#2E2C40"/>
+  <circle cx="106" cy="87" r="6" fill="#EF4444"/>
+  <circle cx="128" cy="87" r="6" fill="#F59E0B"/>
+  <circle cx="150" cy="87" r="6" fill="#10B981"/>
+  
+  <rect x="180" y="74" width="460" height="26" rx="6" fill="#1E1F2C" stroke="#7D6B91" stroke-opacity="0.25"/>
+  <text x="195" y="91" fill="#989FCE" font-family="monospace" font-size="12">https://agentproperti.id/listings • Property Agent Website</text>
+  
+  <rect x="940" y="74" width="160" height="26" rx="6" fill="rgba(52,127,196,0.2)" stroke="#347FC4" stroke-opacity="0.5"/>
+  <text x="1020" y="91" fill="#347FC4" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">WEB PLATFORM</text>
+
+  <!-- Hero Header Banner inside Mockup -->
+  <rect x="105" y="140" width="990" height="115" rx="12" fill="#272838" stroke="#7D6B91" stroke-opacity="0.25"/>
+  <text x="135" y="185" fill="#F7F8FC" font-family="system-ui, sans-serif" font-weight="bold" font-size="28">Agent Properti — Property Showcase &amp; Listing</text>
+  <text x="135" y="218" fill="#989FCE" font-family="system-ui, sans-serif" font-size="15">Presentation Listing Properti, Informasi Lengkap Unit &amp; Pengalaman Pengguna Responsif</text>
+  
+  <rect x="850" y="165" width="215" height="34" rx="8" fill="rgba(52,127,196,0.15)" stroke="#347FC4" stroke-opacity="0.3"/>
+  <text x="957" y="187" fill="#347FC4" font-family="monospace" font-size="12" text-anchor="middle" font-weight="bold">UI/UX &amp; Web Dev</text>
+
+  <!-- Main Content Grid -->
+  <!-- Left Side: Property Listings Showcase -->
+  <rect x="105" y="280" width="630" height="425" rx="12" fill="#252636" stroke="#7D6B91" stroke-opacity="0.25"/>
+  
+  <!-- Category Bar -->
+  <rect x="130" y="305" width="580" height="44" rx="8" fill="#2E2C40"/>
+  <text x="150" y="332" fill="#347FC4" font-family="monospace" font-size="13" font-weight="bold">&gt; Kategori: Semua Properti | Rumah Tinggal | Ruko Niaga | Villa</text>
+
+  <!-- Listing Card 1 -->
+  <rect x="130" y="365" width="580" height="95" rx="8" fill="#1C1D2A" stroke="#7D6B91" stroke-opacity="0.2"/>
+  <rect x="145" y="380" width="95" height="65" rx="6" fill="#323348"/>
+  <text x="192" y="418" fill="#989FCE" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle" font-weight="bold">FOTO UNIT</text>
+  <text x="255" y="402" fill="#F7F8FC" font-family="system-ui, sans-serif" font-weight="bold" font-size="15">Cluster Harmoni Boulevard — Tipe 72/120</text>
+  <text x="255" y="425" fill="#989FCE" font-family="system-ui, sans-serif" font-size="12">3 Kamar Tidur • 2 Kamar Mandi • Carport 2 Mobil • SHM</text>
+  <text x="255" y="445" fill="#347FC4" font-family="monospace" font-weight="bold" font-size="13">Status: Unit Tersedia • Listing Terverifikasi</text>
+
+  <!-- Listing Card 2 -->
+  <rect x="130" y="475" width="580" height="95" rx="8" fill="#1C1D2A" stroke="#7D6B91" stroke-opacity="0.2"/>
+  <rect x="145" y="490" width="95" height="65" rx="6" fill="#323348"/>
+  <text x="192" y="528" fill="#989FCE" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle" font-weight="bold">FOTO UNIT</text>
+  <text x="255" y="512" fill="#F7F8FC" font-family="system-ui, sans-serif" font-weight="bold" font-size="15">Ruko Bisnis Sentra Niaga — Lokasi Strategis</text>
+  <text x="255" y="535" fill="#989FCE" font-family="system-ui, sans-serif" font-size="12">2 Lantai • Luas Bangunan 140m² • Area Parkir Luas • Hadap Jalan Utama</text>
+  <text x="255" y="555" fill="#347FC4" font-family="monospace" font-weight="bold" font-size="13">Status: Siap Huni • Lokasi Pusat Kota</text>
+
+  <!-- Listing Card 3 -->
+  <rect x="130" y="585" width="580" height="95" rx="8" fill="#1C1D2A" stroke="#7D6B91" stroke-opacity="0.2"/>
+  <rect x="145" y="600" width="95" height="65" rx="6" fill="#323348"/>
+  <text x="192" y="638" fill="#989FCE" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle" font-weight="bold">FOTO UNIT</text>
+  <text x="255" y="622" fill="#F7F8FC" font-family="system-ui, sans-serif" font-weight="bold" font-size="15">Grand Emerald Residence — Modern Minimalis</text>
+  <text x="255" y="645" fill="#989FCE" font-family="system-ui, sans-serif" font-size="12">Desain Ramah Lingkungan • Keamanan 24 Jam • One Gate System</text>
+  <text x="255" y="665" fill="#347FC4" font-family="monospace" font-weight="bold" font-size="13">Status: Booking Terbuka • Promo Spesial</text>
+
+  <!-- Right Side: Details & Tech Overview -->
+  <rect x="760" y="280" width="335" height="425" rx="12" fill="#252636" stroke="#7D6B91" stroke-opacity="0.25"/>
+  
+  <rect x="785" y="305" width="285" height="40" rx="8" fill="#2E2C40"/>
+  <text x="805" y="330" fill="#F7F8FC" font-family="system-ui, sans-serif" font-size="13" font-weight="bold">Karakteristik &amp; Arsitektur</text>
+
+  <rect x="785" y="360" width="285" height="150" rx="8" fill="#1C1D2A" stroke="#7D6B91" stroke-opacity="0.2"/>
+  <text x="805" y="388" fill="#347FC4" font-family="monospace" font-size="12" font-weight="bold">FOKUS UTAMA:</text>
+  <text x="805" y="415" fill="#F7F8FC" font-family="system-ui, sans-serif" font-size="12">• Presentation listing terstruktur</text>
+  <text x="805" y="442" fill="#F7F8FC" font-family="system-ui, sans-serif" font-size="12">• Informasi detail &amp; spesifikasi</text>
+  <text x="805" y="469" fill="#F7F8FC" font-family="system-ui, sans-serif" font-size="12">• Navigasi intuitif &amp; responsif</text>
+  <text x="805" y="496" fill="#F7F8FC" font-family="system-ui, sans-serif" font-size="12">• Pengalaman pengguna optimal</text>
+
+  <rect x="785" y="525" width="285" height="155" rx="8" fill="#1C1D2A" stroke="#7D6B91" stroke-opacity="0.2"/>
+  <text x="805" y="555" fill="#347FC4" font-family="monospace" font-size="12" font-weight="bold">TEKNOLOGI &amp; STACK:</text>
+  <rect x="805" y="572" width="245" height="26" rx="6" fill="#2E2C40"/>
+  <text x="927" y="589" fill="#989FCE" font-family="monospace" font-size="11" text-anchor="middle">Web Development</text>
+  <rect x="805" y="606" width="245" height="26" rx="6" fill="#2E2C40"/>
+  <text x="927" y="623" fill="#989FCE" font-family="monospace" font-size="11" text-anchor="middle">UI / UX Design</text>
+  <rect x="805" y="640" width="245" height="26" rx="6" fill="#2E2C40"/>
+  <text x="927" y="657" fill="#989FCE" font-family="monospace" font-size="11" text-anchor="middle">Responsive Web Layout</text>
+</svg>

@@ -379,6 +379,114 @@ export const projectsData: ProjectItem[] = [
       "Crafted custom CSS animations and responsive breakpoints without relying on heavy external libraries.",
     ],
   },
+  {
+    id: "agent-properti",
+    slug: "agent-properti",
+    number: "07",
+    title: "Agent Properti",
+    subtitle: "Property Agent Website",
+    period: "2026",
+    role: "Full Stack Developer",
+    category: "WEB",
+    tools: "Web Development, UI/UX, Responsive Design",
+    projectUrl: "",
+    githubUrl: "",
+    tags: ["Web Development", "UI/UX", "Responsive Design"],
+    description:
+      "Website profesional untuk agen properti dengan fokus pada presentation listing, informasi properti, dan pengalaman pengguna yang mudah digunakan.",
+    highlights: [
+      "Presentation listing properti dengan tampilan visual modern",
+      "Penyajian detail spesifikasi unit dan fasilitas secara terstruktur",
+      "Pengalaman pengguna yang intuitif dan mudah dinavigasi",
+      "Tata letak responsif untuk kenyamanan akses di seluruh perangkat",
+    ],
+    mockupType: "agent-properti",
+    badgeText: "Property Agent Website",
+    coverImage: "/uploads/agent-properti-cover.svg",
+    overview:
+      "Website profesional untuk agen properti dengan fokus pada presentation listing, informasi properti, dan pengalaman pengguna yang mudah digunakan.",
+    technologies: {
+      frontend: ["Web Development", "UI/UX", "Responsive Design"],
+      backend: ["Web Architecture"],
+      database: ["Structured Property Data"],
+      infrastructure: ["Web Hosting"],
+    },
+    features: [
+      {
+        title: "Presentation Listing Properti",
+        description:
+          "Katalog listing properti yang tertata dengan rapi, informatif, dan memudahkan pengunjung menemukan unit yang dicari.",
+      },
+      {
+        title: "Informasi Detail Properti",
+        description:
+          "Penyajian spesifikasi properti, fasilitas, lokasi, dan galeri visual yang lengkap.",
+      },
+      {
+        title: "Pengalaman Pengguna Responsif",
+        description:
+          "Aksesibilitas dan navigasi yang dioptimalkan untuk kenyamanan penjelajahan di perangkat mobile maupun desktop.",
+      },
+    ],
+    developmentHighlights: [
+      "Penerapan prinsip UI/UX untuk pengalaman browsing properti yang lancar dan ramah pengguna.",
+      "Struktur layout responsif yang adaptif terhadap berbagai resolusi layar.",
+    ],
+  },
+  {
+    id: "undangan-online",
+    slug: "undangan-online",
+    number: "08",
+    title: "Undangan Online",
+    subtitle: "Wedding Invitation Website",
+    period: "2026",
+    role: "Full Stack Developer",
+    category: "WEB",
+    tools: "HTML, CSS, JavaScript, Responsive Design, Animation",
+    projectUrl: "",
+    githubUrl: "",
+    tags: ["HTML", "CSS", "JavaScript", "Responsive Design", "Animation"],
+    description:
+      "Website undangan pernikahan interaktif dengan visual storytelling, animasi pembukaan, galeri, informasi acara, dan desain yang dapat disesuaikan dengan tema pernikahan.",
+    highlights: [
+      "Visual storytelling dengan animasi pembukaan interaktif",
+      "Galeri foto momen spesial dan informasi detail acara",
+      "Desain adaptif dan customizable sesuai tema pernikahan",
+      "Implementasi interaktivitas berbasis JavaScript dan CSS animation",
+    ],
+    mockupType: "undangan-online",
+    badgeText: "Wedding Invitation Website",
+    coverImage: "/uploads/undangan-online-cover.svg",
+    overview:
+      "Website undangan pernikahan interaktif dengan visual storytelling, animasi pembukaan, galeri, informasi acara, dan desain yang dapat disesuaikan dengan tema pernikahan.",
+    technologies: {
+      frontend: ["HTML", "CSS", "JavaScript", "Responsive Design", "Animation"],
+      backend: ["Static Web Architecture"],
+      database: ["Client State Handling"],
+      infrastructure: ["Web Hosting"],
+    },
+    features: [
+      {
+        title: "Animasi Pembukaan & Visual Storytelling",
+        description:
+          "Pengalaman sambutan interaktif dengan transisi animasi pembuka undangan yang berkesan.",
+      },
+      {
+        title: "Galeri Foto & Momen Acara",
+        description:
+          "Penampilan galeri foto berkualitas tinggi yang terintegrasi dengan layout elegan.",
+      },
+      {
+        title: "Informasi Acara & Rute Lokasi",
+        description:
+          "Penyampaian tanggal, waktu akad & resepsi, serta panduan lokasi acara yang jelas bagi tamu undangan.",
+      },
+    ],
+    developmentHighlights: [
+      "Penerapan animasi transisi CSS dan interaktivitas JavaScript yang halus tanpa memberatkan performa.",
+      "Desain responsif yang memastikan kenyamanan tamu saat membuka undangan di perangkat ponsel.",
+    ],
+  },
 ];
 
 export const experienceData: ExperienceItem[] = [
