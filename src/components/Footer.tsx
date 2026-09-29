@@ -1,200 +1,141 @@
 "use client";
 
 import React from "react";
-import { siteConfig, getWhatsAppUrl } from "@/config/siteConfig";
-import {
-  Compass,
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Instagram,
-  Facebook,
-  ShieldCheck,
-  ArrowUp,
-  MessageCircle,
-} from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { personalInfo as fallbackPersonalInfo } from "@/data/portfolioData";
+import { PersonalInfo } from "@/types/portfolio";
+import { ArrowUp, Github, Linkedin, Mail, MapPin } from "lucide-react";
 
-export const Footer: React.FC = () => {
+export default function Footer({
+  personalInfo: propPersonalInfo,
+}: {
+  personalInfo?: PersonalInfo;
+} = {}) {
+  const personalInfo = propPersonalInfo || fallbackPersonalInfo;
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
+    { name: "Skills", href: "#skills" },
+    { name: "Education", href: "#education" },
+    { name: "Contact", href: "#contact" },
+  ];
+
   return (
-    <footer id="kontak" className="bg-emerald-950 text-white border-t border-gold-500/20 pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-emerald-900">
-          {/* Column 1: DEMO UMROH & Description */}
-          <div className="lg:col-span-4 space-y-4">
+    <footer className="bg-white border-t border-[#7D6B91]/15 text-[#5D536B] pt-16 pb-12">
+      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#7D6B91]/15 items-start">
+          {/* Brand Info */}
+          <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-emerald-950 shadow-md">
-                <Compass className="w-5 h-5 text-emerald-950" />
+              <div className="w-10 h-10 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/20 flex items-center justify-center p-1.5 shadow-card-subtle">
+                <Image
+                  src="/brand/ubai-logo-dark.png"
+                  alt="UBAI Logo"
+                  width={36}
+                  height={25}
+                  className="w-auto h-6 object-contain"
+                />
               </div>
               <div>
-                <span className="font-serif text-2xl font-black tracking-tight text-white block">
-                  {siteConfig.name}
+                <span className="font-display font-extrabold text-base text-[#272838] block tracking-tight">
+                  {personalInfo.name}
                 </span>
-                <span className="text-[10px] tracking-wider text-gold-400 font-semibold uppercase block">
-                  {siteConfig.tagline}
+                <span className="text-xs font-mono text-[#5D536B] font-medium">
+                  Full Stack Developer
                 </span>
               </div>
             </div>
 
-            <p className="font-serif italic text-gold-300 text-sm">
-              &ldquo;Contoh Website Travel Umroh &amp; Haji&rdquo;
+            <p className="text-xs sm:text-sm text-[#5D536B] leading-relaxed max-w-sm">
+              Engineering database-driven web applications and scalable digital platforms built with Laravel, JavaScript, Node.js, and MySQL.
             </p>
 
-            <p className="text-xs sm:text-sm text-emerald-200/80 leading-relaxed">
-              Solusi sistem website profesional untuk biro perjalanan ibadah Umroh dan Haji.
-              Menyajikan informasi paket secara transparan, jadwal terstruktur, dan konversi cepat ke WhatsApp.
-            </p>
+            <div className="flex items-center gap-1.5 text-xs font-mono text-[#5D536B]">
+              <MapPin className="w-3.5 h-3.5 text-accent-blue" />
+              <span>{personalInfo.location}</span>
+            </div>
+          </div>
 
-            {/* Social Links */}
-            <div className="pt-2 flex items-center gap-3">
-              {siteConfig.socials.map((soc) => (
-                <a
-                  key={soc.name}
-                  href={soc.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-emerald-900/80 border border-emerald-800 hover:border-gold-400/50 hover:bg-gold-500/20 flex items-center justify-center text-emerald-200 hover:text-gold-300 transition-colors"
-                  aria-label={soc.name}
+          {/* Quick Navigation Links */}
+          <div className="md:col-span-4 space-y-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#272838] font-bold block">
+              Navigation
+            </span>
+            <div className="grid grid-cols-2 gap-2 text-xs font-medium">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-[#5D536B] hover:text-accent-blue transition-colors py-1"
                 >
-                  {soc.name === "Instagram" && <Instagram className="w-4 h-4" />}
-                  {soc.name === "Facebook" && <Facebook className="w-4 h-4" />}
-                  {soc.name === "TikTok" && (
-                    <span className="text-xs font-bold font-mono">TT</span>
-                  )}
-                </a>
+                  {link.name}
+                </Link>
               ))}
             </div>
           </div>
 
-          {/* Column 2: Menu Links */}
-          <div className="lg:col-span-3 space-y-4">
-            <h3 className="font-serif text-lg font-bold text-white tracking-wide border-b border-emerald-900 pb-2">
-              Menu Navigasi
-            </h3>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-emerald-200/90">
-              <li>
-                <a href="#paket" className="hover:text-gold-300 transition-colors flex items-center gap-1.5">
-                  <span>Paket</span>
-                </a>
-              </li>
-              <li>
-                <a href="#jadwal" className="hover:text-gold-300 transition-colors flex items-center gap-1.5">
-                  <span>Jadwal</span>
-                </a>
-              </li>
-              <li>
-                <a href="#fasilitas" className="hover:text-gold-300 transition-colors flex items-center gap-1.5">
-                  <span>Fasilitas</span>
-                </a>
-              </li>
-              <li>
-                <a href="#galeri" className="hover:text-gold-300 transition-colors flex items-center gap-1.5">
-                  <span>Galeri</span>
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-gold-300 transition-colors flex items-center gap-1.5">
-                  <span>FAQ</span>
-                </a>
-              </li>
-              <li>
-                <a href="#kontak" className="hover:text-gold-300 transition-colors flex items-center gap-1.5">
-                  <span>Kontak</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Kontak Travel Placeholders */}
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="font-serif text-lg font-bold text-white tracking-wide border-b border-emerald-900 pb-2">
-              Kontak Travel
-            </h3>
-
-            <div className="space-y-3 text-xs sm:text-sm text-emerald-200/90">
-              <div className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] text-emerald-400">WhatsApp / Telepon:</span>
-                  <span className="font-mono font-medium text-white">{siteConfig.whatsapp}</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] text-emerald-400">Email:</span>
-                  <span className="font-mono font-medium text-white">{siteConfig.email}</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] text-emerald-400">Alamat Kantor:</span>
-                  <span className="font-medium text-white">{siteConfig.address}</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <Clock className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[11px] text-emerald-400">Jam Layanan:</span>
-                  <span className="text-white">{siteConfig.workingHours}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-2">
+          {/* Connect / Socials */}
+          <div className="md:col-span-3 space-y-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#272838] font-bold block">
+              Connect
+            </span>
+            <div className="space-y-2 text-xs font-mono">
               <a
-                href={getWhatsAppUrl()}
+                href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-emerald-950 font-bold px-4 py-2.5 rounded-xl text-xs shadow-md transition-colors"
+                className="flex items-center gap-2 text-[#5D536B] hover:text-accent-blue transition-colors py-1"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>Hubungi Admin WhatsApp</span>
+                <Linkedin className="w-3.5 h-3.5 text-accent-blue" />
+                <span>{personalInfo.linkedinDisplay}</span>
+              </a>
+
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-[#5D536B] hover:text-[#272838] transition-colors py-1"
+              >
+                <Github className="w-3.5 h-3.5 text-[#272838]" />
+                <span>{personalInfo.githubDisplay}</span>
+              </a>
+
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="flex items-center gap-2 text-[#5D536B] hover:text-accent-blue transition-colors py-1"
+              >
+                <Mail className="w-3.5 h-3.5 text-accent-blue" />
+                <span>{personalInfo.email}</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Disclaimer Bar */}
-        <div className="py-6 border-b border-emerald-900/60">
-          <div className="p-4 rounded-xl bg-emerald-900/40 border border-emerald-800 text-xs text-emerald-200/90 leading-relaxed text-center sm:text-left flex flex-col sm:flex-row items-center gap-3">
-            <ShieldCheck className="w-5 h-5 text-gold-400 shrink-0" />
-            <p>
-              <strong>Disclaimer:</strong> {` `}
-              Website ini merupakan contoh/demo. Seluruh data paket, harga, jadwal, legalitas, fasilitas, galeri, dan kontak dapat disesuaikan dengan data travel.
-            </p>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-300/80">
-          <div>
-            &copy; {new Date().getFullYear()} {siteConfig.name} — Contoh Website Travel Umroh &amp; Haji.
+        {/* Bottom Bar: Copyright + Scroll to Top */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#5D536B]">
+          <div className="flex items-center gap-2">
+            <span>&copy; 2026 {personalInfo.name}. All rights reserved.</span>
+            <span>•</span>
+            <span className="text-accent-blue font-semibold">ahmubaid.my.id</span>
           </div>
 
-          <div className="flex items-center gap-4">
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] bg-gold-500/20 text-gold-300 border border-gold-400/30 font-semibold">
-              {siteConfig.badge}
-            </span>
-            <button
-              type="button"
-              onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 text-emerald-200 hover:text-white transition-colors"
-            >
-              <span>Kembali ke Atas</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="flex items-center gap-2 text-[#5D536B] hover:text-accent-blue transition-colors group font-semibold"
+            aria-label="Back to top"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-1 transition-transform" />
+          </button>
         </div>
       </div>
     </footer>
   );
-};
+}

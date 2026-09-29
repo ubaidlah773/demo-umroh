@@ -1,54 +1,90 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/config/siteConfig";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-display",
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
-const playfairDisplay = Playfair_Display({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-sans",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#064e3b",
+  themeColor: "#F7F8FC",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: "Demo Website Travel Umroh & Haji",
-  description: "Contoh website profesional untuk bisnis Travel Umroh & Haji.",
+  metadataBase: new URL("https://ahmubaid.my.id"),
+  title: "Ahmad Ubai Dullah — Full Stack Developer",
+  description:
+    "Full Stack Developer based in Tuban, Indonesia. Experienced in building and maintaining web applications using Laravel, JavaScript, Node.js, and MySQL, with additional experience in data analysis and machine learning.",
   keywords: [
-    "Demo Website Travel Umroh & Haji",
-    "Website Travel Umroh",
-    "Contoh Website Umroh",
-    "Paket Umroh",
-    "Jadwal Keberangkatan Umroh",
-    "Konsultasi Umroh",
-    "Travel Haji dan Umroh",
+    "Ahmad Ubai Dullah",
+    "UBAI",
+    "Full Stack Developer",
+    "Laravel Developer Indonesia",
+    "Web Developer Tuban",
+    "MySQL",
+    "JavaScript",
+    "Node.js",
+    "Database-driven systems",
+    "Belajar Cerdas",
+    "Lapas Tuban",
   ],
-  authors: [{ name: "DEMO UMROH" }],
+  authors: [{ name: "Ahmad Ubai Dullah", url: "https://github.com/ubaidlah773" }],
+  creator: "Ahmad Ubai Dullah",
+  alternates: {
+    canonical: "https://ahmubaid.my.id",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/manifest.json",
   openGraph: {
-    title: "Demo Website Travel Umroh & Haji",
-    description: "Contoh website profesional untuk bisnis Travel Umroh & Haji.",
-    url: "https://demo-umroh.vercel.app",
-    siteName: "DEMO UMROH",
-    locale: "id_ID",
-    type: "website",
+    title: "Ahmad Ubai Dullah — Full Stack Developer",
+    description:
+      "Building practical web systems that solve real-world problems. Full Stack Developer based in Tuban, Indonesia.",
+    url: "https://ahmubaid.my.id",
+    siteName: "Ahmad Ubai Dullah — UBAI Portfolio",
+    locale: "en_US",
+    type: "profile",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=1200&auto=format&fit=crop",
-        width: 1200,
-        height: 630,
-        alt: "Demo Website Travel Umroh & Haji",
+        url: "/brand/ubai-logo-gradient.png",
+        width: 931,
+        height: 636,
+        alt: "UBAI — Ahmad Ubai Dullah Brand Logo",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ahmad Ubai Dullah — Full Stack Developer",
+    description: "Building practical web systems that solve real-world problems.",
+    images: ["/brand/ubai-logo-gradient.png"],
   },
   robots: {
     index: true,
@@ -61,12 +97,53 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Ahmad Ubai Dullah",
+    alternateName: "UBAI",
+    jobTitle: "Full Stack Developer",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Tuban",
+      addressRegion: "Jawa Timur",
+      addressCountry: "ID",
+    },
+    email: "ahm.idlah773@gmail.com",
+    telephone: "+62 819-1200-1721",
+    url: "https://ahmubaid.my.id",
+    sameAs: [
+      "https://github.com/ubaidlah773",
+      "https://linkedin.com/in/ahmadubai",
+    ],
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Universitas Negeri Semarang",
+    },
+    knowsAbout: [
+      "Full Stack Development",
+      "Laravel",
+      "JavaScript",
+      "Node.js",
+      "MySQL",
+      "REST API",
+      "Data Analysis",
+      "Machine Learning",
+    ],
+  };
+
   return (
     <html
-      lang="id"
-      className={`scroll-smooth ${plusJakartaSans.variable} ${playfairDisplay.variable}`}
+      lang="en"
+      className={`scroll-smooth ${plusJakarta.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-screen bg-ivory-50 text-slate-800 font-sans antialiased flex flex-col selection:bg-gold-100 selection:text-emerald-950">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="min-h-screen bg-[#F7F8FC] text-[#272838] font-sans antialiased flex flex-col selection:bg-[#347FC4]/20 selection:text-[#272838]">
         {children}
       </body>
     </html>

@@ -1,246 +1,224 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { siteConfig, getWhatsAppUrl } from "@/config/siteConfig";
-import {
-  Compass,
-  Menu,
-  X,
-  MessageCircle,
-  ChevronRight,
-  ShieldCheck,
-} from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { personalInfo as fallbackPersonalInfo } from "@/data/portfolioData";
+import { PersonalInfo } from "@/types/portfolio";
+import { Menu, X, Download, ArrowUpRight, Mail } from "lucide-react";
 
-interface NavbarProps {
-  onOpenInquiry?: () => void;
-}
+const navLinks = [
+  { name: "About", href: "#about" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "#skills" },
+  { name: "Education", href: "#education" },
+];
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export default function Navbar({
+  personalInfo: propPersonalInfo,
+}: {
+  personalInfo?: PersonalInfo;
+} = {}) {
+  const personalInfo = propPersonalInfo || fallbackPersonalInfo;
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 20);
+
+      // Section intersection detection
+      const sections = [...navLinks.map((link) => link.href.substring(1)), "contact"];
+      const scrollPos = window.scrollY + 140;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on Escape key
   useEffect(() => {
-    if (isMobileMenuOpen) {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMobileMenuOpen]);
-
-  const navLinks = [
-    { label: "Beranda", href: "#hero" },
-    { label: "Paket Umroh", href: "#paket" },
-    { label: "Jadwal", href: "#jadwal" },
-    { label: "Fasilitas", href: "#fasilitas" },
-    { label: "Galeri", href: "#galeri" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Kontak", href: "#kontak" },
-  ];
+  }, [mobileMenuOpen]);
 
   return (
-    <>
-      {/* Top Demo Bar */}
-      <div className="bg-emerald-950 text-emerald-100 text-xs py-1.5 px-4 border-b border-emerald-900/60">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-gold-500/20 text-gold-300 border border-gold-400/40">
-              {siteConfig.badge}
-            </span>
-            <span className="hidden sm:inline text-emerald-200/80">
-              Contoh website profesional untuk bisnis Travel Umroh & Haji
-            </span>
-            <span className="sm:hidden text-emerald-200/80">
-              Website Travel Umroh & Haji
-            </span>
-          </div>
-          <div className="flex items-center gap-3 text-[11px] text-emerald-200/90">
-            <span className="hidden md:inline">
-              WhatsApp: {siteConfig.whatsapp}
-            </span>
-            <a
-              href={getWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-gold-400 hover:text-gold-300 font-medium transition-colors"
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "py-2.5 bg-white/85 backdrop-blur-md border-b border-[#7D6B91]/15 shadow-[0_2px_12px_-2px_rgba(39,40,56,0.06)]"
+          : "py-5 bg-[#F7F8FC]/70 backdrop-blur-sm border-b border-transparent"
+      }`}
+    >
+      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          {/* Logo / Brand: UBAI Torii */}
+          <Link
+            href="#"
+            className="group flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#347FC4] rounded-lg py-1 px-1 -ml-1 transition-opacity hover:opacity-90"
+            aria-label="UBAI — Ahmad Ubai Dullah Portfolio Home"
+          >
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
+              <Image
+                src="/brand/ubai-logo-dark.png"
+                alt="UBAI Torii Logo"
+                fill
+                priority
+                className="object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-display font-extrabold text-sm sm:text-base tracking-wider text-[#272838] leading-none group-hover:text-[#347FC4] transition-colors">
+                UBAI
+              </span>
+              <span className="text-[10px] sm:text-[11px] font-mono text-[#5D536B] tracking-tight mt-0.5">
+                Full Stack Developer
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Center Navigation Links */}
+          <nav
+            className="hidden md:flex items-center gap-1 bg-[#EEF0F8]/80 p-1.5 rounded-full border border-[#7D6B91]/15 backdrop-blur-sm shadow-sm"
+            aria-label="Main Navigation"
+          >
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                    isActive
+                      ? "bg-white text-[#347FC4] font-semibold border border-[#7D6B91]/15 shadow-sm"
+                      : "text-[#5D536B] hover:text-[#272838] hover:bg-white/60"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Desktop Right Actions: Contact & Download CV */}
+          <div className="hidden md:flex items-center gap-2.5">
+            <Link
+              href="#contact"
+              className={`px-3.5 py-2 rounded-lg text-xs font-medium transition-colors ${
+                activeSection === "contact"
+                  ? "text-[#347FC4] font-semibold bg-[#347FC4]/10"
+                  : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+              }`}
             >
-              <MessageCircle className="w-3.5 h-3.5" />
-              <span>Konsultasi WhatsApp</span>
+              Contact
+            </Link>
+
+            <a
+              href={personalInfo.cvUrl}
+              download="Ahmad_Ubai_Dullah_CV.pdf"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#347FC4] hover:bg-[#2C6EA8] text-white text-xs font-semibold shadow-sm shadow-[#347FC4]/25 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-[#347FC4]"
+              aria-label="Download Ahmad Ubai Dullah CV"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download CV</span>
             </a>
           </div>
+
+          {/* Mobile Hamburger Toggle */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg bg-white border border-[#7D6B91]/20 text-[#272838] hover:border-[#347FC4]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#347FC4] shadow-sm transition-colors"
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
 
-      {/* Main Sticky Navbar */}
-      <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? "bg-emerald-950/95 backdrop-blur-md shadow-md py-3.5 border-b border-gold-500/20"
-            : "bg-emerald-950/90 backdrop-blur-sm py-4 border-b border-emerald-900/40"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo Text: DEMO UMROH */}
-            <a
-              href="#hero"
-              className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-gold-400 rounded-lg p-1"
-              aria-label="DEMO UMROH - Beranda"
-            >
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-emerald-950 shadow-md group-hover:scale-105 transition-transform">
-                <Compass className="w-5 h-5 text-emerald-950" />
-              </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="font-serif text-xl sm:text-2xl font-black tracking-tight text-white leading-none">
-                    DEMO UMROH
-                  </span>
-                  <span className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-gold-500/20 text-gold-300 border border-gold-400/30">
-                    CONTOH
-                  </span>
-                </div>
-                <span className="text-[10px] tracking-wider text-emerald-300/90 font-medium mt-0.5">
-                  Website Travel Umroh & Haji
-                </span>
-              </div>
-            </a>
-
-            {/* Desktop Menu */}
-            <nav className="hidden lg:flex items-center gap-1" aria-label="Menu Utama">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 top-[60px] z-40 bg-[#F7F8FC]/98 backdrop-blur-xl md:hidden border-b border-[#7D6B91]/15 flex flex-col p-6 animate-fadeIn shadow-lg overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile Navigation Menu"
+        >
+          <div className="flex flex-col gap-1.5 pt-2">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <Link
+                  key={link.name}
                   href={link.href}
-                  className="px-3 py-1.5 text-sm font-medium text-emerald-100 hover:text-gold-300 hover:bg-emerald-900/50 rounded-md transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors flex items-center justify-between ${
+                    isActive
+                      ? "bg-white text-[#347FC4] border border-[#7D6B91]/20 shadow-sm font-semibold"
+                      : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+                  }`}
                 >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-
-            {/* CTA Button Desktop */}
-            <div className="hidden sm:flex items-center gap-3">
-              <button
-                type="button"
-                onClick={onOpenInquiry}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-gold-400 text-emerald-950 px-5 py-2.5 rounded-full font-bold text-sm hover:from-gold-400 hover:to-gold-300 shadow-sm hover:shadow-gold-glow transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <MessageCircle className="w-4 h-4 text-emerald-950" />
-                <span>Konsultasi</span>
-              </button>
-            </div>
-
-            {/* Mobile Menu & CTA */}
-            <div className="flex lg:hidden items-center gap-2">
-              <button
-                type="button"
-                onClick={onOpenInquiry}
-                className="inline-flex items-center gap-1.5 bg-gold-400 text-emerald-950 px-3 py-1.5 rounded-full font-bold text-xs shadow-sm"
-              >
-                <MessageCircle className="w-3.5 h-3.5" />
-                <span>Konsultasi</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg text-emerald-200 hover:text-white hover:bg-emerald-900/60 focus:outline-none focus:ring-2 focus:ring-gold-400"
-                aria-label={isMobileMenuOpen ? "Tutup Menu" : "Buka Menu"}
-                aria-expanded={isMobileMenuOpen}
-              >
-                {isMobileMenuOpen ? (
-                  <X className="w-6 h-6 text-gold-400" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
+                  <span>{link.name}</span>
+                  <ArrowUpRight className="w-4 h-4 opacity-50" />
+                </Link>
+              );
+            })}
+            <Link
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors flex items-center justify-between ${
+                activeSection === "contact"
+                  ? "bg-white text-[#347FC4] border border-[#7D6B91]/20 shadow-sm font-semibold"
+                  : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+              }`}
+            >
+              <span>Contact</span>
+              <Mail className="w-4 h-4 opacity-50" />
+            </Link>
           </div>
-        </div>
-      </header>
 
-      {/* Mobile Drawer Navigation */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-hidden="true"
-          />
-
-          <div className="fixed inset-y-0 right-0 max-w-xs w-full bg-emerald-950 border-l border-gold-500/20 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto animate-fade-in">
-            <div>
-              <div className="flex items-center justify-between pb-5 border-b border-emerald-900">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-gold-400 flex items-center justify-center text-emerald-950 font-bold">
-                    <Compass className="w-4 h-4 text-emerald-950" />
-                  </div>
-                  <div>
-                    <span className="font-serif text-lg font-bold text-white block">
-                      DEMO UMROH
-                    </span>
-                    <span className="text-[9px] tracking-wider text-emerald-300 block">
-                      Website Travel Umroh & Haji
-                    </span>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 text-emerald-300 hover:text-white rounded-lg hover:bg-emerald-900"
-                  aria-label="Tutup menu navigasi"
-                >
-                  <X className="w-5 h-5 text-gold-400" />
-                </button>
-              </div>
-
-              <div className="py-6 space-y-1">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center justify-between px-3 py-2.5 text-base font-medium text-emerald-100 hover:text-gold-300 hover:bg-emerald-900/60 rounded-lg transition-colors"
-                  >
-                    <span>{link.label}</span>
-                    <ChevronRight className="w-4 h-4 text-emerald-400" />
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-emerald-900/80 space-y-3">
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-gold-500 to-gold-400 text-emerald-950 py-3 rounded-xl font-bold text-sm shadow-md hover:from-gold-400 hover:to-gold-300 transition-all"
-              >
-                <MessageCircle className="w-4 h-4 text-emerald-950" />
-                <span>Konsultasi WhatsApp</span>
-              </a>
-
-              <div className="p-3 rounded-lg bg-emerald-900/40 border border-emerald-800 text-[11px] text-emerald-200/80 flex items-start gap-2">
-                <ShieldCheck className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-white block font-medium">Contoh Website</strong>
-                  Seluruh paket, jadwal, dan kontak dapat disesuaikan untuk biro travel Anda.
-                </div>
-              </div>
+          <div className="mt-8 pt-6 border-t border-[#7D6B91]/15 flex flex-col gap-3">
+            <a
+              href={personalInfo.cvUrl}
+              download="Ahmad_Ubai_Dullah_CV.pdf"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-[#347FC4] text-white text-sm font-semibold shadow-md shadow-[#347FC4]/25 transition-transform active:scale-[0.98]"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download CV</span>
+            </a>
+            <div className="text-center text-xs font-mono text-[#5D536B] mt-1">
+              Tuban, East Java, Indonesia
             </div>
           </div>
         </div>
       )}
-    </>
+    </header>
   );
-};
+}

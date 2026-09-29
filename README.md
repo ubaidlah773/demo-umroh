@@ -1,134 +1,160 @@
-# DEMO UMROH — Website Demo Travel Umroh & Haji
+# Ahmad Ubai Dullah — Personal Portfolio & Content Management System
 
-> **“Contoh Website Profesional untuk Bisnis Travel Umroh & Haji”**  
-> *Sistem Website Universal Siap Jual untuk Kebutuhan Sales & Prospek Biro Travel Umroh*
+A production-ready, dynamic personal portfolio website and integrated Content Management System (CMS) designed for **Ahmad Ubai Dullah** (Full Stack Developer based in Tuban, Indonesia).
 
----
-
-## 🌐 Live Demo & Repository
-
-* **Live Website URL:** [https://demo-umroh.vercel.app](https://demo-umroh.vercel.app)
-* **GitHub Repository:** [https://github.com/ubaidlah773/demo-umroh](https://github.com/ubaidlah773/demo-umroh)
-* **Status Deployment:** `READY` (Production)
+Built strictly according to Ahmad's authentic curriculum vitae (CV) and professional experience.
 
 ---
 
-## 🌟 Tentang Proyek
+## 🌟 Key Architecture & Interfaces
 
-Website ini adalah **contoh website universal (white-label demo)** yang dibuat khusus sebagai alat bantu presentasi sales kepada para pemilik biro perjalanan ibadah Umroh & Haji. 
+The application consists of two seamlessly connected interfaces:
 
-Tujuan utamanya agar pemilik biro Umroh dapat melihat langsung:  
-**“Website bisnis saya bisa dibuat seperti ini.”**
+### 1. Public Portfolio (`/` & `/projects/[slug]`)
+- **Aesthetic**: Premium dark developer aesthetic, modern minimalism, technical typography, high-end SaaS feel.
+- **Hero Section**: Eyebrow indicator, professional title, location pill, download CV CTA, view projects trigger, and interactive system status terminal.
+- **About Ahmad**: Engineering philosophy, core architectural competencies, and structured career summary paragraphs.
+- **Selected Projects**: Interactive architecture preview cards with direct links to dedicated case study pages.
+- **Dedicated Project Case Study (`/projects/[slug]`)**:
+  - Detailed narrative breakdown, technology pills, and key deliverables.
+  - **Visual Documentation Gallery & Lightbox**: Interactive gallery featuring mockups, screenshots, thumbnail strip, zoom in/out, keyboard controls (`ArrowLeft`, `ArrowRight`, `Escape`), and image captions.
+  - Previous and Next case study navigation.
+- **Experience Timeline**: Career history with interactive expand/collapse cards and detailed technical contributions.
+- **Technology Stack**: Filterable technology ecosystem covering Programming Languages, Frameworks & Runtimes, Relational Databases, Tools, and Web Architecture.
+- **Education & Credentials**: Detailed academic history (Universitas Negeri Semarang, GPA 3.80 / 4.00, 7 published machine learning research articles) and RevoU Tech Academy credentials.
+- **Contact & Channels**: Fast email copy button, direct inquiry form, social profiles (LinkedIn, GitHub), and discrete contact area.
 
-### 🎯 Karakteristik & Kepatuhan:
-- **Netral & Universal**: Menggunakan identitas **“DEMO UMROH”** dengan badge **“CONTOH WEBSITE”**. Tidak menggunakan nama, logo, nomor telepon, atau alamat bisnis travel nyata mana pun.
-- **Bukan Template AI Generik**: Menggunakan tipografi modern dan elegan (*Playfair Display* + *Plus Jakarta Sans*), palet warna Islami modern (*Deep Emerald*, *Dark Green*, *Warm Gold Accent*, *Ivory/Cream*), dan banyak whitespace yang tenang dan terpercaya.
-- **Placeholder Terstruktur**: Semua data yang belum diketahui disajikan dalam format placeholder yang jelas: `Rp [Harga Paket]`, `[Durasi] Hari`, `[Tanggal]`, `[Nomor Izin / Legalitas]`, dan `[Isi sesuai data travel]`.
-- **Conversion-First (Fokus WhatsApp)**: Seluruh tombol CTA, floating button WhatsApp, dan form konsultasi interaktif terhubung langsung ke WhatsApp dengan generator pesan otomatis yang rapi dan sopan.
-
----
-
-## 🚀 Fitur & Komponen Utama
-
-1. **Sticky Navbar**:
-   - Logo teks: **DEMO UMROH** dengan badge **CONTOH WEBSITE**.
-   - Menu: *Beranda, Paket Umroh, Jadwal, Fasilitas, Galeri, FAQ, Kontak*.
-   - CTA: *Konsultasi*.
-   - Mobile menu drawer yang ramah sentuhan.
-
-2. **Hero Section**:
-   - Badge: *CONTOH WEBSITE TRAVEL UMROH*.
-   - Headline: *“Persiapkan Perjalanan Menuju Tanah Suci dengan Lebih Mudah”*.
-   - Subheadline: *“Contoh website Travel Umroh yang membantu calon jamaah melihat paket, jadwal, fasilitas, dan menghubungi admin dengan mudah.”*.
-   - Dual CTA: *“Lihat Paket Umroh”* dan *“Konsultasi”*.
-   - Visual premium Ka'bah & Masjidil Haram dengan highlight cards.
-
-3. **Trust Section (4 Indikator Nyata)**:
-   - *Informasi Paket Jelas*, *Jadwal Terstruktur*, *Fasilitas Transparan*, dan *Konsultasi Mudah*.
-
-4. **Pilihan Paket Umroh (3 Pilihan Utama)**:
-   - **Paket Umroh Reguler** (Harga: `Rp [Harga Paket]`, Durasi: `[Durasi] Hari`)
-   - **Paket Umroh Premium** (Badge: `REKOMENDASI`, Harga: `Rp [Harga Paket]`, Durasi: `[Durasi] Hari`)
-   - **Paket Umroh Ramadhan** (Harga: `Rp [Harga Paket]`, Durasi: `[Durasi] Hari`)
-   - Catatan: *“Contoh paket — dapat disesuaikan dengan program travel.”*
-   - Modal detail interaktif dengan tab:
-     - Itinerary harian: `[Isi sesuai data travel]`
-     - Fasilitas termasuk & belum termasuk: `[Isi sesuai data travel]`
-     - Persyaratan pendaftaran: `[Isi sesuai data travel]`
-     - CTA: *Tanya Paket via WhatsApp*
-
-5. **Jadwal Keberangkatan**:
-   - Filter tab kategori paket.
-   - Tabel responsif desktop & kartu list mobile.
-   - Catatan: *“Dapatkan jadwal terbaru melalui admin.”*
-   - CTA: *Cek Jadwal*.
-
-6. **Fasilitas Jamaah**:
-   - 6 Kartu fasilitas: *Tiket Pesawat, Hotel, Transportasi, Konsumsi, Pembimbing, Perlengkapan*.
-   - Catatan: *“Fasilitas dapat disesuaikan berdasarkan paket.”*
-
-7. **Alur Pendaftaran (5 Langkah)**:
-   - *01 Konsultasi* ➔ *02 Pilih Paket* ➔ *03 Lengkapi Dokumen* ➔ *04 Konfirmasi* ➔ *05 Persiapan Keberangkatan*.
-
-8. **Galeri Dokumentasi**:
-   - Foto generik: *Masjidil Haram, Masjid Nabawi, Jamaah, Briefing, Perjalanan, Kegiatan*.
-   - Badge: *Contoh Galeri*.
-   - Lightbox modal saat foto diklik.
-
-9. **Contoh Testimoni**:
-   - Label: *Contoh Testimoni*.
-   - Kartu ulasan: *Peserta Demo 01, Peserta Demo 02, Peserta Demo 03*.
-
-10. **Legalitas Travel**:
-    - Label & Section: *Legalitas Travel*.
-    - Placeholder: `[Nomor Izin / Legalitas]`, `[Nama Badan Usaha]`, `[Dokumen Legalitas]`.
-    - Keterangan: *“Data dapat diisi sesuai dokumen resmi travel.”*
-
-11. **FAQ (Accordion)**:
-    - 7 pertanyaan umum dengan jawaban fallback: *“Hubungi admin untuk mendapatkan informasi terbaru.”*
-
-12. **CTA Besar**:
-    - Headline: *“Siap Mempersiapkan Perjalanan Anda?”*
-    - Subheadline: *“Konsultasikan kebutuhan perjalanan Umroh Anda.”*
-    - Tombol: *Konsultasi via WhatsApp* dan *Lihat Paket*.
-
-13. **Floating WhatsApp Button & Quick Inquiry Modal**:
-    - Tombol WhatsApp melayang di pojok kanan bawah (selalu tampak di mobile).
-    - Modal konsultasi cepat untuk memilih paket dan mengirim pesan terstruktur ke WhatsApp.
-
-14. **Footer**:
-    - Identitas: *DEMO UMROH* & *Contoh Website Travel Umroh & Haji*.
-    - Kontak: `[Nomor WhatsApp]`, `[Email]`, `[Alamat Travel]`.
-    - Disclaimer: *“Website ini merupakan contoh/demo. Seluruh data paket, harga, jadwal, legalitas, fasilitas, galeri, dan kontak dapat disesuaikan dengan data travel.”*
+### 2. Admin Content Management System (`/admin`)
+- **Authentication**: Secure HMAC-SHA256 session token system with HTTP-only cookies and Authorization Bearer header support.
+- **Dashboard Overview (`/admin`)**: Real-time project counts, published items, media stats, quick action shortcuts, and recent project list.
+- **Project Editor (`/admin/projects`)**:
+  - Full CRUD operations with instant publish/draft toggles.
+  - Drag-and-drop reordering with visual rank indicators.
+  - Tabbed editor: Core Info, Deliverables & Features, Engineering Highlights.
+  - **Project Media Uploader**: Drag & drop multi-file uploader, cover image selector, caption and alt-text editor, and image deletion.
+- **Experience Editor (`/admin/experience`)**: Add, edit, reorder, or toggle publication status of employment history.
+- **Skills & Categories (`/admin/skills`)**: Manage technical skills, tags, experience levels, and skill categories.
+- **Education & Honors (`/admin/education`)**: Add academic credentials, honors, coursework, and scores.
+- **Hero & About Editor (`/admin/about`)**: Edit hero headline, eyebrow, supporting copy, and about summary points.
+- **Media Library (`/admin/media`)**: Centralized repository for all uploaded screenshots, mockups, and documents with copyable URLs.
+- **Site Settings & SEO (`/admin/settings`)**: Personal identity, location, contact channels, LinkedIn/GitHub links, CV PDF upload, and OpenGraph/SEO metadata.
 
 ---
 
-## 🛠️ Konfigurasi Mudah untuk Klien Nyata
+## 🛠️ Technology Stack
 
-Cukup buka dan perbarui file:
-📂 `src/config/siteConfig.ts`
+- **Framework**: Next.js 14 (App Router, Server Components & Route Handlers)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS with custom dark technical palette (`tech-grid`, `tech-dots`)
+- **Database & ORM**: SQLite via Prisma ORM (`prisma@5.21.1`) — easily switchable to PostgreSQL or Supabase
+- **Icons**: Lucide React
+- **Authentication**: Native HMAC-SHA256 cryptographic session tokens & bcrypt password hashing
+- **File Storage**: Local persistent uploads (`public/uploads/`) with pluggable cloud adapter support (AWS S3 / Supabase Storage)
 
-```typescript
-export const siteConfig: SiteConfig = {
-  name: "Nama Travel Klien",            // Ganti dengan nama travel asli klien
-  tagline: "Tagline Travel Klien",
-  whatsapp: "6281234567890",            // Ganti dengan nomor WhatsApp resmi
-  email: "info@namatravel.com",
-  address: "Alamat Kantor Klien",
-  city: "Jakarta",
-  // ...
-};
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18.x or later
+- npm or pnpm
+
+### Installation
+
+1. **Clone or navigate to the repository:**
+   ```bash
+   cd "membuat web"
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+   Create a `.env` file (copied from `.env.example`):
+   ```env
+   DATABASE_URL="file:./dev.db"
+   AUTH_SECRET="ahmad-ubai-dullah-secret-2026-key-ultra-secure"
+   ```
+
+4. **Initialize and Seed Database:**
+   ```bash
+   npx prisma db push
+   node prisma/seed.js
+   ```
+
+5. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to view the public portfolio.
+
+6. **Production Build:**
+   ```bash
+   npm run build
+   npm run start
+   ```
+
+---
+
+## 🔐 Admin Dashboard Credentials
+
+Default credentials created during database seeding:
+
+- **Login URL**: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
+- **Username**: `admin` *(or `ahm.idlah773@gmail.com`)*
+- **Password**: `admin123password`
+
+---
+
+## 📁 Project Structure
+
+```
+├── prisma/
+│   ├── schema.prisma        # Prisma database models (User, Project, ProjectImage, etc.)
+│   ├── dev.db               # SQLite database
+│   ├── generate-mockups.js  # Script to generate project SVG mockups
+│   └── seed.js              # Database seed script with verified CV data
+├── public/
+│   ├── uploads/             # Uploaded images, mockups, and CV document
+│   ├── profile.png          # Ahmad Ubai Dullah profile portrait
+│   └── Ahmad_Ubai_Dullah_CV.pdf
+├── src/
+│   ├── app/
+│   │   ├── admin/           # Admin dashboard pages
+│   │   │   ├── about/       # Hero & About Me editor
+│   │   │   ├── education/   # Academic credentials manager
+│   │   │   ├── experience/  # Experience timeline manager
+│   │   │   ├── login/       # Authentication page
+│   │   │   ├── media/       # Media library grid
+│   │   │   ├── projects/    # Projects CRUD, reordering & image uploader
+│   │   │   ├── settings/    # Profile, Contact & SEO settings
+│   │   │   └── skills/      # Technical skills & category manager
+│   │   ├── api/             # 20 secure API routes for CRUD & upload operations
+│   │   ├── projects/
+│   │   │   └── [slug]/      # Dedicated dynamic Project Case Study & Lightbox
+│   │   ├── page.tsx         # Live dynamic public portfolio homepage
+│   │   ├── layout.tsx       # Root layout with font configuration & metadata
+│   │   └── globals.css      # Dark theme styling and animations
+│   ├── components/          # Reusable UI & section components
+│   │   ├── admin/           # Admin forms & media uploader components
+│   │   ├── ProjectCard.tsx
+│   │   ├── ProjectDetailModal.tsx
+│   │   ├── ProjectGalleryLightbox.tsx
+│   │   └── ...
+│   ├── data/
+│   │   └── portfolioData.ts # Fallback verified CV data
+│   ├── lib/
+│   │   ├── auth.ts          # Auth token creation & verification
+│   │   ├── prisma.ts        # PrismaClient singleton
+│   │   └── storage.ts       # File upload & storage management
+│   └── types/
+│       └── portfolio.ts     # TypeScript interfaces
 ```
 
-Setelah diedit, jalankan:
-```bash
-git add .
-git commit -m "update: ganti data dengan profil klien"
-git push
-```
-Vercel akan otomatis melakukan update ke live domain dalam hitungan detik!
-
 ---
 
-## 📱 Responsivitas
-Optimal pada seluruh ukuran layar: **1440px, 1280px, 1024px, 768px, 430px, 390px, dan 375px** tanpa horizontal overflow.
+## 📄 License
+
+Created for Ahmad Ubai Dullah. All rights reserved.
