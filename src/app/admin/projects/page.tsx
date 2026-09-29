@@ -17,14 +17,18 @@ import {
   XCircle,
   AlertTriangle,
   Image as ImageIcon,
+  Copy,
+  Layers,
 } from "lucide-react";
 
 export default function AdminProjectsPage() {
   const [projects, setProjects] = useState<any[]>([]);
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [categoryFilter, setCategoryFilter] = useState("all");
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [duplicatingId, setDuplicatingId] = useState<string | null>(null);
 
   const fetchProjects = async () => {
     try {
@@ -56,6 +60,39 @@ export default function AdminProjectsPage() {
       }
     } catch (err) {
       console.error("Toggle published error:", err);
+    }
+  };
+
+  const toggleFeatured = async (id: string, current: boolean) => {
+    try {
+      const res = await fetch(`/api/projects/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ featured: !current }),
+      });
+      if (res.ok) {
+        setProjects((prev) =>
+          prev.map((p) => (p.id === id ? { ...p, featured: !current } : p))
+        );
+      }
+    } catch (err) {
+      console.error("Toggle featured error:", err);
+    }
+  };
+
+  const handleDuplicate = async (id: string) => {
+    setDuplicatingId(id);
+    try {
+      const res = await fetch(`/api/projects/${id}/duplicate`, {
+        method: "POST",
+      });
+      if (res.ok) {
+        await fetchProjects();
+      }
+    } catch (err) {
+      console.error("Duplicate error:", err);
+    } finally {
+      setDuplicatingId(null);
     }
   };
 
@@ -109,12 +146,21 @@ export default function AdminProjectsPage() {
   const filtered = projects.filter((p) => {
     const matchesSearch =
       p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.category.toLowerCase().includes(search.toLowerCase()) ||
-      p.technologies.toLowerCase().includes(search.toLowerCase());
+      (p.category && p.category.toLowerCase().includes(search.toLowerCase())) ||
+      (p.technologies && p.technologies.toLowerCase().includes(search.toLowerCase()));
 
-    if (filter === "published") return matchesSearch && p.published;
-    if (filter === "draft") return matchesSearch && !p.published;
-    return matchesSearch;
+    const matchesStatus =
+      statusFilter === "all" ||
+      (statusFilter === "published" && p.published) ||
+      (statusFilter === "draft" && !p.published);
+
+    const cat = (p.category || "").toUpperCase();
+    const matchesCategory =
+      categoryFilter === "all" ||
+      (categoryFilter === "WEB" && (cat === "WEB" || cat.includes("WEB") || cat.includes("LMS") || cat.includes("QUEUE") || cat === "")) ||
+      (categoryFilter === "DESIGN" && (cat === "DESIGN" || cat.includes("DESIGN")));
+
+    return matchesSearch && matchesStatus && matchesCategory;
   });
 
   return (
@@ -127,13 +173,13 @@ export default function AdminProjectsPage() {
             <span>Project Management</span>
           </h1>
           <p className="text-xs sm:text-sm text-[#5D536B] mt-1 font-medium">
-            Create, edit, publish, reorder, and upload documentation images for your projects.
+            Create, edit, duplicate, publish, reorder, and upload documentation images for your projects.
           </p>
         </div>
 
         <Link
           href="/admin/projects/new"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-accent-blue hover:bg-[#2C6EA8] text-white text-xs font-semibold shadow-accent-sm transition-all active:scale-[0.99] w-fit"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-accent-blue hover:bg-[#2C6EA8] text-white text-xs font-semibold shadow-accent-sm transition-all active:scale-[0.99] w-fit cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Project</span>
@@ -141,8 +187,9 @@ export default function AdminProjectsPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="relative w-full sm:w-80">
+      <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+        {/* Search Input */}
+        <div className="relative w-full lg:w-80">
           <Search className="w-4 h-4 text-[#5D536B]/60 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
@@ -153,24 +200,51 @@ export default function AdminProjectsPage() {
           />
         </div>
 
-        <div className="flex items-center gap-1.5 self-start sm:self-auto bg-white p-1 rounded-xl border border-[#7D6B91]/20 shadow-card-subtle">
-          {[
-            { id: "all", label: "All" },
-            { id: "published", label: "Published" },
-            { id: "draft", label: "Drafts" },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setFilter(tab.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                filter === tab.id
-                  ? "bg-accent-blue text-white shadow-sm"
-                  : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Filter Controls: Category Filter + Status Filter */}
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Category Filter Pills: [ ALL ] [ WEB ] [ DESIGN ] */}
+          <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-[#7D6B91]/20 shadow-card-subtle">
+            {[
+              { id: "all", label: "All Types" },
+              { id: "WEB", label: "WEB" },
+              { id: "DESIGN", label: "DESIGN" },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setCategoryFilter(tab.id)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold font-mono transition-all cursor-pointer ${
+                  categoryFilter === tab.id
+                    ? "bg-[#347FC4] text-white shadow-sm"
+                    : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Status Filter */}
+          <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-[#7D6B91]/20 shadow-card-subtle">
+            {[
+              { id: "all", label: "All Status" },
+              { id: "published", label: "Live" },
+              { id: "draft", label: "Drafts" },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setStatusFilter(tab.id)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  statusFilter === tab.id
+                    ? "bg-[#272838] text-white shadow-sm"
+                    : "text-[#5D536B] hover:text-[#272838] hover:bg-[#EEF0F8]"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -184,14 +258,14 @@ export default function AdminProjectsPage() {
           <FolderKanban className="w-10 h-10 text-[#5D536B]/40 mx-auto mb-3" />
           <h3 className="text-sm font-bold text-[#272838]">No projects found</h3>
           <p className="text-xs text-[#5D536B] mt-1 max-w-sm mx-auto">
-            {search ? "No projects match your search query." : "You haven't created any projects yet."}
+            {search ? "No projects match your search query." : "No projects in this category or status filter."}
           </p>
           <Link
             href="/admin/projects/new"
-            className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-blue hover:bg-[#2C6EA8] text-white text-xs font-semibold shadow-accent-sm"
+            className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-blue hover:bg-[#2C6EA8] text-white text-xs font-semibold shadow-accent-sm cursor-pointer"
           >
             <Plus className="w-4 h-4" />
-            <span>Create First Project</span>
+            <span>Create New Project</span>
           </Link>
         </div>
       ) : (
@@ -235,8 +309,8 @@ export default function AdminProjectsPage() {
                         Featured
                       </span>
                     )}
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#EEF0F8] text-[#5D536B] border border-[#7D6B91]/20 font-medium">
-                      {project.category}
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#EEF0F8] text-[#347FC4] border border-[#347FC4]/25">
+                      {project.category?.toUpperCase() === "DESIGN" ? "DESIGN" : "WEB"}
                     </span>
                   </div>
 
@@ -250,13 +324,27 @@ export default function AdminProjectsPage() {
                       {project.images?.length || 0} Gallery Photos
                     </span>
                     <span>•</span>
-                    <span className="truncate max-w-xs">{project.technologies}</span>
+                    <span className="truncate max-w-xs">{project.tools || project.technologies}</span>
                   </div>
                 </div>
               </div>
 
               {/* Right Column: Controls, Ordering, Actions */}
-              <div className="flex items-center gap-3 self-end lg:self-auto shrink-0">
+              <div className="flex items-center gap-2.5 self-end lg:self-auto shrink-0 flex-wrap">
+                {/* Featured Toggle Button */}
+                <button
+                  type="button"
+                  onClick={() => toggleFeatured(project.id, project.featured)}
+                  className={`p-2 rounded-xl border transition-colors cursor-pointer shadow-2xs ${
+                    project.featured
+                      ? "bg-amber-50 text-amber-600 border-amber-200 hover:bg-amber-100"
+                      : "bg-[#EEF0F8] text-[#5D536B] border-[#7D6B91]/20 hover:bg-white hover:text-amber-500"
+                  }`}
+                  title={project.featured ? "Remove from Featured" : "Mark as Featured"}
+                >
+                  <Star className={`w-3.5 h-3.5 ${project.featured ? "fill-amber-500" : ""}`} />
+                </button>
+
                 {/* Publish Toggle Button */}
                 <button
                   type="button"
@@ -279,6 +367,17 @@ export default function AdminProjectsPage() {
                       <span>Draft</span>
                     </>
                   )}
+                </button>
+
+                {/* Duplicate Project Button */}
+                <button
+                  type="button"
+                  onClick={() => handleDuplicate(project.id)}
+                  disabled={duplicatingId === project.id}
+                  className="p-2 rounded-xl bg-white hover:bg-[#EEF0F8] text-[#5D536B] hover:text-[#347FC4] border border-[#7D6B91]/20 transition-colors cursor-pointer shadow-card-subtle disabled:opacity-50"
+                  title="Duplicate Project"
+                >
+                  <Copy className="w-3.5 h-3.5" />
                 </button>
 
                 {/* Move Up/Down Buttons */}

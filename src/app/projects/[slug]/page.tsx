@@ -152,6 +152,19 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
     isCover: img.isCover,
   }));
 
+  // If no additional gallery images, use cover image so lightbox can preview the architecture
+  if (galleryImages.length === 0 && project.coverImage) {
+    galleryImages.push({
+      id: "cover-image",
+      fileName: `${project.slug}-cover`,
+      fileUrl: project.coverImage,
+      title: `${project.title} Overview`,
+      altText: `${project.title} cover architectural layout`,
+      caption: `High-resolution overview and architecture for ${project.title}`,
+      isCover: true,
+    });
+  }
+
   return (
     <>
       <CustomCursor />
@@ -231,18 +244,20 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
               </div>
 
               <div className="flex items-center gap-2 lg:justify-end">
-                {project.projectUrl && (
+                {project.projectUrl && project.projectUrl.trim() !== "" && (
                   <a
                     href={project.projectUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-accent-blue hover:bg-[#2C6EA8] text-white text-xs font-semibold transition-all shadow-accent-sm"
                   >
-                    <span>Live Demo</span>
+                    <span>
+                      {project.category?.toUpperCase() === "DESIGN" ? "View Design" : "View Demo"}
+                    </span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
-                {project.githubUrl && (
+                {project.githubUrl && project.githubUrl.trim() !== "" && (
                   <a
                     href={project.githubUrl}
                     target="_blank"

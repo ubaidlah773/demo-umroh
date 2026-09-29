@@ -148,6 +148,9 @@ export default async function PortfolioPage() {
         period: p.period,
         role: p.role,
         category: p.category,
+        tools: (p as any).tools || null,
+        projectUrl: p.projectUrl || null,
+        githubUrl: p.githubUrl || null,
         tags: p.technologies
           ? p.technologies.split(",").map((s) => s.trim()).filter(Boolean)
           : [],

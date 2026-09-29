@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("Seeding database with verified CV data...");
+  console.log("Seeding database with verified CV & project data...");
 
   // 1. Admin User
   const salt = bcrypt.genSaltSync(10);
@@ -78,7 +78,8 @@ async function main() {
       subtitle: "Integrated School Management Platform",
       period: "Mar 2026 – Jun 2026",
       role: "Web Developer — Freelance",
-      category: "School Management / LMS",
+      category: "WEB",
+      tools: "Laravel, MySQL, JavaScript, Blade, Tailwind CSS, RBAC",
       shortDescription:
         "Developed interconnected dashboards for students, teachers, school principals, parents, and foundations within the Belajar Cerdas platform.",
       fullDescription:
@@ -161,28 +162,6 @@ async function main() {
             fileSize: 46000,
             fileType: "image/svg+xml",
           },
-          {
-            fileName: "belajar-cerdas-schedule.svg",
-            fileUrl: "/uploads/belajar-cerdas-schedule.svg",
-            title: "Lesson Scheduling Matrix",
-            altText: "Belajar Cerdas lesson timetable collision prevention matrix",
-            caption: "Timetable matrix scheduling system preventing classroom and teacher time-slot collisions.",
-            sortOrder: 4,
-            isCover: false,
-            fileSize: 47000,
-            fileType: "image/svg+xml",
-          },
-          {
-            fileName: "belajar-cerdas-calendar.svg",
-            fileUrl: "/uploads/belajar-cerdas-calendar.svg",
-            title: "Academic Event Calendar",
-            altText: "Belajar Cerdas school event calendar",
-            caption: "Institutional academic calendar tracking examinations, terms, and milestone events.",
-            sortOrder: 5,
-            isCover: false,
-            fileSize: 45000,
-            fileType: "image/svg+xml",
-          },
         ],
       },
     },
@@ -197,7 +176,8 @@ async function main() {
       subtitle: "Digital Services Platform",
       period: "2025 – 2026",
       role: "Facilities Manager Intern — Web Development Focus",
-      category: "Public Sector Portal & Intranet",
+      category: "WEB",
+      tools: "Laravel, MySQL, JavaScript, CRUD, SEO, Tailwind CSS",
       shortDescription:
         "Developed multiple web-based systems supporting the digitalization of administrative and public services.",
       fullDescription:
@@ -235,11 +215,6 @@ async function main() {
           description:
             "Created a clinical data management system to record inmate health consultations, medical history logs, checkup schedules, and prescription inventory.",
         },
-        {
-          title: "Satbang Administration Workflow",
-          description:
-            "Built a digital administrative tool for prisoner work activity (Satbang) tracking, logging daily task fulfillment and program compliance.",
-        },
       ]),
       developmentHighlights: JSON.stringify([
         "Structured secure CRUD interfaces with parameter sanitization, CSRF defenses, and authentication logging.",
@@ -270,39 +245,6 @@ async function main() {
             fileSize: 47000,
             fileType: "image/svg+xml",
           },
-          {
-            fileName: "lapas-tuban-payroll.svg",
-            fileUrl: "/uploads/lapas-tuban-payroll.svg",
-            title: "Digital Payroll Management",
-            altText: "Lapas Tuban digital payroll management interface",
-            caption: "Automated staff compensation computation, tax allowances, and disbursement histories.",
-            sortOrder: 3,
-            isCover: false,
-            fileSize: 46000,
-            fileType: "image/svg+xml",
-          },
-          {
-            fileName: "lapas-tuban-clinic.svg",
-            fileUrl: "/uploads/lapas-tuban-clinic.svg",
-            title: "Clinic Patient Medical Records",
-            altText: "Lapas Tuban clinic patient health management records",
-            caption: "Clinical record management for inmate consultations, checkup calendars, and pharmaceutical supplies.",
-            sortOrder: 4,
-            isCover: false,
-            fileSize: 46000,
-            fileType: "image/svg+xml",
-          },
-          {
-            fileName: "lapas-tuban-administration.svg",
-            fileUrl: "/uploads/lapas-tuban-administration.svg",
-            title: "Satbang Administration Workflow",
-            altText: "Lapas Tuban Satbang administrative program compliance",
-            caption: "Internal administrative tracking for inmate rehabilitation activities and security compliance.",
-            sortOrder: 5,
-            isCover: false,
-            fileSize: 47000,
-            fileType: "image/svg+xml",
-          },
         ],
       },
     },
@@ -317,7 +259,8 @@ async function main() {
       subtitle: "Public Intake & Real-Time Queue Calling",
       period: "Dec 2025 – Jan 2026",
       role: "Full Stack Developer",
-      category: "Queue Management / Public Intake",
+      category: "WEB",
+      tools: "Laravel, MySQL, Queue Dispatch, Real-Time Audio, SEO",
       shortDescription:
         "Designed and developed an online visitor registration system to streamline the visitor registration process.",
       fullDescription:
@@ -355,11 +298,6 @@ async function main() {
           description:
             "Provides desk operators with a single-click call trigger that sounds an audible bell alert and updates caller numbers across reception speakers.",
         },
-        {
-          title: "Live Waiting Room Display",
-          description:
-            "Features a responsive high-contrast large-screen display showing active counter numbers, current serving tickets, and upcoming queue positions.",
-        },
       ]),
       developmentHighlights: JSON.stringify([
         "Engineered race-condition prevention during peak registration hours using atomic database transactions.",
@@ -390,26 +328,73 @@ async function main() {
             fileSize: 47000,
             fileType: "image/svg+xml",
           },
+        ],
+      },
+    },
+  });
+
+  // Project 4: Demo LPK
+  const p4 = await prisma.project.create({
+    data: {
+      number: "04",
+      title: "Demo LPK",
+      slug: "demo-lpk",
+      subtitle: "Vocational Training Center Web Platform",
+      period: "2026",
+      role: "Full Stack Developer",
+      category: "WEB",
+      tools: "Laravel, PHP, MySQL, Tailwind CSS, Blade",
+      shortDescription:
+        "Web platform developed for vocational training centers (LPK) featuring course management, participant registration, and program schedules.",
+      fullDescription:
+        "Demo LPK is a dedicated web platform tailored for vocational training institutions. It enables administrators to manage training programs, coordinate instructor timetables, and process prospective student applications online.",
+      technologies: "Laravel, PHP, MySQL, Tailwind CSS, Blade, Web Development",
+      projectUrl: "https://demo-lpk.vercel.app",
+      githubUrl: "https://github.com/ubaidlah773/demo-lpk",
+      featured: false,
+      published: true,
+      displayOrder: 4,
+      coverImage: "/uploads/demo-lpk-cover.svg",
+      mockupType: "demo-lpk",
+      badgeText: "Vocational Platform",
+      highlights: JSON.stringify([
+        "Multi-discipline vocational training course catalog",
+        "Online participant intake and registration workflows",
+        "Instructor and classroom scheduling management",
+        "Responsive interface optimized for desktop and mobile devices",
+      ]),
+      features: JSON.stringify([
+        {
+          title: "Course Catalog Management",
+          description:
+            "Structured repository of vocational courses, certifications, and syllabus outlines for prospective trainees.",
+        },
+        {
+          title: "Participant Registration Intake",
+          description:
+            "Online admission forms with applicant data validation and registration status tracking.",
+        },
+        {
+          title: "Training Schedule Coordinator",
+          description:
+            "Calendar and time-slot scheduling for classrooms, batches, and vocational instructors.",
+        },
+      ]),
+      developmentHighlights: JSON.stringify([
+        "Implemented relational schema connecting training batches, modules, and registered participants in MySQL.",
+        "Engineered responsive forms with validation and structured administrative oversight.",
+      ]),
+      images: {
+        create: [
           {
-            fileName: "queue-system-display.svg",
-            fileUrl: "/uploads/queue-system-display.svg",
-            title: "Waiting Hall Public Display Monitor",
-            altText: "Real-time queue monitor screen for waiting hall",
-            caption: "High-contrast waiting room monitor displaying active service counters and next tickets.",
-            sortOrder: 3,
-            isCover: false,
-            fileSize: 46000,
-            fileType: "image/svg+xml",
-          },
-          {
-            fileName: "queue-system-ticket.svg",
-            fileUrl: "/uploads/queue-system-ticket.svg",
-            title: "Electronic Visitor Appointment Ticket",
-            altText: "Visitor electronic registration appointment ticket with QR code",
-            caption: "Digital visitor appointment pass with verified time slot and QR validation.",
-            sortOrder: 4,
-            isCover: false,
-            fileSize: 46000,
+            fileName: "demo-lpk-cover.svg",
+            fileUrl: "/uploads/demo-lpk-cover.svg",
+            title: "Demo LPK Overview",
+            altText: "Vocational training center web platform overview",
+            caption: "Course repository, intake registration, and schedule management.",
+            sortOrder: 1,
+            isCover: true,
+            fileSize: 45000,
             fileType: "image/svg+xml",
           },
         ],
@@ -417,24 +402,180 @@ async function main() {
     },
   });
 
-  console.log("Projects and Gallery Images seeded.");
+  // Project 5: Demo Umroh
+  const p5 = await prisma.project.create({
+    data: {
+      number: "05",
+      title: "Demo Umroh",
+      slug: "demo-umroh",
+      subtitle: "Travel & Pilgrimage Package Portal",
+      period: "2026",
+      role: "Full Stack Developer",
+      category: "WEB",
+      tools: "Laravel, PHP, MySQL, Tailwind CSS, Responsive Web Design",
+      shortDescription:
+        "Comprehensive travel and Umroh booking platform featuring package catalog, departure schedule management, and online consultation.",
+      fullDescription:
+        "Demo Umroh is an informational and booking management platform designed for travel agencies specializing in Umroh and Hajj pilgrimages. It provides clear itineraries, pricing tiers, and direct consultation channels.",
+      technologies: "Laravel, PHP, MySQL, Tailwind CSS, Responsive Web Design, Booking Management",
+      projectUrl: "https://demo-umroh.vercel.app",
+      githubUrl: "https://github.com/ubaidlah773/demo-umroh",
+      featured: false,
+      published: true,
+      displayOrder: 5,
+      coverImage: "/uploads/demo-umroh-cover.svg",
+      mockupType: "demo-umroh",
+      badgeText: "Travel & Pilgrimage Portal",
+      highlights: JSON.stringify([
+        "Tiered Umroh and Hajj travel package catalog",
+        "Scheduled departure calendar with seat capacity tracking",
+        "Online consultation and direct lead inquiry integration",
+        "Mobile-first responsive presentation for prospective pilgrims",
+      ]),
+      features: JSON.stringify([
+        {
+          title: "Package Comparison & Detail View",
+          description:
+            "Detailed day-by-day itineraries, hotel accommodations, airline info, and pricing tiers.",
+        },
+        {
+          title: "Departure Schedule Management",
+          description:
+            "Live tracking of available slots and dates for upcoming pilgrimage departure batches.",
+        },
+        {
+          title: "Consultation Request Workflow",
+          description:
+            "Direct booking and inquiry system connecting prospective pilgrims with travel consultants.",
+        },
+      ]),
+      developmentHighlights: JSON.stringify([
+        "Designed high-trust visual hierarchy with clear typography and package disclosures.",
+        "Optimized page load speed and asset delivery for high mobile conversion.",
+      ]),
+      images: {
+        create: [
+          {
+            fileName: "demo-umroh-cover.svg",
+            fileUrl: "/uploads/demo-umroh-cover.svg",
+            title: "Demo Umroh Portal Overview",
+            altText: "Travel & Umroh pilgrimage package portal overview",
+            caption: "Tiered package catalog, flight dates, and direct consultation booking.",
+            sortOrder: 1,
+            isCover: true,
+            fileSize: 45000,
+            fileType: "image/svg+xml",
+          },
+        ],
+      },
+    },
+  });
+
+  // Project 6: Coffee Shop
+  const p6 = await prisma.project.create({
+    data: {
+      number: "06",
+      title: "Coffee Shop",
+      slug: "coffee-shop",
+      subtitle: "Modern Café & Ordering Experience",
+      period: "2025",
+      role: "Frontend Developer & Web Designer",
+      category: "WEB",
+      tools: "HTML, CSS, JavaScript, Web Design, Responsive UI",
+      shortDescription:
+        "Modern, responsive coffee shop website engineered with semantic HTML, modern CSS styling, and interactive JavaScript features.",
+      fullDescription:
+        "A modern web design and frontend implementation for an artisan coffee shop. Focused on exceptional visual presentation, intuitive navigation, and responsive layouts that showcase coffee offerings and café ambiance.",
+      technologies: "HTML, CSS, JavaScript, Web Design, Responsive UI",
+      projectUrl: null, // Empty url so dynamic CTA is hidden as requested
+      githubUrl: "https://github.com/ubaidlah773/coffee-shop",
+      featured: false,
+      published: true,
+      displayOrder: 6,
+      coverImage: "/uploads/coffee-shop-cover.svg",
+      mockupType: "coffee-shop",
+      badgeText: "Web Design & Dev",
+      highlights: JSON.stringify([
+        "Interactive beverage and culinary menu catalog",
+        "Modern aesthetic layout with high-impact visual presentation",
+        "Dynamic JavaScript cart and order summary calculation",
+        "Fluid responsive layout tested across mobile, tablet, and desktop",
+      ]),
+      features: JSON.stringify([
+        {
+          title: "Artisan Menu & Filtering",
+          description:
+            "Organized categories for espresso drinks, manual brews, teas, and pastries.",
+        },
+        {
+          title: "Interactive Cart & Order Summary",
+          description:
+            "Dynamic order calculations using vanilla JavaScript with local state handling.",
+        },
+        {
+          title: "Atmospheric Brand Storytelling",
+          description:
+            "Engaging visual narrative highlighting bean origins, roasting techniques, and ambiance.",
+        },
+      ]),
+      developmentHighlights: JSON.stringify([
+        "Structured semantic HTML5 elements adhering to accessibility and SEO best practices.",
+        "Crafted custom CSS animations and responsive breakpoints without relying on heavy external libraries.",
+      ]),
+      images: {
+        create: [
+          {
+            fileName: "coffee-shop-cover.svg",
+            fileUrl: "/uploads/coffee-shop-cover.svg",
+            title: "Coffee Shop Architecture Overview",
+            altText: "Coffee Shop modern web design and ordering interface",
+            caption: "Interactive beverage menu, online ordering cart, and responsive layout.",
+            sortOrder: 1,
+            isCover: true,
+            fileSize: 45000,
+            fileType: "image/svg+xml",
+          },
+          {
+            fileName: "hero-cup.jpg",
+            fileUrl: "/images/hero-cup.jpg",
+            title: "Artisan Coffee Presentation",
+            altText: "Artisan coffee cup hero image",
+            caption: "Signature pour-over coffee showcase.",
+            sortOrder: 2,
+            isCover: false,
+            fileSize: 75000,
+            fileType: "image/jpeg",
+          },
+          {
+            fileName: "cafe-interior.jpg",
+            fileUrl: "/images/cafe-interior.jpg",
+            title: "Café Ambiance & Interior",
+            altText: "Coffee shop warm interior layout",
+            caption: "Modern minimalist seating and espresso bar.",
+            sortOrder: 3,
+            isCover: false,
+            fileSize: 85000,
+            fileType: "image/jpeg",
+          },
+        ],
+      },
+    },
+  });
+
+  console.log("All 6 Projects and Gallery Images seeded.");
 
   // Also register images into Media Library
   const allProjectImages = [
     { name: "belajar-cerdas-cover.svg", p: p1.id, title: "Belajar Cerdas Cover" },
     { name: "belajar-cerdas-student.svg", p: p1.id, title: "Student Dashboard" },
     { name: "belajar-cerdas-teacher.svg", p: p1.id, title: "Teacher Console" },
-    { name: "belajar-cerdas-schedule.svg", p: p1.id, title: "Schedule Timetable" },
-    { name: "belajar-cerdas-calendar.svg", p: p1.id, title: "Academic Calendar" },
     { name: "lapas-tuban-cover.svg", p: p2.id, title: "Lapas Tuban Cover" },
     { name: "lapas-tuban-website.svg", p: p2.id, title: "Official Website" },
-    { name: "lapas-tuban-payroll.svg", p: p2.id, title: "Digital Payroll" },
-    { name: "lapas-tuban-clinic.svg", p: p2.id, title: "Clinic Patient Data" },
-    { name: "lapas-tuban-administration.svg", p: p2.id, title: "Satbang Administration" },
     { name: "queue-system-cover.svg", p: p3.id, title: "Queue System Cover" },
     { name: "queue-system-calling.svg", p: p3.id, title: "Audio Calling Desk" },
-    { name: "queue-system-display.svg", p: p3.id, title: "Live Display Monitor" },
-    { name: "queue-system-ticket.svg", p: p3.id, title: "E-Ticket Preview" },
+    { name: "demo-lpk-cover.svg", p: p4.id, title: "Demo LPK Cover" },
+    { name: "demo-umroh-cover.svg", p: p5.id, title: "Demo Umroh Cover" },
+    { name: "coffee-shop-cover.svg", p: p6.id, title: "Coffee Shop Cover" },
   ];
 
   for (const item of allProjectImages) {
@@ -443,7 +584,7 @@ async function main() {
         fileName: item.name,
         fileUrl: `/uploads/${item.name}`,
         fileType: "image/svg+xml",
-        fileSize: 46000,
+        fileSize: 45000,
         altText: item.title,
         caption: `Documentation screenshot for ${item.title}`,
         projectId: item.p,
@@ -523,11 +664,11 @@ async function main() {
   }
   console.log("Experience records seeded.");
 
-  // 5. Skills & Categories
+  // 5. Skills & Categories (3 Exact Categories requested by user)
   const skillSets = [
     {
-      category: "Programming",
-      description: "Core languages used to engineer performant algorithms and applications.",
+      category: "Development",
+      description: "Core languages, frameworks, relational databases, and architectural standards.",
       displayOrder: 1,
       skills: [
         { name: "HTML", tag: "Markup", displayOrder: 1 },
@@ -535,48 +676,44 @@ async function main() {
         { name: "JavaScript", tag: "Full Stack", displayOrder: 3 },
         { name: "Python", tag: "Data & ML", displayOrder: 4 },
         { name: "C++", tag: "Systems", displayOrder: 5 },
+        { name: "Laravel", tag: "PHP Framework", displayOrder: 6 },
+        { name: "Node.js", tag: "Server Runtime", displayOrder: 7 },
+        { name: "Express.js", tag: "Backend Framework", displayOrder: 8 },
+        { name: "MySQL", tag: "Relational RDBMS", displayOrder: 9 },
+        { name: "SQLite", tag: "Embedded DB", displayOrder: 10 },
+        { name: "Git", tag: "Version Control", displayOrder: 11 },
+        { name: "GitHub", tag: "Code Repository", displayOrder: 12 },
+        { name: "REST API", tag: "System Integration", displayOrder: 13 },
+        { name: "CRUD", tag: "Data Operations", displayOrder: 14 },
+        { name: "SEO", tag: "Search Visibility", displayOrder: 15 },
+        { name: "Responsive Web Design", tag: "Adaptive Layouts", displayOrder: 16 },
       ],
     },
     {
-      category: "Frameworks & Runtime",
-      description: "Modern backend and server runtimes for scalable web architectures.",
+      category: "Design",
+      description: "UI and visual design capabilities grounded in verified web design experience.",
       displayOrder: 2,
       skills: [
-        { name: "Laravel", tag: "PHP Framework", displayOrder: 1 },
-        { name: "Node.js", tag: "Server Runtime", displayOrder: 2 },
-        { name: "Express.js", tag: "Backend Framework", displayOrder: 3 },
-      ],
-    },
-    {
-      category: "Database",
-      description: "Relational storage systems optimized for data integrity and speed.",
-      displayOrder: 3,
-      skills: [
-        { name: "MySQL", tag: "Relational RDBMS", displayOrder: 1 },
-        { name: "SQLite", tag: "Embedded Database", displayOrder: 2 },
-      ],
-    },
-    {
-      category: "Tools & Ecosystem",
-      description: "Developer workflows, version control, and design tooling.",
-      displayOrder: 4,
-      skills: [
-        { name: "Git", tag: "Version Control", displayOrder: 1 },
-        { name: "GitHub", tag: "Code Repository", displayOrder: 2 },
+        { name: "UI Design", tag: "Interface Craft", displayOrder: 1 },
+        { name: "Responsive Web Design", tag: "Mobile First", displayOrder: 2 },
         { name: "Figma", tag: "UI/UX Prototyping", displayOrder: 3 },
         { name: "Canva", tag: "Visual Assets", displayOrder: 4 },
-        { name: "MySQL Workbench", tag: "Schema Modeling", displayOrder: 5 },
+        { name: "Website Layout", tag: "Structure & Grid", displayOrder: 5 },
+        { name: "Visual Design", tag: "Aesthetics & Hierarchy", displayOrder: 6 },
       ],
     },
     {
-      category: "Web & Architecture",
-      description: "Architectural disciplines for practical, accessible web systems.",
-      displayOrder: 5,
+      category: "Soft Skills",
+      description: "Professional interpersonal, analytical, and collaborative execution competencies.",
+      displayOrder: 3,
       skills: [
-        { name: "CRUD", tag: "Data Operations", displayOrder: 1 },
-        { name: "REST API", tag: "System Integration", displayOrder: 2 },
-        { name: "SEO", tag: "Search Visibility", displayOrder: 3 },
-        { name: "Responsive Web Design", tag: "Adaptive Layouts", displayOrder: 4 },
+        { name: "Problem Solving", tag: "Analytical", displayOrder: 1 },
+        { name: "Communication", tag: "Interpersonal", displayOrder: 2 },
+        { name: "Team Collaboration", tag: "Teamwork", displayOrder: 3 },
+        { name: "Attention to Detail", tag: "Precision", displayOrder: 4 },
+        { name: "Adaptability", tag: "Agility", displayOrder: 5 },
+        { name: "Time Management", tag: "Execution", displayOrder: 6 },
+        { name: "Continuous Learning", tag: "Growth Mindset", displayOrder: 7 },
       ],
     },
   ];
@@ -643,7 +780,7 @@ async function main() {
   });
   console.log("Education records seeded.");
 
-  console.log("Database successfully seeded with 100% authentic CV data!");
+  console.log("Database successfully seeded with 100% authentic CV & project data!");
 }
 
 main()

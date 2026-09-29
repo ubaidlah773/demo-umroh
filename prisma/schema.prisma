@@ -27,7 +27,8 @@ model Project {
   subtitle              String
   period                String
   role                  String
-  category              String         @default("Web Development")
+  category              String         @default("WEB")
+  tools                 String?
   shortDescription      String
   fullDescription       String
   technologies          String         // Comma-separated or JSON string

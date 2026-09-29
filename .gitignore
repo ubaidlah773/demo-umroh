@@ -33,3 +33,6 @@ yarn-error.log*
 # backup / old files
 _old_wedding_project
 .vite
+
+.vercel
+.env*

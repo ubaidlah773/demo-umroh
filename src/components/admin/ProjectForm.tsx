@@ -43,7 +43,10 @@ export default function ProjectForm({ initialData, isNew = false }: ProjectFormP
   const [role, setRole] = useState(initialData?.role || "Full Stack Developer");
   const [period, setPeriod] = useState(initialData?.period || "2026");
   const [category, setCategory] = useState(
-    initialData?.category || "Web Development"
+    initialData?.category || "WEB"
+  );
+  const [tools, setTools] = useState(
+    initialData?.tools || ""
   );
   const [technologies, setTechnologies] = useState(
     initialData?.technologies || "Laravel, MySQL, JavaScript"
@@ -139,6 +142,7 @@ export default function ProjectForm({ initialData, isNew = false }: ProjectFormP
       role,
       period,
       category,
+      tools: tools || technologies,
       technologies,
       projectUrl,
       githubUrl,
@@ -412,30 +416,71 @@ export default function ProjectForm({ initialData, isNew = false }: ProjectFormP
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#272838] mb-1.5">
-                Category
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-xs font-semibold text-[#272838]">
+                  Category Type
+                </label>
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={() => setCategory("WEB")}
+                    className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold transition-all cursor-pointer ${
+                      category.toUpperCase() === "WEB"
+                        ? "bg-[#347FC4] text-white"
+                        : "bg-[#EEF0F8] text-[#5D536B] hover:text-[#272838]"
+                    }`}
+                  >
+                    WEB
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCategory("DESIGN")}
+                    className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold transition-all cursor-pointer ${
+                      category.toUpperCase() === "DESIGN"
+                        ? "bg-[#347FC4] text-white"
+                        : "bg-[#EEF0F8] text-[#5D536B] hover:text-[#272838]"
+                    }`}
+                  >
+                    DESIGN
+                  </button>
+                </div>
+              </div>
               <input
                 type="text"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                placeholder="e.g. School Management / LMS"
+                placeholder="WEB, DESIGN, or custom descriptor"
                 className="w-full px-3.5 py-2.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/25 text-sm text-[#272838] focus:outline-none focus:ring-1 focus:ring-accent-blue focus:border-accent-blue focus:bg-white font-medium"
               />
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-semibold text-[#272838] mb-1.5">
-              Technologies (Comma Separated)
-            </label>
-            <input
-              type="text"
-              value={technologies}
-              onChange={(e) => setTechnologies(e.target.value)}
-              placeholder="e.g. Laravel, MySQL, JavaScript, Blade, Tailwind CSS, RBAC"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/25 text-sm text-[#272838] font-mono focus:outline-none focus:ring-1 focus:ring-accent-blue focus:border-accent-blue focus:bg-white"
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label className="block text-xs font-semibold text-[#272838] mb-1.5">
+                Tools / Design Stack
+              </label>
+              <input
+                type="text"
+                value={tools}
+                onChange={(e) => setTools(e.target.value)}
+                placeholder="e.g. Figma, Canva, Responsive Web Design"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/25 text-sm text-[#272838] font-mono focus:outline-none focus:ring-1 focus:ring-accent-blue focus:border-accent-blue focus:bg-white"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#272838] mb-1.5">
+                Technologies / Tech Stack (Comma Separated)
+              </label>
+              <input
+                type="text"
+                value={technologies}
+                onChange={(e) => setTechnologies(e.target.value)}
+                placeholder="e.g. Laravel, MySQL, JavaScript, Blade, Tailwind CSS"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#F7F8FC] border border-[#7D6B91]/25 text-sm text-[#272838] font-mono focus:outline-none focus:ring-1 focus:ring-accent-blue focus:border-accent-blue focus:bg-white"
+              />
+            </div>
           </div>
 
           <div className="pt-4 border-t border-[#7D6B91]/10 grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -618,6 +663,9 @@ export default function ProjectForm({ initialData, isNew = false }: ProjectFormP
                 <option value="belajar-cerdas">School / LMS Dashboard</option>
                 <option value="lapas-tuban">Public Sector / Database CRUD</option>
                 <option value="queue-system">Real-Time Queue Monitor</option>
+                <option value="demo-lpk">Vocational Training Center</option>
+                <option value="demo-umroh">Travel &amp; Pilgrimage Portal</option>
+                <option value="coffee-shop">Modern Café &amp; Ordering Experience</option>
                 <option value="custom">Clean Architecture Card</option>
               </select>
             </div>

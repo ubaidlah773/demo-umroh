@@ -41,6 +41,7 @@ export async function POST(req: NextRequest) {
       period,
       role,
       category,
+      tools,
       shortDescription,
       fullDescription,
       technologies,
@@ -92,7 +93,8 @@ export async function POST(req: NextRequest) {
         subtitle: subtitle || "Web Platform",
         period: period || "2026",
         role: role || "Full Stack Developer",
-        category: category || "Web Development",
+        category: category || "WEB",
+        tools: tools || null,
         shortDescription,
         fullDescription: fullDescription || shortDescription,
         technologies:

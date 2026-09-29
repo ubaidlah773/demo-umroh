@@ -11,12 +11,15 @@ export interface ProjectItem {
   subtitle: string;
   period: string;
   role: string;
-  category?: string;
+  category?: "WEB" | "DESIGN" | string;
+  tools?: string | string[] | null;
+  projectUrl?: string | null;
+  githubUrl?: string | null;
   tags: string[];
   description: string;
   shortDescription?: string;
   highlights: string[];
-  mockupType: "belajar-cerdas" | "lapas-tuban" | "queue-system" | string;
+  mockupType: "belajar-cerdas" | "lapas-tuban" | "queue-system" | "demo-lpk" | "demo-umroh" | "coffee-shop" | string;
   badgeText?: string;
   coverImage?: string | null;
   images?: any[];

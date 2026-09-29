@@ -34,11 +34,17 @@ export const personalInfo: PersonalInfo = {
 export const projectsData: ProjectItem[] = [
   {
     id: "belajar-cerdas",
+    slug: "belajar-cerdas",
     number: "01",
     title: "Belajar Cerdas",
     subtitle: "Integrated School Management Platform",
     period: "Mar 2026 – Jun 2026",
     role: "Web Developer — Freelance",
+    category: "WEB",
+    tools: "Laravel, MySQL, JavaScript, Blade, Tailwind CSS, RBAC",
+    projectUrl: "https://belajarcerdas.id",
+    githubUrl: "https://github.com/ubaidlah773/belajar-cerdas",
+    coverImage: "/uploads/belajar-cerdas-cover.svg",
     tags: ["Laravel", "MySQL", "JavaScript", "Multi-Role Dashboard", "Scheduling", "Calendar"],
     description:
       "Developed interconnected dashboards for students, teachers, school principals, parents, and foundations within the Belajar Cerdas platform.",
@@ -89,11 +95,17 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "lapas-tuban",
+    slug: "lapas-tuban",
     number: "02",
     title: "Lapas Tuban",
     subtitle: "Digital Services Platform",
     period: "2025 – 2026",
     role: "Facilities Manager Intern — Web Development Focus",
+    category: "WEB",
+    tools: "Laravel, MySQL, JavaScript, CRUD, SEO, Tailwind CSS",
+    projectUrl: "https://lapastuban.kemenkumham.go.id",
+    githubUrl: "https://github.com/ubaidlah773/lapas-tuban-web",
+    coverImage: "/uploads/lapas-tuban-cover.svg",
     tags: ["Laravel", "MySQL", "JavaScript", "CRUD", "SEO", "Administrative Security"],
     description:
       "Developed multiple web-based systems supporting the digitalization of administrative and public services.",
@@ -145,11 +157,16 @@ export const projectsData: ProjectItem[] = [
   },
   {
     id: "queue-system",
+    slug: "visitor-registration-queue-system",
     number: "03",
     title: "Online Visitor Registration & Queue System",
     subtitle: "Public Intake & Real-Time Queue Calling",
     period: "Dec 2025 – Jan 2026",
     role: "Full Stack Developer",
+    category: "WEB",
+    tools: "Laravel, MySQL, Queue Dispatch, Real-Time Audio, SEO",
+    projectUrl: "https://antrian.lapastuban.id",
+    githubUrl: "https://github.com/ubaidlah773/queue-management-system",
     tags: ["Laravel", "MySQL", "Queue Management", "Real-Time Display", "Web Hosting", "SEO"],
     description:
       "Designed and developed an online visitor registration system to streamline the visitor registration process.",
@@ -163,6 +180,7 @@ export const projectsData: ProjectItem[] = [
     ],
     mockupType: "queue-system",
     badgeText: "Real-Time Queue Platform",
+    coverImage: "/uploads/queue-system-cover.svg",
     overview:
       "A purpose-built public visitor intake and queue orchestration platform. Designed to eliminate physical congestion, the system allows visitors to book registration slots online and enables facility staff to process queues smoothly via automated counter calling.",
     technologies: {
@@ -197,6 +215,168 @@ export const projectsData: ProjectItem[] = [
       "Engineered race-condition prevention during peak registration hours using atomic database transactions.",
       "Deployed and configured application on production web hosting with custom DNS routing and HTTPS encryption.",
       "Implemented structured JSON-LD and meta tags for search engines so local visitors easily find the registration portal.",
+    ],
+  },
+  {
+    id: "demo-lpk",
+    slug: "demo-lpk",
+    number: "04",
+    title: "Demo LPK",
+    subtitle: "Vocational Training Center Web Platform",
+    period: "2026",
+    role: "Full Stack Developer",
+    category: "WEB",
+    tools: "Laravel, PHP, MySQL, Tailwind CSS, Blade",
+    projectUrl: "https://demo-lpk.vercel.app",
+    githubUrl: "https://github.com/ubaidlah773/demo-lpk",
+    tags: ["Laravel", "PHP", "MySQL", "Tailwind CSS", "Web Development"],
+    description:
+      "Web platform developed for vocational training centers (LPK) featuring course management, participant registration, and program schedules.",
+    highlights: [
+      "Multi-discipline vocational training course catalog",
+      "Online participant intake and registration workflows",
+      "Instructor and classroom scheduling management",
+      "Responsive interface optimized for desktop and mobile devices",
+    ],
+    mockupType: "demo-lpk",
+    badgeText: "Vocational Platform",
+    coverImage: "/uploads/demo-lpk-cover.svg",
+    overview:
+      "Demo LPK is a dedicated web platform tailored for vocational training institutions. It enables administrators to manage training programs, coordinate instructor timetables, and process prospective student applications online.",
+    technologies: {
+      frontend: ["JavaScript", "Blade Templates", "Tailwind CSS"],
+      backend: ["Laravel", "PHP", "MVC Architecture"],
+      database: ["MySQL", "Relational Database Design"],
+      infrastructure: ["Web Hosting", "Git"],
+    },
+    features: [
+      {
+        title: "Course Catalog Management",
+        description:
+          "Structured repository of vocational courses, certifications, and syllabus outlines for prospective trainees.",
+      },
+      {
+        title: "Participant Registration Intake",
+        description:
+          "Online admission forms with applicant data validation and registration status tracking.",
+      },
+      {
+        title: "Training Schedule Coordinator",
+        description:
+          "Calendar and time-slot scheduling for classrooms, batches, and vocational instructors.",
+      },
+    ],
+    developmentHighlights: [
+      "Implemented relational schema connecting training batches, modules, and registered participants in MySQL.",
+      "Engineered responsive forms with validation and structured administrative oversight.",
+    ],
+  },
+  {
+    id: "demo-umroh",
+    slug: "demo-umroh",
+    number: "05",
+    title: "Demo Umroh",
+    subtitle: "Travel & Pilgrimage Package Portal",
+    period: "2026",
+    role: "Full Stack Developer",
+    category: "WEB",
+    tools: "Laravel, PHP, MySQL, Tailwind CSS, Responsive Web Design",
+    projectUrl: "https://demo-umroh.vercel.app",
+    githubUrl: "https://github.com/ubaidlah773/demo-umroh",
+    tags: ["Laravel", "PHP", "MySQL", "Tailwind CSS", "Booking Management"],
+    description:
+      "Comprehensive travel and Umroh booking platform featuring package catalog, departure schedule management, and online consultation.",
+    highlights: [
+      "Tiered Umroh and Hajj travel package catalog",
+      "Scheduled departure calendar with seat capacity tracking",
+      "Online consultation and direct lead inquiry integration",
+      "Mobile-first responsive presentation for prospective pilgrims",
+    ],
+    mockupType: "demo-umroh",
+    badgeText: "Travel & Pilgrimage Portal",
+    coverImage: "/uploads/demo-umroh-cover.svg",
+    overview:
+      "Demo Umroh is an informational and booking management platform designed for travel agencies specializing in Umroh and Hajj pilgrimages. It provides clear itineraries, pricing tiers, and direct consultation channels.",
+    technologies: {
+      frontend: ["JavaScript", "Blade Templates", "Tailwind CSS", "Mobile-First Design"],
+      backend: ["Laravel", "PHP"],
+      database: ["MySQL", "Relational Models"],
+      infrastructure: ["Vercel / Cloud Deployment", "Git"],
+    },
+    features: [
+      {
+        title: "Package Comparison & Detail View",
+        description:
+          "Detailed day-by-day itineraries, hotel accommodations, airline info, and pricing tiers.",
+      },
+      {
+        title: "Departure Schedule Management",
+        description:
+          "Live tracking of available slots and dates for upcoming pilgrimage departure batches.",
+      },
+      {
+        title: "Consultation Request Workflow",
+        description:
+          "Direct booking and inquiry system connecting prospective pilgrims with travel consultants.",
+      },
+    ],
+    developmentHighlights: [
+      "Designed high-trust visual hierarchy with clear typography and package disclosures.",
+      "Optimized page load speed and asset delivery for high mobile conversion.",
+    ],
+  },
+  {
+    id: "coffee-shop",
+    slug: "coffee-shop",
+    number: "06",
+    title: "Coffee Shop",
+    subtitle: "Modern Café & Ordering Experience",
+    period: "2025",
+    role: "Frontend Developer & Web Designer",
+    category: "WEB",
+    tools: "HTML, CSS, JavaScript, Web Design, Responsive UI",
+    projectUrl: "",
+    githubUrl: "https://github.com/ubaidlah773/coffee-shop",
+    tags: ["HTML", "CSS", "JavaScript", "Web Design", "Responsive UI"],
+    description:
+      "Modern, responsive coffee shop website engineered with semantic HTML, modern CSS styling, and interactive JavaScript features.",
+    highlights: [
+      "Interactive beverage and culinary menu catalog",
+      "Modern aesthetic layout with high-impact visual presentation",
+      "Dynamic JavaScript cart and order summary calculation",
+      "Fluid responsive layout tested across mobile, tablet, and desktop",
+    ],
+    mockupType: "coffee-shop",
+    badgeText: "Web Design & Dev",
+    coverImage: "/uploads/coffee-shop-cover.svg",
+    overview:
+      "A modern web design and frontend implementation for an artisan coffee shop. Focused on exceptional visual presentation, intuitive navigation, and responsive layouts that showcase coffee offerings and café ambiance.",
+    technologies: {
+      frontend: ["HTML5", "CSS3", "JavaScript (ES6)", "Flexbox & Grid"],
+      backend: ["Static Web Architecture"],
+      database: ["Client-Side Storage"],
+      infrastructure: ["Git", "GitHub Pages / Vercel"],
+    },
+    features: [
+      {
+        title: "Artisan Menu & Filtering",
+        description:
+          "Organized categories for espresso drinks, manual brews, teas, and pastries.",
+      },
+      {
+        title: "Interactive Cart & Order Summary",
+        description:
+          "Dynamic order calculations using vanilla JavaScript with local state handling.",
+      },
+      {
+        title: "Atmospheric Brand Storytelling",
+        description:
+          "Engaging visual narrative highlighting bean origins, roasting techniques, and ambiance.",
+      },
+    ],
+    developmentHighlights: [
+      "Structured semantic HTML5 elements adhering to accessibility and SEO best practices.",
+      "Crafted custom CSS animations and responsive breakpoints without relying on heavy external libraries.",
     ],
   },
 ];
@@ -264,52 +444,50 @@ export const experienceData: ExperienceItem[] = [
 
 export const skillCategories: SkillCategory[] = [
   {
-    category: "Programming",
-    description: "Core languages used to engineer performant algorithms and applications.",
+    category: "Development",
+    description: "Core languages, frameworks, relational databases, and architectural standards.",
     skills: [
       { name: "HTML", tag: "Markup" },
       { name: "CSS", tag: "Styling" },
       { name: "JavaScript", tag: "Full Stack" },
       { name: "Python", tag: "Data & ML" },
       { name: "C++", tag: "Systems" },
-    ],
-  },
-  {
-    category: "Frameworks & Runtime",
-    description: "Modern backend and server runtimes for scalable web architectures.",
-    skills: [
       { name: "Laravel", tag: "PHP Framework" },
       { name: "Node.js", tag: "Server Runtime" },
       { name: "Express.js", tag: "Backend Framework" },
-    ],
-  },
-  {
-    category: "Database",
-    description: "Relational storage systems optimized for data integrity and speed.",
-    skills: [
       { name: "MySQL", tag: "Relational RDBMS" },
-      { name: "SQLite", tag: "Embedded Database" },
-    ],
-  },
-  {
-    category: "Tools & Ecosystem",
-    description: "Developer workflows, version control, and design tooling.",
-    skills: [
+      { name: "SQLite", tag: "Embedded DB" },
       { name: "Git", tag: "Version Control" },
       { name: "GitHub", tag: "Code Repository" },
-      { name: "Figma", tag: "UI/UX Prototyping" },
-      { name: "Canva", tag: "Visual Assets" },
-      { name: "MySQL Workbench", tag: "Schema Modeling" },
+      { name: "REST API", tag: "System Integration" },
+      { name: "CRUD", tag: "Data Operations" },
+      { name: "SEO", tag: "Search Visibility" },
+      { name: "Responsive Web Design", tag: "Adaptive Layouts" },
     ],
   },
   {
-    category: "Web & Architecture",
-    description: "Architectural disciplines for practical, accessible web systems.",
+    category: "Design",
+    description: "UI and visual design capabilities grounded in verified web design experience.",
     skills: [
-      { name: "CRUD", tag: "Data Operations" },
-      { name: "REST API", tag: "System Integration" },
-      { name: "SEO", tag: "Search Visibility" },
-      { name: "Responsive Web Design", tag: "Adaptive Layouts" },
+      { name: "UI Design", tag: "Interface Craft" },
+      { name: "Responsive Web Design", tag: "Mobile First" },
+      { name: "Figma", tag: "UI/UX Prototyping" },
+      { name: "Canva", tag: "Visual Assets" },
+      { name: "Website Layout", tag: "Structure & Grid" },
+      { name: "Visual Design", tag: "Aesthetics & Hierarchy" },
+    ],
+  },
+  {
+    category: "Soft Skills",
+    description: "Professional interpersonal, analytical, and collaborative execution competencies.",
+    skills: [
+      { name: "Problem Solving", tag: "Analytical" },
+      { name: "Communication", tag: "Interpersonal" },
+      { name: "Team Collaboration", tag: "Teamwork" },
+      { name: "Attention to Detail", tag: "Precision" },
+      { name: "Adaptability", tag: "Agility" },
+      { name: "Time Management", tag: "Execution" },
+      { name: "Continuous Learning", tag: "Growth Mindset" },
     ],
   },
 ];

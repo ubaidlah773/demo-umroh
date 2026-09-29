@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bg-Coffee" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080B12"/>
+      <stop offset="100%" stop-color="#121826"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg-Coffee)"/>
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+    <line x1="0" y1="0" x2="0" y2="800"/>
+    <line x1="80" y1="0" x2="80" y2="800"/>
+    <line x1="160" y1="0" x2="160" y2="800"/>
+    <line x1="240" y1="0" x2="240" y2="800"/>
+    <line x1="320" y1="0" x2="320" y2="800"/>
+    <line x1="400" y1="0" x2="400" y2="800"/>
+    <line x1="480" y1="0" x2="480" y2="800"/>
+    <line x1="560" y1="0" x2="560" y2="800"/>
+    <line x1="640" y1="0" x2="640" y2="800"/>
+    <line x1="720" y1="0" x2="720" y2="800"/>
+    <line x1="800" y1="0" x2="800" y2="800"/>
+    <line x1="880" y1="0" x2="880" y2="800"/>
+    <line x1="960" y1="0" x2="960" y2="800"/>
+    <line x1="1040" y1="0" x2="1040" y2="800"/>
+    <line x1="1120" y1="0" x2="1120" y2="800"/>
+    <line x1="0" y1="80" x2="1200" y2="80"/>
+    <line x1="0" y1="160" x2="1200" y2="160"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="320" x2="1200" y2="320"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="480" x2="1200" y2="480"/>
+    <line x1="0" y1="560" x2="1200" y2="560"/>
+    <line x1="0" y1="640" x2="1200" y2="640"/>
+    <line x1="0" y1="720" x2="1200" y2="720"/>
+  </g>
+  <!-- Window Frame -->
+  <rect x="60" y="60" width="1080" height="680" rx="16" fill="#0E131F" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <!-- Title bar -->
+  <rect x="60" y="60" width="1080" height="52" rx="16" fill="#141B2B"/>
+  <circle cx="95" cy="86" r="6" fill="#EF4444"/>
+  <circle cx="115" cy="86" r="6" fill="#F59E0B"/>
+  <circle cx="135" cy="86" r="6" fill="#10B981"/>
+  <rect x="165" y="74" width="460" height="24" rx="6" fill="#090D17" stroke="rgba(255,255,255,0.06)"/>
+  <text x="180" y="90" fill="#64748B" font-family="monospace" font-size="12">coffeeshop-experience • Modern Web Application</text>
+  
+  <!-- Header Banner -->
+  <rect x="90" y="140" width="1020" height="110" rx="12" fill="#131A29" stroke="rgba(255,255,255,0.06)"/>
+  <text x="120" y="185" fill="#F8FAFC" font-family="sans-serif" font-weight="bold" font-size="28">Coffee Shop — Modern Café &amp; Ordering Platform</text>
+  <text x="120" y="220" fill="#94A3B8" font-family="sans-serif" font-size="15">Artisan Brews, Interactive Beverage Catalog &amp; Responsive Web Layout</text>
+  <rect x="880" y="165" width="200" height="34" rx="8" fill="rgba(52,127,196,0.15)" stroke="rgba(52,127,196,0.3)"/>
+  <text x="980" y="187" fill="#347FC4" font-family="monospace" font-size="12" text-anchor="middle" font-weight="bold">Web Design &amp; Dev</text>
+
+  <!-- Left Content Table -->
+  <rect x="90" y="275" width="670" height="430" rx="12" fill="#131A29" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="120" y="305" width="610" height="44" rx="8" fill="#182236"/>
+  <text x="140" y="332" fill="#347FC4" font-family="monospace" font-size="13" font-weight="bold">&gt; Active Components: Menu Showcase &amp; Interactive Cart</text>
+  <rect x="120" y="365" width="610" height="70" rx="8" fill="#0C101A" stroke="rgba(255,255,255,0.04)"/>
+  <text x="140" y="405" fill="#E2E8F0" font-family="sans-serif" font-size="14">Component 01: Semantic HTML5 Structure &amp; Clean Layout</text>
+  <rect x="120" y="450" width="610" height="70" rx="8" fill="#0C101A" stroke="rgba(255,255,255,0.04)"/>
+  <text x="140" y="490" fill="#E2E8F0" font-family="sans-serif" font-size="14">Component 02: Modern CSS3 Grid, Flexbox &amp; Smooth Animations</text>
+  <rect x="120" y="535" width="610" height="70" rx="8" fill="#0C101A" stroke="rgba(255,255,255,0.04)"/>
+  <text x="140" y="575" fill="#E2E8F0" font-family="sans-serif" font-size="14">Component 03: JavaScript Dynamic Cart &amp; Category Filter</text>
+  <rect x="120" y="620" width="610" height="65" rx="8" fill="#0C101A" stroke="rgba(255,255,255,0.04)"/>
+  <text x="140" y="660" fill="#E2E8F0" font-family="sans-serif" font-size="14">Component 04: Mobile First Responsive Layout &amp; Touch Navigation</text>
+
+  <!-- Right Content Metrics -->
+  <rect x="785" y="275" width="325" height="430" rx="12" fill="#131A29" stroke="rgba(255,255,255,0.06)"/>
+  <text x="815" y="315" fill="#F8FAFC" font-family="sans-serif" font-weight="bold" font-size="16">Architecture Status</text>
+  <rect x="815" y="340" width="265" height="75" rx="8" fill="#182236"/>
+  <text x="835" y="370" fill="#94A3B8" font-family="monospace" font-size="11">CORE MARKUP</text>
+  <text x="835" y="395" fill="#347FC4" font-family="sans-serif" font-weight="bold" font-size="15">Semantic HTML5</text>
+  <rect x="815" y="430" width="265" height="75" rx="8" fill="#182236"/>
+  <text x="835" y="460" fill="#94A3B8" font-family="monospace" font-size="11">STYLING SYSTEM</text>
+  <text x="835" y="485" fill="#10B981" font-family="sans-serif" font-weight="bold" font-size="15">CSS3 • Flex &amp; Grid</text>
+  <rect x="815" y="520" width="265" height="75" rx="8" fill="#182236"/>
+  <text x="835" y="550" fill="#94A3B8" font-family="monospace" font-size="11">INTERACTION LOGIC</text>
+  <text x="835" y="575" fill="#F59E0B" font-family="sans-serif" font-weight="bold" font-size="15">Vanilla JavaScript (ES6)</text>
+  <rect x="815" y="610" width="265" height="75" rx="8" fill="#182236"/>
+  <text x="835" y="640" fill="#94A3B8" font-family="monospace" font-size="11">DESIGN SPECIALTY</text>
+  <text x="835" y="665" fill="#989FCE" font-family="sans-serif" font-weight="bold" font-size="15">Visual &amp; Web Layout</text>
+</svg>

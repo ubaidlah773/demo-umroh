@@ -51,6 +51,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
       period,
       role,
       category,
+      tools,
       shortDescription,
       fullDescription,
       technologies,
@@ -75,6 +76,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
     if (period !== undefined) updateData.period = period;
     if (role !== undefined) updateData.role = role;
     if (category !== undefined) updateData.category = category;
+    if (tools !== undefined) updateData.tools = tools;
     if (shortDescription !== undefined) updateData.shortDescription = shortDescription;
     if (fullDescription !== undefined) updateData.fullDescription = fullDescription;
     if (technologies !== undefined) {

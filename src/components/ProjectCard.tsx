@@ -113,14 +113,28 @@ export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
             ))}
           </div>
 
-          <Link
-            href={`/projects/${projectSlug}`}
-            onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-accent-blue hover:underline transition-colors py-1 shrink-0 font-semibold"
-          >
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>Case Study &amp; Gallery →</span>
-          </Link>
+          <div className="flex items-center gap-3 shrink-0">
+            {project.projectUrl && project.projectUrl.trim() !== "" && (
+              <a
+                href={project.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 text-xs font-mono text-accent-blue hover:underline py-1 font-semibold"
+              >
+                <span>{project.category?.toUpperCase() === "DESIGN" ? "View Design" : "View Demo"}</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </a>
+            )}
+            <Link
+              href={`/projects/${projectSlug}`}
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-palette-darkSec hover:text-accent-blue transition-colors py-1 font-semibold"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Case Study →</span>
+            </Link>
+          </div>
         </div>
       </div>
     </article>

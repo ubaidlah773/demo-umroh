@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import {
   X,
@@ -48,6 +48,26 @@ export default function ProjectGalleryLightbox({
     setIsZoomed(false);
     setActiveIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
   }, [images.length]);
+
+  const touchStartX = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+  };
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -260,7 +280,11 @@ export default function ProjectGalleryLightbox({
           </div>
 
           {/* Lightbox Center Image Viewport */}
-          <div className="relative flex-1 flex items-center justify-center p-4 sm:p-8 overflow-auto select-none">
+          <div
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            className="relative flex-1 flex items-center justify-center p-4 sm:p-8 overflow-auto select-none"
+          >
             {/* Prev Button */}
             {images.length > 1 && (
               <button
