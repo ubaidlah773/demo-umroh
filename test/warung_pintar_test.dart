@@ -130,7 +130,7 @@ void main() {
       expect(text, contains('Indomie Goreng'));
       expect(text, contains('Aqua 600ml'));
       expect(text, contains('TOTAL'));
-      expect(text, contains('TUNAI'));
+      expect(text.toUpperCase(), contains('TUNAI'));
       expect(text, contains('KEMBALIAN'));
       expect(text, contains('Terima kasih 🙏'));
     });

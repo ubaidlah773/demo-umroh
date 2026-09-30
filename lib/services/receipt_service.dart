@@ -63,7 +63,7 @@ class ReceiptService {
     // 4. Totals
     buffer.writeln(twoColumns('Total Barang', '${sale.totalItemsCount}'));
     buffer.writeln(twoColumns('TOTAL', CurrencyFormatter.format(sale.total)));
-    buffer.writeln(twoColumns('BAYAR (${sale.paymentMethod})', CurrencyFormatter.format(sale.paid)));
+    buffer.writeln(twoColumns('BAYAR (${sale.paymentMethod.toUpperCase()})', CurrencyFormatter.format(sale.paid)));
     buffer.writeln(twoColumns('KEMBALIAN', CurrencyFormatter.format(sale.change)));
 
     buffer.writeln(line);
