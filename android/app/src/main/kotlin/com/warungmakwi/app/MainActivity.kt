@@ -1,4 +1,4 @@
-package com.warungpintar.app
+package com.warungmakwi.app
 
 import io.flutter.embedding.android.FlutterActivity
 
