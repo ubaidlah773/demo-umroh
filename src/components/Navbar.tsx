@@ -2,221 +2,132 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { personalInfo as fallbackPersonalInfo } from "@/data/portfolioData";
-import { PersonalInfo } from "@/types/portfolio";
-import { Menu, X, Download, ArrowUpRight, Mail } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Utensils, Menu, X, ArrowUpRight } from "lucide-react";
+import { useModal } from "@/context/ModalContext";
 
-const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Skills", href: "#skills" },
-  { name: "Education", href: "#education" },
-];
-
-export default function Navbar({
-  personalInfo: propPersonalInfo,
-}: {
-  personalInfo?: PersonalInfo;
-} = {}) {
-  const personalInfo = propPersonalInfo || fallbackPersonalInfo;
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
+  const { openReservation } = useModal();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      // Section intersection detection
-      const sections = [...navLinks.map((link) => link.href.substring(1)), "contact"];
-      const scrollPos = window.scrollY + 140;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSection(sections[i]);
-          break;
-        }
-      }
+      setScrolled(window.scrollY > 40);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on Escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && mobileMenuOpen) {
-        setMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [mobileMenuOpen]);
+  const navLinks = [
+    { name: "MENU", href: "/menu" },
+    { name: "ABOUT", href: "/#about" },
+    { name: "EXPERIENCE", href: "/#experience" },
+    { name: "GALLERY", href: "/#gallery" },
+    { name: "CONTACT", href: "/#contact" },
+  ];
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [mobileMenuOpen]);
+  const isDarkInitial = pathname === "/" && !scrolled;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "py-2.5 bg-[#272838]/90 backdrop-blur-md border-b border-[#7D6B91]/25 shadow-lg"
-          : "py-5 bg-[#272838]/70 backdrop-blur-sm border-b border-transparent"
+          ? "bg-ivory-100/95 backdrop-blur-md border-b border-espresso-900/10 shadow-sm py-4"
+          : "bg-gradient-to-b from-espresso-950/80 via-espresso-950/30 to-transparent py-6"
       }`}
     >
-      <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo / Brand: UBAI Torii */}
-          <Link
-            href="#"
-            className="group flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#347FC4] rounded-lg py-1 px-1 -ml-1 transition-opacity hover:opacity-90"
-            aria-label="UBAI — Ahmad Ubai Dullah Portfolio Home"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Brand Logo */}
+        <Link href="/" className="group flex items-baseline gap-2">
+          <span
+            className={`font-serif text-2xl sm:text-3xl tracking-tight transition-colors ${
+              scrolled ? "text-espresso-900 font-medium" : "text-ivory-50 font-normal"
+            }`}
           >
-            <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
-              <Image
-                src="/brand/ubai-logo-white.png"
-                alt="UBAI Torii Logo"
-                fill
-                priority
-                className="object-contain transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-extrabold text-sm sm:text-base tracking-wider text-[#F7F8FC] leading-none group-hover:text-[#347FC4] transition-colors">
-                UBAI
-              </span>
-              <span className="text-[10px] sm:text-[11px] font-mono text-[#989FCE] tracking-tight mt-0.5">
-                Full Stack Developer
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Center Navigation Links */}
-          <nav
-            className="hidden md:flex items-center gap-1 bg-[#1F202F]/80 p-1.5 rounded-full border border-[#7D6B91]/25 backdrop-blur-sm shadow-sm"
-            aria-label="Main Navigation"
+            KAYU MANIS
+          </span>
+          <span
+            className={`font-mono text-[9px] uppercase tracking-[0.25em] transition-colors ${
+              scrolled ? "text-champagne-700" : "text-champagne-300"
+            }`}
           >
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
-                    isActive
-                      ? "bg-[#347FC4] text-white font-semibold shadow-sm"
-                      : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#7D6B91]/20"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </nav>
+            TUBAN
+          </span>
+        </Link>
 
-          {/* Desktop Right Actions: Contact & Download CV */}
-          <div className="hidden md:flex items-center gap-2.5">
+        {/* Desktop Center Links */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
             <Link
-              href="#contact"
-              className={`px-3.5 py-2 rounded-lg text-xs font-medium transition-colors ${
-                activeSection === "contact"
-                  ? "text-[#347FC4] font-semibold bg-[#347FC4]/15"
-                  : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#7D6B91]/20"
+              key={link.name}
+              href={link.href}
+              className={`font-mono text-xs uppercase tracking-[0.2em] transition-colors hover:text-champagne-500 relative py-1 ${
+                scrolled
+                  ? "text-espresso-900/80 font-medium"
+                  : "text-ivory-100/85 font-light"
               }`}
             >
-              Contact
+              {link.name}
             </Link>
+          ))}
+        </nav>
 
-            <a
-              href={personalInfo.cvUrl}
-              download="Ahmad_Ubai_Dullah_CV.pdf"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#347FC4] hover:bg-[#2C6EA8] text-white text-xs font-semibold shadow-sm shadow-[#347FC4]/25 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-[#347FC4]"
-              aria-label="Download Ahmad Ubai Dullah CV"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Download CV</span>
-            </a>
-          </div>
-
-          {/* Mobile Hamburger Toggle */}
+        {/* Right Action: BOOK A TABLE Button */}
+        <div className="hidden sm:flex items-center gap-4">
           <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-[#2D2E42] border border-[#7D6B91]/30 text-[#F7F8FC] hover:border-[#347FC4]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#347FC4] shadow-sm transition-colors"
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={mobileMenuOpen}
+            onClick={() => openReservation()}
+            className={`px-6 py-2.5 rounded-full font-mono text-xs uppercase tracking-[0.16em] font-semibold transition-all duration-300 cursor-pointer flex items-center gap-2 active:scale-95 ${
+              scrolled
+                ? "bg-espresso-900 hover:bg-champagne-600 text-ivory-100 shadow-sm"
+                : "bg-champagne-500 hover:bg-champagne-400 text-espresso-950 shadow-champagne-glow"
+            }`}
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            <Utensils className="w-3.5 h-3.5" />
+            <span>BOOK A TABLE</span>
           </button>
         </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className={`p-2 rounded-lg md:hidden transition-colors cursor-pointer ${
+            scrolled ? "text-espresso-900" : "text-ivory-100"
+          }`}
+          aria-label="Toggle mobile menu"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 top-[60px] z-40 bg-[#272838]/98 backdrop-blur-xl md:hidden border-b border-[#7D6B91]/25 flex flex-col p-6 animate-fadeIn shadow-2xl overflow-y-auto"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile Navigation Menu"
-        >
-          <div className="flex flex-col gap-1.5 pt-2">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors flex items-center justify-between ${
-                    isActive
-                      ? "bg-[#347FC4] text-white font-semibold shadow-sm"
-                      : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#7D6B91]/20"
-                  }`}
-                >
-                  <span>{link.name}</span>
-                  <ArrowUpRight className="w-4 h-4 opacity-50" />
-                </Link>
-              );
-            })}
-            <Link
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors flex items-center justify-between ${
-                activeSection === "contact"
-                  ? "bg-[#347FC4] text-white font-semibold shadow-sm"
-                  : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#7D6B91]/20"
-              }`}
-            >
-              <span>Contact</span>
-              <Mail className="w-4 h-4 opacity-50" />
-            </Link>
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-[#7D6B91]/25 flex flex-col gap-3">
-            <a
-              href={personalInfo.cvUrl}
-              download="Ahmad_Ubai_Dullah_CV.pdf"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-[#347FC4] text-white text-sm font-semibold shadow-md shadow-[#347FC4]/25 transition-transform active:scale-[0.98]"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download CV</span>
-            </a>
-            <div className="text-center text-xs font-mono text-[#989FCE] mt-1">
-              Tuban, East Java, Indonesia
+        <div className="md:hidden fixed inset-x-0 top-full bg-ivory-100/98 backdrop-blur-xl border-b border-espresso-900/10 p-6 shadow-2xl transition-all">
+          <nav className="flex flex-col space-y-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="font-mono text-sm uppercase tracking-[0.2em] text-espresso-900 py-2 border-b border-espresso-900/5 hover:text-champagne-600"
+              >
+                {link.name}
+              </Link>
+            ))}
+            <div className="pt-2">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openReservation();
+                }}
+                className="w-full py-3.5 rounded-full bg-espresso-900 text-ivory-100 font-mono text-xs uppercase tracking-[0.2em] font-semibold flex items-center justify-center gap-2 cursor-pointer shadow-md"
+              >
+                <Utensils className="w-4 h-4 text-champagne-400" />
+                <span>BOOK A TABLE</span>
+              </button>
             </div>
-          </div>
+          </nav>
         </div>
       )}
     </header>

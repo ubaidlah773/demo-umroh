@@ -1,34 +1,38 @@
 import { MetadataRoute } from "next";
-import { prisma } from "@/lib/prisma";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://ubaitech.my.id";
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://restokayumanistuban.com";
 
-  const staticRoutes: MetadataRoute.Sitemap = [
+  return [
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: 1.0,
     },
-  ];
-
-  try {
-    const projects = await prisma.project.findMany({
-      where: { published: true },
-      select: { slug: true, updatedAt: true },
-    });
-
-    const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => ({
-      url: `${baseUrl}/projects/${p.slug}`,
-      lastModified: p.updatedAt,
+    {
+      url: `${baseUrl}/menu`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/gallery`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/events`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
-    }));
-
-    return [...staticRoutes, ...projectRoutes];
-  } catch (error) {
-    console.error("Error generating dynamic sitemap:", error);
-    return staticRoutes;
-  }
+    },
+  ];
 }

@@ -5,75 +5,60 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/data/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: "class",
   theme: {
     extend: {
       colors: {
-        // EXACT NAVY BRAND COLOR SYSTEM SPECIFIED
-        palette: {
-          bg: "#272838",          // Primary website background (Navy)
-          sectionBg: "#1E1F2D",   // Alternate sections background
-          surface: "#2D2E42",     // Cards and content surfaces
-          textPrimary: "#F7F8FC", // Headings and main text
-          textSecondary: "#989FCE", // Secondary text
-          purple: "#7D6B91",      // Secondary visual accent
-          lavender: "#989FCE",    // Subtle decorative elements
-          blue: "#347FC4",        // CTA, links, active states and interactions
-          // Legacy mappings for backwards-safety
-          primary: "#272838",
-          secondary: "#1E1F2D",
-          darkSec: "#5D536B",
-          secPurple: "#7D6B91",
+        // MODERN LUXURY RESTAURANT PALETTE
+        espresso: {
+          700: "#3E3731",
+          800: "#2F2924",
+          900: "#211C18", // Primary Deep Espresso
+          950: "#1A1613",
         },
-        // Semantic surface mapping for the navy theme
-        surface: {
-          primary: "#272838",     // Main background (Navy)
-          section: "#1E1F2D",     // Alternating section background
-          card: "#2D2E42",        // Card & modal background
-          cardHover: "#35364E",
-          border: "rgba(125, 107, 145, 0.25)", // Subtle #7D6B91 border
-          borderStrong: "rgba(125, 107, 145, 0.4)",
+        ivory: {
+          50: "#FAF7F2",
+          100: "#F7F3EC", // Secondary Warm Ivory
+          200: "#EFE9DF",
+          300: "#E4DCCE",
         },
-        accent: {
-          blue: "#347FC4",        // Primary Blue Accent
-          lavender: "#989FCE",    // Soft Lavender
-          purple: "#7D6B91",      // Secondary Purple
-          secondary: "#5D536B",   // Dark Secondary
-          glow: "rgba(52, 127, 196, 0.15)",
-          subtle: "rgba(52, 127, 196, 0.08)",
+        champagne: {
+          300: "#E0CB9E",
+          400: "#D4B87E",
+          500: "#C8A96B", // Luxury Muted Champagne
+          600: "#B29255",
+          700: "#93763F",
         },
-        text: {
-          primary: "#272838",     // Crisp dark heading & body text
-          secondary: "#5D536B",   // Secondary text
-          muted: "rgba(93, 83, 107, 0.75)", // Dimmed secondary
-          faint: "rgba(93, 83, 107, 0.45)",
-          light: "#FFFFFF",       // White text when used on solid blue or dark buttons
+        olive: {
+          500: "#6E7260",
+          600: "#5D6151",
+          700: "#55584B", // Supporting Natural Olive
+          800: "#42453A",
+          900: "#31342B",
+        },
+        warmgray: {
+          100: "#EDEBE8",
+          200: "#DDD9D4",
+          300: "#C4BFB8",
+          400: "#AAA39A", // Neutral Warm Gray
+          500: "#8B847A",
+          600: "#6E685E",
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "Inter", "-apple-system", "sans-serif"],
-        display: ["var(--font-display)", "Plus Jakarta Sans", "-apple-system", "sans-serif"],
-        mono: ["var(--font-mono)", "JetBrains Mono", "SFMono-Regular", "Menlo", "monospace"],
+        serif: ["var(--font-serif)", "Cormorant Garamond", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "Manrope", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "DM Mono", "monospace"],
       },
       boxShadow: {
-        "card-subtle": "0 2px 8px -2px rgba(39, 40, 56, 0.05), 0 1px 4px -1px rgba(39, 40, 56, 0.04)",
-        "card-elevated": "0 12px 32px -6px rgba(39, 40, 56, 0.08), 0 4px 12px -2px rgba(39, 40, 56, 0.04)",
-        "card-hover": "0 20px 40px -10px rgba(52, 127, 196, 0.12), 0 6px 16px -4px rgba(39, 40, 56, 0.06)",
-        "accent-sm": "0 2px 10px -2px rgba(52, 127, 196, 0.35)",
-        "accent-md": "0 6px 20px -3px rgba(52, 127, 196, 0.4)",
-        "glow-card": "0 0 30px -5px rgba(52, 127, 196, 0.12)",
+        luxury: "0 20px 40px -15px rgba(33, 28, 24, 0.08)",
+        "luxury-hover": "0 25px 50px -12px rgba(33, 28, 24, 0.14)",
+        "champagne-glow": "0 0 25px rgba(200, 169, 107, 0.18)",
       },
-      borderRadius: {
-        sm: "6px",
-        DEFAULT: "10px",
-        md: "12px",
-        lg: "16px",
-        xl: "20px",
-        "2xl": "24px",
-      },
-      maxWidth: {
-        container: "1280px",
+      transitionTimingFunction: {
+        luxury: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     },
   },

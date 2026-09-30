@@ -18,9 +18,11 @@ import {
   X,
   Code2,
   ShieldCheck,
+  CalendarCheck,
 } from "lucide-react";
 
 const navigationItems = [
+  { name: "Reservations", href: "/admin/reservations", icon: CalendarCheck },
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { name: "Projects", href: "/admin/projects", icon: FolderKanban },
   { name: "Experience", href: "/admin/experience", icon: Briefcase },

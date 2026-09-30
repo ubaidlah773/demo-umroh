@@ -153,3 +153,24 @@ model MediaItem {
   projectId   String?
   createdAt   DateTime @default(now())
 }
+
+model Reservation {
+  id             String   @id @default(cuid())
+  bookingCode    String   @unique
+  customerName   String
+  phone          String
+  email          String
+  date           String   // Format: YYYY-MM-DD
+  time           String   // Format: HH:mm (e.g. 19:30)
+  guestCount     Int      @default(2)
+  seating        String   @default("Indoor") // "Indoor", "Outdoor", "Private Room"
+  specialRequest String?
+  occasion       String?  // "Birthday", "Anniversary", "Business", etc.
+  status         String   @default("confirmed") // "pending", "confirmed", "cancelled", "completed", "no_show"
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([date, time])
+  @@index([status])
+}
+

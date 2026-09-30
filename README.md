@@ -1,160 +1,114 @@
-# Ahmad Ubai Dullah — Personal Portfolio & Content Management System
+# RESTO KAYU MANIS — TUBAN
+### Official Premium Restaurant Website
 
-A production-ready, dynamic personal portfolio website and integrated Content Management System (CMS) designed for **Ahmad Ubai Dullah** (Full Stack Developer based in Tuban, Indonesia).
+**Website Resmi Resto Kayu Manis — Tuban**  
+*Seafood & Family Restaurant • Elegant Tropical Indonesian Dining*
 
-Built strictly according to Ahmad's authentic curriculum vitae (CV) and professional experience.
-
----
-
-## 🌟 Key Architecture & Interfaces
-
-The application consists of two seamlessly connected interfaces:
-
-### 1. Public Portfolio (`/` & `/projects/[slug]`)
-- **Aesthetic**: Premium dark developer aesthetic, modern minimalism, technical typography, high-end SaaS feel.
-- **Hero Section**: Eyebrow indicator, professional title, location pill, download CV CTA, view projects trigger, and interactive system status terminal.
-- **About Ahmad**: Engineering philosophy, core architectural competencies, and structured career summary paragraphs.
-- **Selected Projects**: Interactive architecture preview cards with direct links to dedicated case study pages.
-- **Dedicated Project Case Study (`/projects/[slug]`)**:
-  - Detailed narrative breakdown, technology pills, and key deliverables.
-  - **Visual Documentation Gallery & Lightbox**: Interactive gallery featuring mockups, screenshots, thumbnail strip, zoom in/out, keyboard controls (`ArrowLeft`, `ArrowRight`, `Escape`), and image captions.
-  - Previous and Next case study navigation.
-- **Experience Timeline**: Career history with interactive expand/collapse cards and detailed technical contributions.
-- **Technology Stack**: Filterable technology ecosystem covering Programming Languages, Frameworks & Runtimes, Relational Databases, Tools, and Web Architecture.
-- **Education & Credentials**: Detailed academic history (Universitas Negeri Semarang, GPA 3.80 / 4.00, 7 published machine learning research articles) and RevoU Tech Academy credentials.
-- **Contact & Channels**: Fast email copy button, direct inquiry form, social profiles (LinkedIn, GitHub), and discrete contact area.
-
-### 2. Admin Content Management System (`/admin`)
-- **Authentication**: Secure HMAC-SHA256 session token system with HTTP-only cookies and Authorization Bearer header support.
-- **Dashboard Overview (`/admin`)**: Real-time project counts, published items, media stats, quick action shortcuts, and recent project list.
-- **Project Editor (`/admin/projects`)**:
-  - Full CRUD operations with instant publish/draft toggles.
-  - Drag-and-drop reordering with visual rank indicators.
-  - Tabbed editor: Core Info, Deliverables & Features, Engineering Highlights.
-  - **Project Media Uploader**: Drag & drop multi-file uploader, cover image selector, caption and alt-text editor, and image deletion.
-- **Experience Editor (`/admin/experience`)**: Add, edit, reorder, or toggle publication status of employment history.
-- **Skills & Categories (`/admin/skills`)**: Manage technical skills, tags, experience levels, and skill categories.
-- **Education & Honors (`/admin/education`)**: Add academic credentials, honors, coursework, and scores.
-- **Hero & About Editor (`/admin/about`)**: Edit hero headline, eyebrow, supporting copy, and about summary points.
-- **Media Library (`/admin/media`)**: Centralized repository for all uploaded screenshots, mockups, and documents with copyable URLs.
-- **Site Settings & SEO (`/admin/settings`)**: Personal identity, location, contact channels, LinkedIn/GitHub links, CV PDF upload, and OpenGraph/SEO metadata.
+📍 **Alamat**: Jl. Basuki Rachmad No.215–217, Ronggomulyo, Kec. Tuban, Kabupaten Tuban, Jawa Timur 62315  
+📞 **Telepon**: (0356) 331114  
+⏰ **Jam Operasional**: Buka setiap hari, tutup sekitar pukul 22.00 WIB  
+💰 **Kisaran Harga**: Rp50.000 – Rp125.000 / orang  
+⭐ **Google Maps Rating**: 4.4 / 5 dari 1.943+ ulasan nyata  
 
 ---
 
-## 🛠️ Technology Stack
+## 🌟 Brand Positioning & Concept
 
-- **Framework**: Next.js 14 (App Router, Server Components & Route Handlers)
+> **"A Taste of Tuban, Made for Every Gathering."**  
+> Menikmati hidangan Nusantara dan seafood pilihan dalam suasana nyaman bersama orang-orang terdekat.
+
+Resto Kayu Manis diposisikan secara konsisten dan autentik sebagai tempat makan keluarga, rekan kerja, gathering, dan rombongan wisata:
+- **Seafood Segar & Masakan Nusantara**: Ikan bakar, gurami asam manis, gurame madu legit, rajungan kare khas Tuban, ayam telur asin, sop buntut, dan aneka tumis sayuran.
+- **Fasilitas Nyaman**: Ruangan ber-AC sejuk, area santap lapang, meja berkapasitas besar, dan akses parkir luas untuk mobil pribadi maupun bus rombongan.
+- **Lokasi Strategis**: Berada di jalan utama Basuki Rachmad, satu kawasan dengan Hotel Fave Tuban.
+
+---
+
+## 🎨 Visual Direction & Design System
+
+Sesuai spesifikasi resmi di [`DESIGN.md`](./DESIGN.md):
+- **Concept**: *Elegant Tropical Indonesian Dining* (bukan coffee shop, bukan template SaaS generik).
+- **Color System**:
+  - **Primary**: Deep Forest Green (`#131E16`), Dark Wood Brown (`#2A1C15`), Warm Charcoal (`#0F1110`)
+  - **Secondary**: Warm Ivory (`#FAF7F2`), Sand (`#E2D7C3`), Natural Cream
+  - **Accent**: Muted Gold (`#C5A059`), Terracotta / Warm Copper (`#BD5E38`)
+- **Typography**:
+  - **Headings**: Editorial Serif (*Playfair Display*)
+  - **Body**: Highly legible Sans-Serif (*Plus Jakarta Sans*)
+- **Animation System**: Framer Motion dengan kurva `cubic-bezier(0.22, 1, 0.36, 1)`, durasi halus (0.6s–1.0s), tanpa animasi berlebihan.
+
+---
+
+## 🗺️ User Journey & Storytelling Architecture
+
+### 1. Home Page (`/`)
+1. **Hero Section**: Full-screen cinematic dining photography, slow zoom animation, dark gradient overlay, headline *"GOOD FOOD. GREAT GATHERINGS."*, badge lokasi 📍 Tuban, Jawa Timur, CTA *Explore Our Menu* dan *Reserve a Table*.
+2. **Quick Info Bar**: 4 pilar ringkas (*SEAFOOD - Fresh & flavorful*, *FAMILY DINING - Comfortable space*, *SPACIOUS PARKING - Easy access*, *OPEN DAILY - Until 22.00*).
+3. **About Section**: Layout asimetris 60% Foto Suasana Luas vs 40% Narasi, heading *"MORE THAN A MEAL - A PLACE TO GATHER"*, dan 3 statistik terverifikasi (*1,900+ Guest Reviews*, *4.4 Google Rating*, *Daily Dining Experience*).
+4. **Signature Menu**: Section *"FROM OUR KITCHEN"*, 9 menu unggulan resmi (*Mie Goreng Seafood*, *Gurami Asam Manis*, *Gurame Madu Legit*, *Rajungan Kare*, *Ayam Goreng Saus Telor Asin*, *Sop Buntut*, *Sate Ayam Bumbu Kacang*, *Ca Brokoli*, *Ca Kangkung*) tanpa harga fiktif.
+5. **Featured Dish**: Spotlight sinematik asimetris *"THE TASTE OF THE SEA"* untuk hidangan legendaris **Gurami Asam Manis**.
+6. **Dining Experience**: 4 kartu pengalaman bersantap (*Family Dining*, *Business Dining*, *Group Dining*, *Special Occasions*) dengan efek hover zoom, reveal, dan link reservasi instan.
+7. **Restaurant Features**: Section *"EVERYTHING YOU NEED FOR A COMFORTABLE MEAL"* menampilkan 5 fasilitas utama dengan ikon minimal (*Spacious Dining Area*, *Air-Conditioned Rooms*, *Large Parking Area*, *Family Friendly*, *Strategic Location*).
+8. **Editorial Gallery Preview**: Masonry layout dengan kategori foto dan fullscreen Lightbox interaktif.
+9. **Customer Reviews**: Section *"HEARD FROM OUR GUESTS"*, skor 4.4/5 dari 1,943 ulasan nyata Google Maps, 3 kutipan asli pelanggan, dan tautan langsung ke Google Maps.
+10. **Interactive Location**: Section *"FIND US IN TUBAN"*, alamat lengkap Jl. Basuki Rachmad No.215–217, telepon (0356) 331114, jam buka, Google Maps embed, dan CTA *Get Directions*.
+11. **Reservation CTA**: Section *"YOUR TABLE AWAITS"*, latar belakang elegan, tombol *Reserve a Table* (WhatsApp modal) dan *Call (0356) 331114*.
+12. **Footer**: Identitas resmi, kutipan *"Good Food. Good Company."*, tautan navigasi, kontak, dan hak cipta © 2026 Resto Kayu Manis.
+
+### 2. Menu Page (`/menu`)
+- Kategori Filter: *All, Seafood, Fish, Chicken, Rice & Noodles, Vegetables, Soup, Snacks, Beverages*.
+- Search Bar real-time untuk mencari masakan atau bahan.
+- Card Menu: Foto makanan, nama, kategori, deskripsi rasa, badge status.
+- CTA Utama: **Ask About Today's Menu** yang langsung membuka WhatsApp resmi Resto Kayu Manis.
+
+### 3. Gallery Page (`/gallery`)
+- Kategori foto: *All, Food, Restaurant, Family, Events, Interior*.
+- Editorial Masonry Grid dengan variasi rasio foto *featured*, *tall*, *wide*, dan *normal*.
+- Fullscreen Lightbox dengan navigasi escape key dan penutup overlay.
+
+### 4. Events & Gatherings Page (`/events`)
+- Paket jamuan resmi: *Gathering & Acara Keluarga*, *Jamuan Rekan Kerja & Business Dinner*, *Rombongan Wisata & Transit Perjalanan*.
+- Informasi kapasitas, fasilitas penataan meja, dan konsultasi cepat via WhatsApp atau telepon.
+
+### 5. Contact Page (`/contact`)
+- Layout 2 Kolom:
+  - **Kiri**: Informasi alamat lengkap, landmark bersebelahan Hotel Fave Tuban, nomor telepon (0356) 331114, jam buka, dan tombol reservasi meja.
+  - **Kanan**: Google Maps interaktif dan tombol *Get Directions*.
+
+### 6. Mobile Experience
+- Navigasi Drawer layar penuh dengan transisi halus.
+- Sticky Floating Action Bar di bagian bawah layar: tombol **Reserve**, **Call** `(0356) 331114`, dan **Menu**.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS with custom dark technical palette (`tech-grid`, `tech-dots`)
-- **Database & ORM**: SQLite via Prisma ORM (`prisma@5.21.1`) — easily switchable to PostgreSQL or Supabase
+- **Styling**: Tailwind CSS dengan custom design tokens Resto Kayu Manis
+- **Animations**: Framer Motion
 - **Icons**: Lucide React
-- **Authentication**: Native HMAC-SHA256 cryptographic session tokens & bcrypt password hashing
-- **File Storage**: Local persistent uploads (`public/uploads/`) with pluggable cloud adapter support (AWS S3 / Supabase Storage)
+- **SEO & Structured Data**:
+  - JSON-LD `@type: ["Restaurant", "LocalBusiness"]`
+  - OpenGraph & Twitter Card metadata
+  - Dynamic `sitemap.xml` & `robots.txt`
+  - Canonical URL support
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Menjalankan Project
 
-### Prerequisites
-- Node.js 18.x or later
-- npm or pnpm
-
-### Installation
-
-1. **Clone or navigate to the repository:**
-   ```bash
-   cd "membuat web"
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Set up environment variables:**
-   Create a `.env` file (copied from `.env.example`):
-   ```env
-   DATABASE_URL="file:./dev.db"
-   AUTH_SECRET="ahmad-ubai-dullah-secret-2026-key-ultra-secure"
-   ```
-
-4. **Initialize and Seed Database:**
-   ```bash
-   npx prisma db push
-   node prisma/seed.js
-   ```
-
-5. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) to view the public portfolio.
-
-6. **Production Build:**
-   ```bash
-   npm run build
-   npm run start
-   ```
-
----
-
-## 🔐 Admin Dashboard Credentials
-
-Default credentials created during database seeding:
-
-- **Login URL**: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
-- **Username**: `admin` *(or `ahm.idlah773@gmail.com`)*
-- **Password**: `admin123password`
-
----
-
-## 📁 Project Structure
-
+### Development Server
+```bash
+npm run dev
 ```
-├── prisma/
-│   ├── schema.prisma        # Prisma database models (User, Project, ProjectImage, etc.)
-│   ├── dev.db               # SQLite database
-│   ├── generate-mockups.js  # Script to generate project SVG mockups
-│   └── seed.js              # Database seed script with verified CV data
-├── public/
-│   ├── uploads/             # Uploaded images, mockups, and CV document
-│   ├── profile.png          # Ahmad Ubai Dullah profile portrait
-│   └── Ahmad_Ubai_Dullah_CV.pdf
-├── src/
-│   ├── app/
-│   │   ├── admin/           # Admin dashboard pages
-│   │   │   ├── about/       # Hero & About Me editor
-│   │   │   ├── education/   # Academic credentials manager
-│   │   │   ├── experience/  # Experience timeline manager
-│   │   │   ├── login/       # Authentication page
-│   │   │   ├── media/       # Media library grid
-│   │   │   ├── projects/    # Projects CRUD, reordering & image uploader
-│   │   │   ├── settings/    # Profile, Contact & SEO settings
-│   │   │   └── skills/      # Technical skills & category manager
-│   │   ├── api/             # 20 secure API routes for CRUD & upload operations
-│   │   ├── projects/
-│   │   │   └── [slug]/      # Dedicated dynamic Project Case Study & Lightbox
-│   │   ├── page.tsx         # Live dynamic public portfolio homepage
-│   │   ├── layout.tsx       # Root layout with font configuration & metadata
-│   │   └── globals.css      # Dark theme styling and animations
-│   ├── components/          # Reusable UI & section components
-│   │   ├── admin/           # Admin forms & media uploader components
-│   │   ├── ProjectCard.tsx
-│   │   ├── ProjectDetailModal.tsx
-│   │   ├── ProjectGalleryLightbox.tsx
-│   │   └── ...
-│   ├── data/
-│   │   └── portfolioData.ts # Fallback verified CV data
-│   ├── lib/
-│   │   ├── auth.ts          # Auth token creation & verification
-│   │   ├── prisma.ts        # PrismaClient singleton
-│   │   └── storage.ts       # File upload & storage management
-│   └── types/
-│       └── portfolio.ts     # TypeScript interfaces
+Buka browser di `http://localhost:3000`.
+
+### Production Build & Test
+```bash
+npm run build
+npm run start
 ```
 
 ---
-
-## 📄 License
-
-Created for Ahmad Ubai Dullah. All rights reserved.
+*Dokumentasi ini disusun sebagai acuan teknis resmi implementasi website Resto Kayu Manis Tuban.*

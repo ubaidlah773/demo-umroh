@@ -1,94 +1,73 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["500", "600", "700", "800"],
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["400", "500"],
-  display: "swap",
-});
+import { ModalProvider } from "@/context/ModalContext";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ReservationModal from "@/components/ReservationModal";
+import LightboxModal from "@/components/LightboxModal";
+import FloatingBookingCTA from "@/components/FloatingBookingCTA";
+import { RESTAURANT_INFO } from "@/data/restaurant";
 
 export const viewport: Viewport = {
-  themeColor: "#272838",
+  themeColor: "#211C18",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ubaitech.my.id"),
-  title: "Ahmad Ubai Dullah — Full Stack Developer",
+  metadataBase: new URL("https://restokayumanistuban.com"),
+  title: "Resto Kayu Manis | Luxury Dining & Reservations",
   description:
-    "Full Stack Developer based in Tuban, Indonesia. Experienced in building and maintaining web applications using Laravel, JavaScript, Node.js, and MySQL, with additional experience in data analysis and machine learning.",
+    "Experience exceptional food, elegant surroundings, and effortless reservations at Resto Kayu Manis Tuban.",
   keywords: [
-    "Ahmad Ubai Dullah",
-    "UBAI",
-    "Full Stack Developer",
-    "Laravel Developer Indonesia",
-    "Web Developer Tuban",
-    "MySQL",
-    "JavaScript",
-    "Node.js",
-    "Database-driven systems",
-    "Belajar Cerdas",
-    "Lapas Tuban",
+    "Resto Kayu Manis",
+    "Resto Kayu Manis Tuban",
+    "Luxury Restaurant Tuban",
+    "Fine Dining Tuban",
+    "Restaurant Reservations Tuban",
+    "Seafood Restaurant Tuban",
+    "Contemporary Indonesian Cuisine",
+    "Family Gathering Tuban",
+    "Culinary Tuban",
   ],
-  authors: [{ name: "Ahmad Ubai Dullah", url: "https://github.com/ubaidlah773" }],
-  creator: "Ahmad Ubai Dullah",
+  authors: [{ name: "Resto Kayu Manis Tuban" }],
+  creator: "Resto Kayu Manis Tuban",
   alternates: {
-    canonical: "https://ubaitech.my.id",
+    canonical: "https://restokayumanistuban.com",
   },
-  icons: {
-    icon: [
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-  },
-  manifest: "/manifest.json",
   openGraph: {
-    title: "Ahmad Ubai Dullah — Full Stack Developer",
+    title: "Resto Kayu Manis | Luxury Dining & Reservations",
     description:
-      "Building practical web systems that solve real-world problems. Full Stack Developer based in Tuban, Indonesia.",
-    url: "https://ubaitech.my.id",
-    siteName: "Ahmad Ubai Dullah — UBAI Portfolio",
-    locale: "en_US",
-    type: "profile",
+      "Experience exceptional food, elegant surroundings, and effortless reservations at Resto Kayu Manis Tuban.",
+    url: "https://restokayumanistuban.com",
+    siteName: "Resto Kayu Manis",
     images: [
       {
-        url: "/brand/ubai-logo-gradient.png",
-        width: 931,
-        height: 636,
-        alt: "UBAI — Ahmad Ubai Dullah Brand Logo",
+        url: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+        width: 1200,
+        height: 630,
+        alt: "Resto Kayu Manis - Luxury Dining Experience",
       },
     ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ahmad Ubai Dullah — Full Stack Developer",
-    description: "Building practical web systems that solve real-world problems.",
-    images: ["/brand/ubai-logo-gradient.png"],
+    title: "Resto Kayu Manis | Luxury Dining & Reservations",
+    description:
+      "Experience exceptional food, elegant surroundings, and effortless reservations at Resto Kayu Manis Tuban.",
+    images: [
+      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+    ],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
@@ -97,54 +76,75 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
+  // Restaurant & LocalBusiness JSON-LD Schema (Section 36)
+  const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Ahmad Ubai Dullah",
-    alternateName: "UBAI",
-    jobTitle: "Full Stack Developer",
+    "@type": ["Restaurant", "LocalBusiness"],
+    "@id": "https://restokayumanistuban.com/#restaurant",
+    name: "Resto Kayu Manis",
+    image:
+      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+    url: "https://restokayumanistuban.com",
+    telephone: "+62356331114",
+    priceRange: "$$",
+    servesCuisine: ["Contemporary Indonesian", "Seafood", "Nusantara"],
+    menu: "https://restokayumanistuban.com/menu",
+    acceptsReservations: "True",
     address: {
       "@type": "PostalAddress",
+      streetAddress: RESTAURANT_INFO.address.street,
       addressLocality: "Tuban",
       addressRegion: "Jawa Timur",
+      postalCode: RESTAURANT_INFO.address.postalCode,
       addressCountry: "ID",
     },
-    email: "ahm.idlah773@gmail.com",
-    telephone: "+62 819-1200-1721",
-    url: "https://ubaitech.my.id",
-    sameAs: [
-      "https://github.com/ubaidlah773",
-      "https://linkedin.com/in/ahmadubai",
-    ],
-    alumniOf: {
-      "@type": "EducationalOrganization",
-      name: "Universitas Negeri Semarang",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: RESTAURANT_INFO.coordinates.lat,
+      longitude: RESTAURANT_INFO.coordinates.lng,
     },
-    knowsAbout: [
-      "Full Stack Development",
-      "Laravel",
-      "JavaScript",
-      "Node.js",
-      "MySQL",
-      "REST API",
-      "Data Analysis",
-      "Machine Learning",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "11:00",
+        closes: "22:00",
+      },
     ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      reviewCount: "1940",
+      bestRating: "5",
+      worstRating: "1",
+    },
   };
 
   return (
-    <html
-      lang="en"
-      className={`scroll-smooth ${plusJakarta.variable} ${inter.variable} ${jetbrainsMono.variable}`}
-    >
+    <html lang="en">
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-[#272838] text-[#F7F8FC] font-sans antialiased flex flex-col selection:bg-[#347FC4]/30 selection:text-white">
-        {children}
+      <body className="min-h-screen bg-ivory-100 text-espresso-900 antialiased selection:bg-champagne-500/25 selection:text-espresso-950 font-sans">
+        <ModalProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <ReservationModal />
+          <LightboxModal />
+          <FloatingBookingCTA />
+        </ModalProvider>
       </body>
     </html>
   );
