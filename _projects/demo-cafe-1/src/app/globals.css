@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --espresso-bg: #17110e;
+    --espresso-card: #241510;
+    --gold-accent: #c9a66b;
+    --cream-text: #f4e9d8;
+    --caramel: #b87945;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: #17110e;
+    color: #f4e9d8;
+  }
+
+  body {
+    @apply bg-espresso-900 text-cream-100 antialiased selection:bg-gold-500/30 selection:text-cream-50;
+    overflow-x: hidden;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold-500 ring-offset-2 ring-offset-espresso-950;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-serif-heading {
+    font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+  }
+
+  /* Glassmorphic dark coffee surfaces */
+  .glass-coffee {
+    background: rgba(36, 21, 16, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(201, 166, 107, 0.16);
+  }
+
+  .glass-dark {
+    background: rgba(23, 17, 14, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-panel {
+    background: linear-gradient(135deg, rgba(56, 35, 26, 0.6) 0%, rgba(23, 17, 14, 0.8) 100%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(201, 166, 107, 0.2);
+  }
+
+  /* Luxury Gold gradient text */
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #F4E9D8 0%, #C9A66B 50%, #B87945 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-shimmer-text {
+    background: linear-gradient(90deg, #C9A66B 0%, #F4E9D8 50%, #C9A66B 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShine 4s linear infinite;
+  }
+
+  /* Radial lighting effects */
+  .radial-spotlight {
+    background: radial-gradient(circle at 50% 50%, rgba(201, 166, 107, 0.12) 0%, rgba(36, 21, 16, 0.05) 50%, transparent 75%);
+  }
+
+  .radial-warmth {
+    background: radial-gradient(ellipse at top, rgba(184, 121, 69, 0.18) 0%, transparent 60%);
+  }
+}
+
+@keyframes goldShine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Custom smooth dark scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #17110e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #38231a;
+  border-radius: 4px;
+  border: 1px solid rgba(201, 166, 107, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a66b;
+}
+
+/* Custom cursor hide default only when custom cursor active */
+@media (pointer: fine) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Steam particles */
+.steam-particle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  pointer-events: none;
+}

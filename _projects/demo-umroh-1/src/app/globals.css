@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --emerald-primary: #064e3b;
+    --emerald-dark: #022c22;
+    --gold-accent: #c59b27;
+    --ivory-bg: #faf7f2;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    @apply bg-ivory-50 text-slate-800 antialiased selection:bg-gold-200 selection:text-emerald-950;
+    overflow-x: hidden;
+  }
+
+  /* Accessible focus styling */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold-500 ring-offset-2 ring-offset-white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-serif-heading {
+    font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
+  .glass-emerald {
+    background: rgba(4, 46, 35, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  .glass-gold-subtle {
+    background: rgba(253, 251, 244, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(197, 155, 39, 0.25);
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #dfc880 0%, #c59b27 50%, #f1e5be 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .emerald-gradient {
+    background: linear-gradient(145deg, #064e3b 0%, #022c22 100%);
+  }
+
+  .gold-border {
+    border-color: rgba(197, 155, 39, 0.35);
+  }
+
+  /* Subtle Islamic star polygon ambient pattern */
+  .pattern-subtle {
+    background-image: radial-gradient(rgba(6, 78, 59, 0.04) 1px, transparent 1px),
+      radial-gradient(rgba(197, 155, 39, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+  }
+
+  .pattern-dark-subtle {
+    background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4eee2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c59b27;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aa7e1c;
+}

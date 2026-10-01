@@ -7,58 +7,63 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/data/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        // MODERN LUXURY RESTAURANT PALETTE
-        espresso: {
-          700: "#3E3731",
-          800: "#2F2924",
-          900: "#211C18", // Primary Deep Espresso
-          950: "#1A1613",
+        // Javanese Heritage x Modern Editorial Palette for Bale Rasa Tuban
+        jawa: {
+          700: "#423226",
+          800: "#2F221A",
+          850: "#251A13",
+          900: "#1D140E", // Deep Kayu Jati / Teakwood
+          950: "#140D08", // Pitch dark wood
         },
-        ivory: {
-          50: "#FAF7F2",
-          100: "#F7F3EC", // Secondary Warm Ivory
-          200: "#EFE9DF",
-          300: "#E4DCCE",
+        cream: {
+          50: "#FAF7F2", // Pure warm parchment
+          100: "#F4EFE6", // Warm linen background
+          200: "#EAE1D2", // Muted cream card
+          300: "#DDD0BD",
+          400: "#C9B8A0",
         },
-        champagne: {
-          300: "#E0CB9E",
-          400: "#D4B87E",
-          500: "#C8A96B", // Luxury Muted Champagne
-          600: "#B29255",
-          700: "#93763F",
+        terracotta: {
+          300: "#DF7B57",
+          400: "#CD623D",
+          500: "#B84E29", // Traditional Gerabah / Clay pottery
+          600: "#9C3D1B",
+          700: "#803014",
         },
-        olive: {
-          500: "#6E7260",
-          600: "#5D6151",
-          700: "#55584B", // Supporting Natural Olive
-          800: "#42453A",
-          900: "#31342B",
+        wood: {
+          300: "#B77C53",
+          400: "#9C6138",
+          500: "#814A24", // Kayu sawo & jati madu
+          600: "#673717",
+          700: "#4F280E",
         },
-        warmgray: {
-          100: "#EDEBE8",
-          200: "#DDD9D4",
-          300: "#C4BFB8",
-          400: "#AAA39A", // Neutral Warm Gray
-          500: "#8B847A",
-          600: "#6E685E",
+        gold: {
+          300: "#E5CA8A",
+          400: "#D4B368",
+          500: "#C19C4A", // Soft Antique Brass / Kuningan Jawa
+          600: "#A68235",
+          700: "#876725",
+        },
+        forest: {
+          600: "#314A39",
+          700: "#24372A",
+          800: "#1A281E", // Hijau pekat asri daun jati & pisang
+          900: "#121C15",
         },
       },
       fontFamily: {
-        serif: ["var(--font-serif)", "Cormorant Garamond", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "Manrope", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "DM Mono", "monospace"],
+        serif: ["var(--font-serif)", "Cormorant Garamond", "Playfair Display", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "Plus Jakarta Sans", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        luxury: "0 20px 40px -15px rgba(33, 28, 24, 0.08)",
-        "luxury-hover": "0 25px 50px -12px rgba(33, 28, 24, 0.14)",
-        "champagne-glow": "0 0 25px rgba(200, 169, 107, 0.18)",
+        heritage: "0 20px 40px -15px rgba(29, 20, 14, 0.07)",
+        "heritage-lg": "0 25px 50px -12px rgba(29, 20, 14, 0.14)",
+        "gold-glow": "0 0 30px rgba(193, 156, 74, 0.2)",
       },
       transitionTimingFunction: {
-        luxury: "cubic-bezier(0.22, 1, 0.36, 1)",
+        editorial: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     },
   },

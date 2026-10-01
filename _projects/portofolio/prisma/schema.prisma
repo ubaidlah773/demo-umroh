@@ -1,0 +1,155 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x", "rhel-openssl-3.0.x", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String   @default("admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Project {
+  id                    String         @id @default(cuid())
+  number                String
+  title                 String
+  slug                  String         @unique
+  subtitle              String
+  period                String
+  role                  String
+  category              String         @default("WEB")
+  tools                 String?
+  shortDescription      String
+  fullDescription       String
+  technologies          String         // Comma-separated or JSON string
+  projectUrl            String?
+  githubUrl             String?
+  featured              Boolean        @default(false)
+  published             Boolean        @default(true)
+  displayOrder          Int            @default(0)
+  coverImage            String?
+  mockupType            String         @default("belajar-cerdas")
+  badgeText             String?
+  highlights            String         // JSON string array of strings
+  features              String         // JSON string array of { title, description }
+  developmentHighlights String         // JSON string array of strings
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+  images                ProjectImage[]
+}
+
+model ProjectImage {
+  id          String   @id @default(cuid())
+  projectId   String
+  fileName    String
+  fileUrl     String
+  title       String?
+  altText     String   @default("")
+  caption     String?
+  sortOrder   Int      @default(0)
+  isCover     Boolean  @default(false)
+  fileSize    Int?
+  fileType    String?
+  createdAt   DateTime @default(now())
+
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model Experience {
+  id               String   @id @default(cuid())
+  company          String
+  role             String
+  period           String
+  location         String
+  type             String   @default("Freelance")
+  responsibilities String   // JSON string array of strings
+  technologies     String   // JSON string array of strings
+  displayOrder     Int      @default(0)
+  published        Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model SkillCategory {
+  id           String   @id @default(cuid())
+  category     String   @unique
+  description  String
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  skills       Skill[]
+}
+
+model Skill {
+  id           String        @id @default(cuid())
+  categoryId   String
+  name         String
+  tag          String?
+  level        String?
+  icon         String?
+  displayOrder Int           @default(0)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  category     SkillCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+model Education {
+  id           String   @id @default(cuid())
+  institution  String
+  degree       String
+  period       String
+  gradeLabel   String   @default("GPA")
+  gradeValue   String
+  achievements String?  // JSON string array
+  coursework   String?  // JSON string array
+  competencies String?  // JSON string array
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SiteSettings {
+  id              String   @id @default("default")
+  name            String   @default("AHMAD UBAI DULLAH")
+  eyebrow         String   @default("FULL STACK DEVELOPER")
+  headline        String   @default("Building practical web systems that solve real-world problems.")
+  supportingCopy  String   @default("Full Stack Developer experienced in building and maintaining web applications using Laravel, JavaScript, Node.js, and MySQL, with additional experience in data analysis and machine learning.")
+  location        String   @default("Tuban, Indonesia")
+  email           String   @default("ahm.idlah773@gmail.com")
+  phone           String   @default("+62 819-1200-1721")
+  linkedin        String   @default("https://linkedin.com/in/ahmadubai")
+  linkedinDisplay String   @default("linkedin.com/in/ahmadubai")
+  github          String   @default("https://github.com/ubaidlah773")
+  githubDisplay   String   @default("github.com/ubaidlah773")
+  cvUrl           String   @default("/Ahmad_Ubai_Dullah_CV.pdf")
+  profileImage    String   @default("/profile.png")
+  aboutEditorial  String   @default("Engineering reliable, database-driven web platforms that bridge human workflows and robust backend architectures.")
+  aboutSummary    String   // JSON string array
+  metaTitle       String   @default("Ahmad Ubai Dullah — Full Stack Developer")
+  metaDescription String   @default("Full Stack Developer based in Tuban, Indonesia. Building practical database-driven web systems.")
+  ogImage         String   @default("/profile.png")
+  updatedAt       DateTime @updatedAt
+}
+
+model MediaItem {
+  id          String   @id @default(cuid())
+  fileName    String
+  fileUrl     String
+  fileType    String
+  fileSize    Int
+  altText     String   @default("")
+  caption     String?
+  projectId   String?
+  createdAt   DateTime @default(now())
+}
