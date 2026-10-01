@@ -63,10 +63,10 @@ export default function Hero() {
 
         {/* Tagline & Subheading */}
         <div className="max-w-2xl mx-auto space-y-3 mb-8 sm:mb-10">
-          <p className="font-serif italic text-2xl sm:text-3xl md:text-4xl text-gold-200 font-normal tracking-wide">
+          <p className="font-serif italic text-2xl sm:text-3xl md:text-4xl text-blue-400 font-normal tracking-wide drop-shadow-sm">
             “{RESTAURANT_INFO.tagline}”
           </p>
-          <div className="w-16 h-[1.5px] bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto my-3" />
+          <div className="w-16 h-[1.5px] bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto my-3" />
           <p className="font-sans text-cream-200/90 text-sm sm:text-base md:text-lg font-light tracking-wide max-w-xl mx-auto leading-relaxed">
             “{RESTAURANT_INFO.taglineSub}”
           </p>

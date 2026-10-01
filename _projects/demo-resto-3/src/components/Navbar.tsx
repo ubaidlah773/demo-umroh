@@ -55,7 +55,7 @@ export default function Navbar() {
                   Tuban
                 </span>
               </div>
-              <span className="font-serif italic text-xs tracking-wider text-gold-300/90">
+              <span className="font-serif italic text-xs tracking-wider text-blue-400">
                 “{RESTAURANT_INFO.tagline}”
               </span>
             </Link>
@@ -131,7 +131,7 @@ export default function Navbar() {
             <span className="font-serif text-2xl text-cream-50 font-bold block">
               {RESTAURANT_INFO.name}
             </span>
-            <span className="font-serif italic text-sm text-gold-300">
+            <span className="font-serif italic text-sm text-blue-400">
               “{RESTAURANT_INFO.tagline}”
             </span>
           </div>

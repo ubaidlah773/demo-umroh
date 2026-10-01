@@ -30,7 +30,7 @@ export default function Footer() {
               <span className="font-serif text-3xl sm:text-4xl font-bold tracking-wider text-cream-50 uppercase block">
                 {RESTAURANT_INFO.name}
               </span>
-              <span className="font-serif italic text-base text-gold-300 block">
+              <span className="font-serif italic text-base text-blue-400 block">
                 “{RESTAURANT_INFO.tagline}”
               </span>
             </div>
@@ -121,7 +121,7 @@ export default function Footer() {
         {/* Bottom Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream-300/60 font-sans gap-4">
           <p>© 2026 Bale Rasa Tuban. All Rights Reserved.</p>
-          <p className="font-serif italic text-gold-300/80">
+          <p className="font-serif italic text-blue-400">
             “Andum Roso, Nambah Bolo” — Tuban, Jawa Timur
           </p>
         </div>

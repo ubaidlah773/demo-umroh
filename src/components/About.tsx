@@ -31,7 +31,7 @@ export default function About() {
                 “{RESTAURANT_INFO.storyText}”
               </p>
               <p className="text-sm sm:text-base text-jawa-800/80">
-                Dalam falsafah Jawa, filosofi <em>“Andum Roso, Nambah Bolo”</em> mengajarkan bahwa sebuah hidangan bukan semata untuk memuaskan rasa lapar. Ia adalah jembatan yang menghubungkan hati, menyatukan keluarga, mempererat persahabatan, dan menghadirkan kenangan hangat yang dibawa pulang.
+                Dalam falsafah Jawa, filosofi <em className="text-blue-600 font-medium">“Andum Roso, Nambah Bolo”</em> mengajarkan bahwa sebuah hidangan bukan semata untuk memuaskan rasa lapar. Ia adalah jembatan yang menghubungkan hati, menyatukan keluarga, mempererat persahabatan, dan menghadirkan kenangan hangat yang dibawa pulang.
               </p>
             </div>
 
