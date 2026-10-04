@@ -1,131 +1,99 @@
-import React from "react";
-import Link from "next/link";
-import { RESTAURANT_INFO } from "@/data/restaurant";
-import { Phone, MapPin, Clock, MessageCircle, Instagram } from "lucide-react";
+import React from 'react';
+import Link from 'next/link';
+import { ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
-  const footerNav = [
-    { label: "Home", href: "#hero" },
-    { label: "Tentang Kami", href: "#cerita" },
-    { label: "Signature", href: "#signature" },
-    { label: "Menu", href: "#menu" },
-    { label: "Gallery", href: "#galeri" },
-    { label: "Review", href: "#ulasan" },
-    { label: "Lokasi", href: "#lokasi" },
-  ];
-
   return (
-    <footer className="bg-jawa-950 text-cream-100 border-t border-gold-500/20 pt-16 pb-24 sm:pb-12 relative overflow-hidden">
-      {/* Subtle top heritage border highlight */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-[1px] bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-12 border-b border-jawa-900">
-          
-          {/* Brand Column */}
-          <div className="md:col-span-5 space-y-4">
-            <div className="space-y-1">
-              <span className="font-serif text-3xl sm:text-4xl font-bold tracking-wider text-cream-50 uppercase block">
-                {RESTAURANT_INFO.name}
-              </span>
-              <span className="font-serif italic text-base text-blue-400 block">
-                “{RESTAURANT_INFO.tagline}”
-              </span>
-            </div>
-            
-            <p className="font-sans text-cream-200/75 text-sm font-light leading-relaxed max-w-sm">
-              {RESTAURANT_INFO.concept}
+    <footer className="bg-white border-t border-border mt-20 pb-20 md:pb-12 pt-12 text-xs text-muted">
+      <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
+          {/* Brand & Privacy Statement */}
+          <div className="md:col-span-2 space-y-3">
+            <span className="font-bold tracking-wider text-dark block text-sm">
+              ADMINTOOLS
+            </span>
+            <p className="text-body max-w-sm leading-relaxed">
+              Platform utilitas digital untuk mempercepat administrasi harian: gabungkan dokumen, kompres file, buat kode QR, dan convert format tanpa instalasi aplikasi.
             </p>
-
-            <div className="flex items-center gap-3 pt-2">
-              <a
-                href={RESTAURANT_INFO.links.whatsappReservation}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-sm bg-jawa-900 border border-gold-500/30 flex items-center justify-center text-gold-400 hover:text-cream-50 hover:bg-terracotta-500 hover:border-terracotta-500 transition-colors"
-                aria-label="WhatsApp Bale Rasa"
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
-              <a
-                href={`tel:${RESTAURANT_INFO.contact.phone}`}
-                className="w-9 h-9 rounded-sm bg-jawa-900 border border-gold-500/30 flex items-center justify-center text-gold-400 hover:text-cream-50 hover:bg-terracotta-500 hover:border-terracotta-500 transition-colors"
-                aria-label="Telepon Bale Rasa"
-              >
-                <Phone className="w-4 h-4" />
-              </a>
-              <a
-                href={RESTAURANT_INFO.links.googleMaps}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-sm bg-jawa-900 border border-gold-500/30 flex items-center justify-center text-gold-400 hover:text-cream-50 hover:bg-terracotta-500 hover:border-terracotta-500 transition-colors"
-                aria-label="Google Maps Bale Rasa"
-              >
-                <MapPin className="w-4 h-4" />
-              </a>
+            <div className="flex items-center gap-2 text-dark font-medium pt-1">
+              <ShieldCheck className="w-4 h-4 text-success" />
+              <span>Privasi penuh: File diproses secara lokal di browser Anda.</span>
             </div>
           </div>
 
-          {/* Quick Navigation Column */}
-          <div className="md:col-span-3 space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-gold-400 font-sans font-semibold">
-              Navigasi Halaman
+          {/* Quick Categories */}
+          <div className="space-y-2.5">
+            <h4 className="font-semibold text-dark text-xs uppercase tracking-wider">
+              Kategori Tools
             </h4>
-            <ul className="space-y-2.5">
-              {footerNav.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm font-sans text-cream-200/80 hover:text-gold-300 transition-colors inline-block"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="space-y-2">
+              <li>
+                <Link href="/tools?category=pdf" className="hover:text-dark transition-colors">
+                  PDF Tools
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=convert" className="hover:text-dark transition-colors">
+                  Convert Dokumen & Data
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=images" className="hover:text-dark transition-colors">
+                  Image Utilities
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=qr" className="hover:text-dark transition-colors">
+                  QR & Barcode Generator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=text" className="hover:text-dark transition-colors">
+                  Text Tools
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=utilities" className="hover:text-dark transition-colors">
+                  File & System Utilities
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact & Hours Column */}
-          <div className="md:col-span-4 space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-gold-400 font-sans font-semibold">
-              Hubungi Kami
+          {/* Productivity & Info */}
+          <div className="space-y-2.5">
+            <h4 className="font-semibold text-dark text-xs uppercase tracking-wider">
+              Informasi
             </h4>
-
-            <div className="space-y-3 text-xs sm:text-sm font-sans text-cream-200/80">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-terracotta-400 shrink-0 mt-0.5" />
-                <span>{RESTAURANT_INFO.address.full}</span>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-gold-400 shrink-0" />
-                <a
-                  href={`tel:${RESTAURANT_INFO.contact.phone}`}
-                  className="hover:text-gold-300 transition-colors"
-                >
-                  {RESTAURANT_INFO.contact.phoneFormatted}
-                </a>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-gold-400 shrink-0" />
-                <span>Buka Setiap Hari: {RESTAURANT_INFO.hours.display}</span>
-              </div>
-            </div>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/history" className="hover:text-dark transition-colors">
+                  Riwayat Aktivitas
+                </Link>
+              </li>
+              <li>
+                <Link href="/favorites" className="hover:text-dark transition-colors">
+                  Tools Favorit
+                </Link>
+              </li>
+              <li>
+                <span className="text-muted/80">Versi 2.0 (Utility Core)</span>
+              </li>
+              <li>
+                <span className="text-muted/80">Zero Data Storage Policy</span>
+              </li>
+            </ul>
           </div>
-
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream-300/60 font-sans gap-4">
-          <p>© 2026 Bale Rasa Tuban. All Rights Reserved.</p>
-          <p className="font-serif italic text-blue-400">
-            “Andum Roso, Nambah Bolo” — Tuban, Jawa Timur
-          </p>
+        <div className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-muted text-[11px]">
+          <p>© {new Date().getFullYear()} AdminTools. Dirancang untuk efisiensi kerja cepat.</p>
+          <div className="flex items-center gap-4">
+            <span>Client-side Processing Engine</span>
+            <span>•</span>
+            <span>No Account Required</span>
+          </div>
         </div>
-
       </div>
     </footer>
   );

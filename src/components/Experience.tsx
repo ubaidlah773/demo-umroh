@@ -1,116 +1,200 @@
-import React from "react";
-import { Sparkles, Home, Trees, Soup, Users } from "lucide-react";
+'use client';
+
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import StartScreen from './StartScreen';
+import CameraLayer from './CameraLayer';
+import InteractionCanvas from './InteractionCanvas';
+import ImmersiveTransition from './ImmersiveTransition';
+import ImmersiveScene from './ImmersiveScene';
+import ExperienceUI from './ExperienceUI';
+import ErrorScreen from './ErrorScreen';
+import DebugOverlay from './DebugOverlay';
+import { useCamera } from '@/hooks/useCamera';
+import { useHandTracking } from '@/hooks/useHandTracking';
+import { useGestureEngine } from '@/hooks/useGestureEngine';
+import { useDemoInteraction } from '@/hooks/useDemoInteraction';
+import audioEngine from '@/lib/audioEngine';
+import { TrackedFingertip } from '@/types/tracking';
 
 export default function Experience() {
-  const experiences = [
-    {
-      id: "exp-joglo",
-      icon: Home,
-      title: "Joglo Jawa",
-      description:
-        "Bangunan dan interior bernuansa Jawa yang memberikan pengalaman makan berbeda dengan kayu jati dan pencahayaan hangat.",
-      imageUrl:
-        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "exp-asri",
-      icon: Trees,
-      title: "Suasana Asri",
-      description:
-        "Lingkungan hijau dan tenang untuk bersantai dari hiruk-pikuk kesibukan, ditemani hembusan semilir angin sejuk.",
-      imageUrl:
-        "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "exp-rumahan",
-      icon: Soup,
-      title: "Kuliner Rumahan",
-      description:
-        "Masakan dengan karakter rasa tradisional dan familiar, diolah dengan ketulusan bumbu rempah asli Jawa.",
-      imageUrl:
-        "https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "exp-kumpul",
-      icon: Users,
-      title: "Tempat Berkumpul",
-      description:
-        "Ruang luas dan nyaman yang sangat cocok untuk keluarga, sahabat, reuni, maupun perayaan acara bersama.",
-      imageUrl:
-        "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=800&q=80",
-    },
-  ];
+  const [hasStarted, setHasStarted] = useState(false);
+  const [isDemoMode, setIsDemoMode] = useState(false);
+  const [isDebugMode, setIsDebugMode] = useState(false);
+  const [isAudioMuted, setIsAudioMuted] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  // Fallback demo ref
+  const demoTipsRef = useRef<TrackedFingertip[]>([]);
+
+  // Camera hook
+  const { videoRef, cameraState, startCamera } = useCamera();
+
+  // Hand tracking hook (independent RAF loop)
+  const {
+    isModelLoading,
+    handCount,
+    fingertipsRef: cameraFingertipsRef,
+    resetTracking,
+  } = useHandTracking({
+    videoRef,
+    isCameraActive: hasStarted && !isDemoMode && cameraState.isStreaming,
+    videoDimensions: cameraState.dimensions,
+  });
+
+  // Effective fingertips ref (camera or demo)
+  const activeFingertipsRef = isDemoMode ? demoTipsRef : cameraFingertipsRef;
+
+  // Demo fallback interaction hook
+  useDemoInteraction({
+    isDemoActive: isDemoMode,
+    fingertipsRef: demoTipsRef,
+  });
+
+  // Gesture Engine state machine hook
+  const {
+    gestureState,
+    setGestureState,
+    metricsRef,
+    resetToReady,
+  } = useGestureEngine({
+    fingertipsRef: activeFingertipsRef,
+    isCameraActive: hasStarted && (isDemoMode || cameraState.isStreaming),
+    isModelReady: isDemoMode || !isModelLoading,
+  });
+
+  // Check URL params (?debug=true) and prefers-reduced-motion
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('debug') === 'true') {
+        setIsDebugMode(true);
+      }
+
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      setIsReducedMotion(mediaQuery.matches);
+      const listener = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
+      mediaQuery.addEventListener('change', listener);
+      return () => mediaQuery.removeEventListener('change', listener);
+    }
+  }, []);
+
+  // Handle Start Experience
+  const handleStart = async () => {
+    audioEngine.init();
+    setHasStarted(true);
+    setGestureState('CAMERA_LOADING');
+
+    const success = await startCamera();
+    if (!success) {
+      setGestureState('IDLE');
+    } else {
+      setGestureState('READY');
+    }
+  };
+
+  // Handle Start Demo Mode
+  const handleStartDemo = () => {
+    audioEngine.init();
+    setIsDemoMode(true);
+    setHasStarted(true);
+    setGestureState('READY');
+  };
+
+  // Handle Reset Experience
+  const handleReset = useCallback(() => {
+    resetTracking();
+    resetToReady();
+  }, [resetTracking, resetToReady]);
+
+  // Audio mute toggle
+  const handleToggleAudio = () => {
+    const muted = audioEngine.toggleMute();
+    setIsAudioMuted(muted);
+  };
+
+  // Debug toggle
+  const handleToggleDebug = () => {
+    setIsDebugMode((prev) => !prev);
+  };
 
   return (
-    <section id="suasana" className="py-20 sm:py-28 bg-jawa-950 text-cream-50 relative overflow-hidden">
-      {/* Decorative Warm Backlight */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[140px] pointer-events-none" />
+    <main className="relative w-screen h-screen overflow-hidden bg-[#05070B] select-none touch-none">
+      {/* 1. Initial Screen: Minimal TOUCH screen */}
+      {!hasStarted && (
+        <StartScreen
+          onStart={handleStart}
+          onStartDemo={handleStartDemo}
+          isLoading={cameraState.isLoading || isModelLoading}
+        />
+      )}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-jawa-900 border border-gold-500/30 text-gold-300 text-xs uppercase tracking-[0.25em] font-sans">
-            <Sparkles className="w-3.5 h-3.5 text-terracotta-400" />
-            <span>Pengalaman Menyeluruh</span>
-          </div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-cream-50 tracking-tight">
-            Nikmati Rasa Jawa dalam Suasana yang Berbeda
-          </h2>
-          <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto my-3" />
-          <p className="font-sans text-cream-200/80 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto">
-            Menyajikan bukan sekadar kelezatan santapan di atas meja, melainkan ketenangan batin dalam balutan arsitektur tradisi.
-          </p>
-        </div>
+      {/* 2. Error Screen (if camera error occurs and not in demo mode) */}
+      {hasStarted && !isDemoMode && cameraState.error && (
+        <ErrorScreen
+          errorTitle="CAMERA ACCESS REQUIRED"
+          errorMessage={cameraState.errorDetail || 'Allow camera access to interact with the experience.'}
+          onRetry={handleStart}
+          onLaunchDemo={handleStartDemo}
+        />
+      )}
 
-        {/* Feature Cards: Horizontal Scrolling on Mobile, Grid on Desktop */}
-        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto sm:overflow-visible pb-6 sm:pb-0 scrollbar-none snap-x snap-mandatory">
-          {experiences.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.id}
-                className="min-w-[280px] sm:min-w-0 snap-center bg-jawa-900/90 rounded-sm border border-gold-500/25 hover:border-gold-400/60 overflow-hidden shadow-heritage transition-all duration-300 group flex flex-col justify-between"
-              >
-                <div>
-                  {/* Photo with zoom effect */}
-                  <div className="relative aspect-[4/3] overflow-hidden bg-jawa-950">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-jawa-950 via-jawa-950/40 to-transparent" />
-                    <div className="absolute bottom-3 left-3 p-2 rounded-sm bg-jawa-950/80 backdrop-blur-md border border-gold-500/30 text-gold-400">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                  </div>
+      {/* 3. Main Experience */}
+      {hasStarted && (
+        <>
+          {/* Layer 1: Camera Stream with Dark Cinematic Filters */}
+          <CameraLayer
+            videoRef={videoRef}
+            isStreaming={!isDemoMode && cameraState.isStreaming}
+            pullProgress={metricsRef.current?.pullProgress || 0}
+            centerPoint={metricsRef.current?.centerPoint}
+            isOpening={gestureState === 'OPENING'}
+            isImmersive={gestureState === 'IMMERSIVE'}
+          />
 
-                  {/* Body Content */}
-                  <div className="p-6 space-y-3">
-                    <span className="text-[10px] uppercase tracking-widest text-gold-400 font-sans block">
-                      0{index + 1} • Keunggulan
-                    </span>
-                    <h3 className="font-serif text-2xl font-bold text-cream-50 group-hover:text-gold-300 transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="font-sans text-cream-200/80 text-sm font-light leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
+          {/* Layer 2: 3D Immersive Universe (Three.js WebGL) */}
+          <ImmersiveScene
+            isVisible={gestureState === 'IMMERSIVE' || gestureState === 'OPENING'}
+            fingertipsRef={activeFingertipsRef}
+            metricsRef={metricsRef}
+            isReducedMotion={isReducedMotion}
+          />
 
-                <div className="px-6 pb-6 pt-2 border-t border-jawa-800/80 text-[11px] text-cream-300/60 font-sans">
-                  Nuansa Tradisional Autentik
-                </div>
-              </div>
-            );
-          })}
-        </div>
+          {/* Layer 3: 2D Interaction Canvas (5-layer energy line, particles, fingertip markers) */}
+          <InteractionCanvas
+            fingertipsRef={activeFingertipsRef}
+            metricsRef={metricsRef}
+            gestureState={gestureState}
+            isReducedMotion={isReducedMotion}
+          />
 
-      </div>
-    </section>
+          {/* Layer 4: Cinematic Pull-Open Transition Sequence */}
+          <ImmersiveTransition
+            isOpening={gestureState === 'OPENING'}
+            centerPoint={metricsRef.current?.centerPoint || { x: 0, y: 0 }}
+          />
+
+          {/* Layer 5: Minimal UI Controls & Dynamic Instructions */}
+          <ExperienceUI
+            gestureState={gestureState}
+            fingerCount={isDemoMode ? 2 : handCount}
+            isAudioMuted={isAudioMuted}
+            onToggleAudio={handleToggleAudio}
+            onReset={handleReset}
+            onToggleDebug={handleToggleDebug}
+            isDebugMode={isDebugMode}
+            isDemoMode={isDemoMode}
+            openPalmProgress={metricsRef.current?.openPalmProgress || 0}
+          />
+
+          {/* Diagnostics / Telemetry Overlay */}
+          <DebugOverlay
+            isVisible={isDebugMode}
+            gestureState={gestureState}
+            fingertipsRef={activeFingertipsRef}
+            metricsRef={metricsRef}
+          />
+        </>
+      )}
+    </main>
   );
 }

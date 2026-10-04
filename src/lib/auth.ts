@@ -56,7 +56,7 @@ export async function getSession(req?: any): Promise<SessionUser | null> {
   let token: string | undefined;
 
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     token = cookieStore.get(COOKIE_NAME)?.value;
   } catch {
     // cookies() might fail outside Next request context

@@ -1,5 +1,5 @@
 {
-  "name": "resto-kayu-manis-tuban",
+  "name": "office-master",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@mediapipe/tasks-vision": "^1.0.1",
     "@prisma/client": "5.21.1",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
@@ -17,16 +18,22 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/three": "^0.160.0",
     "bcryptjs": "^3.0.3",
+    "browser-image-compression": "^2.0.2",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
     "framer-motion": "^13.4.4",
+    "jsbarcode": "^3.12.3",
+    "jszip": "^3.10.2",
     "lucide-react": "^0.453.0",
-    "next": "^14.2.15",
+    "next": "^16.3.8",
+    "pdf-lib": "^1.17.1",
     "prisma": "5.21.1",
+    "qrcode": "^1.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.5.4",
     "three": "^0.160.1",
+    "xlsx": "^0.18.5",
     "zod": "^4.6.5"
   },
   "devDependencies": {
@@ -37,5 +44,23 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.6.3"
-  }
+  },
+  "description": "**Website Resmi Resto Kayu Manis — Tuban**   *Seafood & Family Restaurant • Elegant Tropical Indonesian Dining*",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubaidlah773/demo-umroh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ubaidlah773/demo-umroh/issues"
+  },
+  "homepage": "https://github.com/ubaidlah773/demo-umroh#readme"
 }

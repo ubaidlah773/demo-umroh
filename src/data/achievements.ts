@@ -1,0 +1,68 @@
+import { Achievement } from '@/types';
+
+export const ACHIEVEMENTS_DATA: Achievement[] = [
+  {
+    id: 'first-lesson',
+    title: 'First Step Master',
+    description: 'Menyelesaikan materi pertama kamu di OfficeMaster.',
+    icon: '🏅',
+    requirement: 'Selesaikan minimal 1 materi pembelajaran apa saja.',
+    category: 'beginner',
+  },
+  {
+    id: 'word-beginner',
+    title: 'Word Beginner',
+    description: 'Menyelesaikan seluruh materi Word level Beginner.',
+    icon: '📝',
+    requirement: 'Selesaikan semua materi dasar Word.',
+    category: 'beginner',
+  },
+  {
+    id: 'excel-explorer',
+    title: 'Excel Explorer',
+    description: 'Menyelesaikan 10 materi Microsoft Excel.',
+    icon: '📊',
+    requirement: 'Tuntaskan minimal 10 materi Excel.',
+    category: 'beginner',
+  },
+  {
+    id: 'excel-master',
+    title: 'Excel Master',
+    description: 'Menyelesaikan seluruh materi Excel level Advanced.',
+    icon: '📈',
+    requirement: 'Kuasai materi mahir Excel termasuk Pivot Table dan Dashboard.',
+    category: 'master',
+  },
+  {
+    id: 'slide-designer',
+    title: 'Slide Designer',
+    description: 'Menyelesaikan 5 materi Microsoft PowerPoint.',
+    icon: '📽️',
+    requirement: 'Tuntaskan materi dasar desain presentasi dan Aturan 6x6.',
+    category: 'beginner',
+  },
+  {
+    id: 'quiz-champion',
+    title: 'Quiz Champion',
+    description: 'Mendapatkan nilai sempurna 100 di kuis materi.',
+    icon: '🎯',
+    requirement: 'Jawab benar pertanyaan kuis pada materi.',
+    category: 'quiz',
+  },
+  {
+    id: 'file-collector',
+    title: 'Practice Collector',
+    description: 'Mengunduh file latihan praktik pertama kamu.',
+    icon: '📥',
+    requirement: 'Unduh minimal 1 berkas latihan (.xlsx / .docx / .pptx).',
+    category: 'beginner',
+  },
+  {
+    id: 'office-master',
+    title: 'Office Master',
+    description: 'Menyelesaikan seluruh kurikulum Microsoft Office.',
+    icon: '🎓',
+    requirement: 'Capai progress belajar 100% di OfficeMaster.',
+    category: 'all',
+  },
+];
