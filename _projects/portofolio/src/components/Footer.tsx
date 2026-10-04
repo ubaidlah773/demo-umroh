@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { personalInfo as fallbackPersonalInfo } from "@/data/portfolioData";
 import { PersonalInfo } from "@/types/portfolio";
-import { ArrowUp, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowUp, Github, Linkedin, Mail, MapPin, Wrench, GraduationCap, ArrowUpRight } from "lucide-react";
 
 export default function Footer({
   personalInfo: propPersonalInfo,
@@ -63,7 +63,7 @@ export default function Footer({
           </div>
 
           {/* Quick Navigation Links */}
-          <div className="md:col-span-4 space-y-3">
+          <div className="md:col-span-3 space-y-3">
             <span className="text-xs font-mono uppercase tracking-wider text-[#F7F8FC] font-bold block">
               Navigation
             </span>
@@ -80,8 +80,37 @@ export default function Footer({
             </div>
           </div>
 
+          {/* Ecosystem / Apps */}
+          <div className="md:col-span-2 space-y-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#F7F8FC] font-bold block">
+              Ecosystem
+            </span>
+            <div className="space-y-2 text-xs font-medium">
+              <a
+                href="https://tools.ubaitech.my.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-[#989FCE] hover:text-[#347FC4] transition-colors py-1 group"
+              >
+                <Wrench className="w-3.5 h-3.5 text-[#347FC4]" />
+                <span>Tools Platform</span>
+                <ArrowUpRight className="w-3 h-3 opacity-60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+              <a
+                href="https://class.ubaitech.my.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-[#989FCE] hover:text-[#347FC4] transition-colors py-1 group"
+              >
+                <GraduationCap className="w-3.5 h-3.5 text-[#347FC4]" />
+                <span>Office Class</span>
+                <ArrowUpRight className="w-3 h-3 opacity-60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+          </div>
+
           {/* Connect / Socials */}
-          <div className="md:col-span-3 space-y-3">
+          <div className="md:col-span-2 space-y-3">
             <span className="text-xs font-mono uppercase tracking-wider text-[#F7F8FC] font-bold block">
               Connect
             </span>

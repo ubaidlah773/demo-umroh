@@ -12,6 +12,9 @@ import {
   MapPin,
   CheckCircle2,
   Sparkles,
+  Wrench,
+  GraduationCap,
+  ArrowUpRight,
 } from "lucide-react";
 
 export default function Hero({
@@ -96,6 +99,34 @@ export default function Hero({
                 <span>Let&apos;s Work Together</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[#347FC4]" />
               </Link>
+            </div>
+
+            {/* Live Platforms & Ecosystem Quick Buttons */}
+            <div className="flex flex-wrap items-center gap-3 mb-6 p-2.5 sm:p-3 rounded-2xl bg-[#1F202F]/70 border border-[#7D6B91]/30 backdrop-blur-sm shadow-sm w-fit">
+              <span className="text-xs font-mono text-[#989FCE] flex items-center gap-1.5 pl-1.5 pr-1">
+                <Sparkles className="w-3.5 h-3.5 text-[#347FC4]" />
+                <span className="font-semibold text-[#F7F8FC]">Ecosystem:</span>
+              </span>
+              <a
+                href="https://tools.ubaitech.my.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#2D2E42] hover:bg-[#347FC4] text-[#F7F8FC] hover:text-white text-xs font-semibold border border-[#7D6B91]/35 hover:border-[#347FC4] transition-all duration-200 shadow-sm hover:-translate-y-0.5 active:translate-y-0 group"
+              >
+                <Wrench className="w-3.5 h-3.5 text-[#347FC4] group-hover:text-white transition-colors" />
+                <span>Tools Platform</span>
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
+              <a
+                href="https://class.ubaitech.my.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#2D2E42] hover:bg-[#347FC4] text-[#F7F8FC] hover:text-white text-xs font-semibold border border-[#7D6B91]/35 hover:border-[#347FC4] transition-all duration-200 shadow-sm hover:-translate-y-0.5 active:translate-y-0 group"
+              >
+                <GraduationCap className="w-3.5 h-3.5 text-[#347FC4] group-hover:text-white transition-colors" />
+                <span>Office Master Class</span>
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
             </div>
 
             {/* Technical stack pill row */}

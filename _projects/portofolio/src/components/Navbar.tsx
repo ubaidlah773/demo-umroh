@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { personalInfo as fallbackPersonalInfo } from "@/data/portfolioData";
 import { PersonalInfo } from "@/types/portfolio";
-import { Menu, X, Download, ArrowUpRight, Mail } from "lucide-react";
+import { Menu, X, Download, ArrowUpRight, Mail, Wrench, GraduationCap } from "lucide-react";
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -125,11 +125,35 @@ export default function Navbar({
             })}
           </nav>
 
-          {/* Desktop Right Actions: Contact & Download CV */}
-          <div className="hidden md:flex items-center gap-2.5">
+          {/* Desktop Right Actions: Tools, Class, Contact & Download CV */}
+          <div className="hidden md:flex items-center gap-2">
+            <a
+              href="https://tools.ubaitech.my.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2D2E42]/90 hover:bg-[#347FC4]/20 text-[#F7F8FC] hover:text-[#347FC4] border border-[#7D6B91]/30 hover:border-[#347FC4]/50 text-xs font-semibold shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              title="Tools Platform (tools.ubaitech.my.id)"
+            >
+              <Wrench className="w-3.5 h-3.5 text-[#347FC4]" />
+              <span>Tools</span>
+              <ArrowUpRight className="w-3 h-3 opacity-60" />
+            </a>
+
+            <a
+              href="https://class.ubaitech.my.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2D2E42]/90 hover:bg-[#347FC4]/20 text-[#F7F8FC] hover:text-[#347FC4] border border-[#7D6B91]/30 hover:border-[#347FC4]/50 text-xs font-semibold shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              title="Office Master Class (class.ubaitech.my.id)"
+            >
+              <GraduationCap className="w-3.5 h-3.5 text-[#347FC4]" />
+              <span>Class</span>
+              <ArrowUpRight className="w-3 h-3 opacity-60" />
+            </a>
+
             <Link
               href="#contact"
-              className={`px-3.5 py-2 rounded-lg text-xs font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 activeSection === "contact"
                   ? "text-[#347FC4] font-semibold bg-[#347FC4]/15"
                   : "text-[#989FCE] hover:text-[#FFFFFF] hover:bg-[#7D6B91]/20"
@@ -141,11 +165,11 @@ export default function Navbar({
             <a
               href={personalInfo.cvUrl}
               download="Ahmad_Ubai_Dullah_CV.pdf"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#347FC4] hover:bg-[#2C6EA8] text-white text-xs font-semibold shadow-sm shadow-[#347FC4]/25 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-[#347FC4]"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#347FC4] hover:bg-[#2C6EA8] text-white text-xs font-semibold shadow-sm shadow-[#347FC4]/25 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-[#347FC4]"
               aria-label="Download Ahmad Ubai Dullah CV"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download CV</span>
+              <span>CV</span>
             </a>
           </div>
 
@@ -203,11 +227,41 @@ export default function Navbar({
             </Link>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-[#7D6B91]/25 flex flex-col gap-3">
-            <a
-              href={personalInfo.cvUrl}
-              download="Ahmad_Ubai_Dullah_CV.pdf"
-              onClick={() => setMobileMenuOpen(false)}
+          <div className="pt-3 border-t border-[#7D6B91]/25 flex flex-col gap-2">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#989FCE] font-semibold px-1">
+                Apps & Ecosystem
+              </span>
+              <div className="grid grid-cols-2 gap-2.5">
+                <a
+                  href="https://tools.ubaitech.my.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-[#2D2E42] border border-[#7D6B91]/35 text-[#F7F8FC] text-xs font-semibold hover:border-[#347FC4] transition-all shadow-sm active:scale-[0.98]"
+                >
+                  <Wrench className="w-4 h-4 text-[#347FC4]" />
+                  <span>Tools</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                </a>
+                <a
+                  href="https://class.ubaitech.my.id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-[#2D2E42] border border-[#7D6B91]/35 text-[#F7F8FC] text-xs font-semibold hover:border-[#347FC4] transition-all shadow-sm active:scale-[0.98]"
+                >
+                  <GraduationCap className="w-4 h-4 text-[#347FC4]" />
+                  <span>Class</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-4 pt-4 border-t border-[#7D6B91]/25 flex flex-col gap-3">
+              <a
+                href={personalInfo.cvUrl}
+                download="Ahmad_Ubai_Dullah_CV.pdf"
+                onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-[#347FC4] text-white text-sm font-semibold shadow-md shadow-[#347FC4]/25 transition-transform active:scale-[0.98]"
             >
               <Download className="w-4 h-4" />
