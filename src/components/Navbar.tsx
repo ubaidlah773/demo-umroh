@@ -3,185 +3,170 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Clock, Star, X } from 'lucide-react';
-import { TOOLS } from '@/data/tools';
-import { useTools } from '@/context/ToolsContext';
+import { Search, Menu, X, ChevronDown } from 'lucide-react';
+import SearchModal from './SearchModal';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const { recentTools, favorites } = useTools();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
 
-  const filteredTools = searchQuery.trim()
-    ? TOOLS.filter(
-        (t) =>
-          t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          t.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          t.categoryLabel.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : [];
+  const mainLinks = [
+    { href: '/learn', label: 'Kurikulum' },
+    { href: '/dashboard', label: '📊 Dashboard Academy' },
+    { href: '/practice', label: 'Practice Lab' },
+    { href: '/challenges', label: 'Challenges' },
+    { href: '/shortcuts', label: 'Shortcuts' },
+  ];
+
+  const moreLinks = [
+    { href: '/dashboard/projects', label: '15 Proyek Real Dashboard' },
+    { href: '/dashboard/templates', label: 'Template Dashboard (.xlsx)' },
+    { href: '/dashboard/datasets', label: 'Dataset Latihan Bisnis' },
+    { href: '/dashboard/cheatsheet', label: 'Dashboard Cheatsheet' },
+    { href: '/dashboard/certification', label: 'Sertifikasi Dashboard Specialist' },
+    { href: '/tips', label: 'Tips & Tricks (100+)' },
+    { href: '/errors', label: 'Error & Troubleshooting' },
+    { href: '/exam', label: 'Ujian Sertifikasi Office (100 Soal)' },
+    { href: '/final-project', label: 'Grand Final Project' },
+    { href: '/cheatsheet', label: 'Cheatsheet Rumus Office' },
+    { href: '/downloads', label: 'Library Download File' },
+    { href: '/progress', label: 'Progress Belajar' },
+  ];
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white border-b border-border h-16 flex items-center">
-        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 flex items-center justify-between">
-          {/* Left: Brand Wordmark & Main Links */}
-          <div className="flex items-center gap-8">
-            <Link
-              href="/"
-              className="text-base font-bold tracking-wider text-dark hover:text-primary transition-colors select-none"
-            >
-              ADMINTOOLS
-            </Link>
+      <header className="sticky top-0 z-40 w-full bg-white border-b border-[#E5E7EB]">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+          {/* Brand Logo & Subtitle */}
+          <Link href="/" className="flex flex-col group shrink-0">
+            <span className="font-bold text-lg text-[#171717] tracking-tight leading-tight group-hover:text-[#2563EB] transition-colors">
+              OfficeMaster
+            </span>
+            <span className="text-[11px] text-[#6B7280] font-normal leading-tight">
+              Learn Microsoft Office
+            </span>
+          </Link>
 
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-              <Link
-                href="/tools"
-                className={`transition-colors ${
-                  pathname === '/tools' ? 'text-primary' : 'text-body hover:text-dark'
-                }`}
-              >
-                Tools
-              </Link>
-              <Link
-                href="/tools?category=pdf"
-                className={`transition-colors ${
-                  pathname.includes('category=pdf') ? 'text-primary' : 'text-body hover:text-dark'
-                }`}
-              >
-                PDF
-              </Link>
-              <Link
-                href="/tools?category=convert"
-                className={`transition-colors ${
-                  pathname.includes('category=convert') ? 'text-primary' : 'text-body hover:text-dark'
-                }`}
-              >
-                Convert
-              </Link>
-              <Link
-                href="/tools?category=utilities"
-                className={`transition-colors ${
-                  pathname.includes('category=utilities') ? 'text-primary' : 'text-body hover:text-dark'
-                }`}
-              >
-                Utilities
-              </Link>
-            </nav>
-          </div>
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-5 text-xs font-medium">
+            {mainLinks.map((item) => {
+              const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`transition-colors py-1 ${
+                    isActive
+                      ? 'font-bold text-[#171717] border-b-2 border-[#171717]'
+                      : 'text-[#4B5563] hover:text-[#171717]'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
 
-          {/* Right: Quick actions */}
-          <div className="flex items-center gap-2 sm:gap-4 text-sm">
+            {/* More Resources Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
+                onBlur={() => setTimeout(() => setMoreDropdownOpen(false), 200)}
+                className="flex items-center gap-1 text-[#4B5563] hover:text-[#171717] py-1 transition-colors"
+              >
+                <span>Modul Lainnya</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+
+              {moreDropdownOpen && (
+                <div className="absolute top-full right-0 mt-2 w-64 bg-white border border-[#E5E7EB] rounded-[6px] shadow-lg py-1.5 z-50 animate-in fade-in">
+                  {moreLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`block px-3.5 py-2 text-xs transition-colors ${
+                        pathname.startsWith(item.href)
+                          ? 'bg-[#F3F4F6] text-[#171717] font-semibold'
+                          : 'text-[#4B5563] hover:bg-[#F9FAFB] hover:text-[#171717]'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          </nav>
+
+          {/* Right Action: Search Button & Mobile Toggle */}
+          <div className="flex items-center gap-3">
             <button
-              type="button"
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded text-xs text-muted hover:text-dark hover:bg-subtle border border-transparent hover:border-border transition-colors cursor-pointer"
-              aria-label="Quick search tools"
+              className="flex items-center gap-2 h-9 px-3 rounded-[6px] bg-[#F8F9FA] border border-[#E5E7EB] text-xs text-[#6B7280] hover:border-[#D1D5DB] hover:text-[#171717] transition-all"
+              title="Cari materi atau rumus"
             >
-              <Search className="w-4 h-4 text-muted" />
-              <span className="hidden sm:inline">Search</span>
-              <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono text-muted bg-subtle border border-border rounded">
+              <Search className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Cari materi...</span>
+              <kbd className="hidden sm:inline text-[10px] font-mono bg-white border border-[#E5E7EB] px-1.5 py-0.5 rounded text-[#9CA3AF]">
                 ⌘K
               </kbd>
             </button>
 
-            <Link
-              href="/history"
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs transition-colors ${
-                pathname === '/history'
-                  ? 'text-primary bg-primary/5 font-medium'
-                  : 'text-body hover:text-dark hover:bg-subtle'
-              }`}
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 text-[#6B7280] hover:text-[#171717]"
+              aria-label="Toggle menu"
             >
-              <Clock className="w-3.5 h-3.5" />
-              <span>History</span>
-              {recentTools.length > 0 && (
-                <span className="text-[10px] font-mono px-1 rounded-sm bg-subtle border border-border text-muted">
-                  {recentTools.length}
-                </span>
-              )}
-            </Link>
-
-            <Link
-              href="/favorites"
-              className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs transition-colors ${
-                pathname === '/favorites'
-                  ? 'text-primary bg-primary/5 font-medium'
-                  : 'text-body hover:text-dark hover:bg-subtle'
-              }`}
-            >
-              <Star className="w-3.5 h-3.5 text-amber-500" />
-              <span>Favorites</span>
-              {favorites.length > 0 && (
-                <span className="text-[10px] font-mono px-1 rounded-sm bg-subtle border border-border text-muted">
-                  {favorites.length}
-                </span>
-              )}
-            </Link>
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Drawer */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-t border-[#E5E7EB] bg-white px-4 py-3 space-y-1 text-xs">
+            <div className="font-bold text-[#9CA3AF] uppercase text-[10px] tracking-wider py-1">
+              Menu Utama
+            </div>
+            {mainLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block py-2 font-medium ${
+                  pathname.startsWith(item.href)
+                    ? 'text-[#171717] font-bold'
+                    : 'text-[#4B5563] hover:text-[#171717]'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+
+            <div className="font-bold text-[#9CA3AF] uppercase text-[10px] tracking-wider pt-3 pb-1 border-t border-[#E5E7EB]">
+              Modul Tambahan & Sertifikasi
+            </div>
+            {moreLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block py-1.5 font-medium ${
+                  pathname.startsWith(item.href)
+                    ? 'text-[#171717] font-bold'
+                    : 'text-[#6B7280] hover:text-[#171717]'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </header>
 
-      {/* Quick Search Modal */}
-      {searchOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4 bg-dark/40 backdrop-blur-xs"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="w-full max-w-lg bg-white border border-border rounded-lg shadow-subtle overflow-hidden">
-            <div className="flex items-center px-4 border-b border-border bg-white">
-              <Search className="w-4 h-4 text-muted shrink-0" />
-              <input
-                autoFocus
-                type="text"
-                placeholder="Search tools (e.g. merge, compress, qr, csv)..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-12 px-3 text-sm text-dark placeholder:text-muted/70 bg-transparent focus:outline-none"
-              />
-              <button
-                type="button"
-                onClick={() => setSearchOpen(false)}
-                className="p-1 rounded text-muted hover:text-dark"
-                aria-label="Close search"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <div className="max-h-80 overflow-y-auto p-2 divide-y divide-border/60">
-              {searchQuery.trim() === '' ? (
-                <div className="p-4 text-center text-xs text-muted">
-                  Type tool name or keywords to quickly jump to any utility.
-                </div>
-              ) : filteredTools.length === 0 ? (
-                <div className="p-4 text-center text-xs text-muted">
-                  No tools found for "{searchQuery}".
-                </div>
-              ) : (
-                filteredTools.map((t) => (
-                  <Link
-                    key={t.id}
-                    href={`/tools/${t.slug}`}
-                    onClick={() => setSearchOpen(false)}
-                    className="flex items-center justify-between p-2.5 rounded hover:bg-subtle text-left transition-colors"
-                  >
-                    <div>
-                      <p className="text-xs font-semibold text-dark">{t.name}</p>
-                      <p className="text-[11px] text-muted truncate max-w-xs">{t.description}</p>
-                    </div>
-                    <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-subtle border border-border text-muted">
-                      {t.categoryLabel}
-                    </span>
-                  </Link>
-                ))
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

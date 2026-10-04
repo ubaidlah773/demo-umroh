@@ -2,24 +2,24 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import MobileBottomNav from '@/components/MobileBottomNav';
-import { ToolsProvider } from '@/context/ToolsContext';
 import { ProgressProvider } from '@/context/ProgressContext';
 
 export const metadata: Metadata = {
-  title: 'AdminTools — Tools administrasi, tanpa ribet.',
+  title: 'OfficeMaster — Belajar Microsoft Office dari Nol sampai Mahir',
   description:
-    'Gabungkan dokumen, kompres file, convert format, buat QR dan selesaikan pekerjaan administratif langsung dari browser.',
+    'Pelajari Microsoft Word, Excel, PowerPoint, dan Dashboard Academy dari level paling dasar hingga mahir dengan materi terstruktur, latihan interaktif, dan file latihan asli.',
   keywords: [
-    'merge pdf',
-    'compress pdf',
-    'compress image',
-    'qr code generator',
-    'barcode generator',
-    'csv converter',
-    'admin utilities',
+    'belajar excel',
+    'belajar word',
+    'belajar powerpoint',
+    'microsoft office tutorial',
+    'excel formula',
+    'dashboard excel',
+    'pivottable',
+    'vlookup xlookup',
+    'officemaster',
   ],
-  authors: [{ name: 'AdminTools Team' }],
+  authors: [{ name: 'OfficeMaster Team' }],
 };
 
 export const viewport: Viewport = {
@@ -34,24 +34,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className="bg-white text-body">
+    <html lang="id" className="bg-[#F8F9FA] text-[#171717]">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-white text-body antialiased flex flex-col">
-        <ToolsProvider>
-          <ProgressProvider>
-            <Navbar />
-            <main className="flex-1 w-full">{children}</main>
-            <Footer />
-            <MobileBottomNav />
-          </ProgressProvider>
-        </ToolsProvider>
+      <body className="min-h-screen bg-[#F8F9FA] text-[#171717] antialiased flex flex-col font-sans">
+        <ProgressProvider>
+          <Navbar />
+          <main className="flex-1 w-full">{children}</main>
+          <Footer />
+        </ProgressProvider>
       </body>
     </html>
   );
